@@ -91,6 +91,8 @@ GameObject:
   - component: {fileID: 8877048797497585606}
   - component: {fileID: 8877048797497585607}
   - component: {fileID: 8877048797497585604}
+  - component: {fileID: 8670967267065123552}
+  - component: {fileID: 4396427117650037233}
   - component: {fileID: 8861603841270804772}
   - component: {fileID: 7775800742556447786}
   m_Layer: 5
@@ -172,6 +174,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentToRenturnTo: {fileID: 0}
+  cardplaceholderParent: {fileID: 0}
+--- !u!114 &8670967267065123552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8877048797497585611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3182624fc2123429917b521fdbe1a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  environment_index: 0
+  life_expectancy_index: 0
+  social_stability_index: 0
+  economics_index: 0
+--- !u!114 &4396427117650037233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8877048797497585611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b2f8f8bb91fbd45aaa4a2830e4ca1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCard: []
+  thisCardID: 0
+  id: 0
+  card_name: 
+  card_description: 
+  card_image: {fileID: 8877048798443463785}
+  card_sprite: {fileID: 0}
+  cost: 0
+  type: 0
+  construction: 0
 --- !u!114 &8861603841270804772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
