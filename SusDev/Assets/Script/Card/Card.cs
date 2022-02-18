@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 [System.Serializable]
 
-public class Card 
+public class Card
 {
     /***Card***/
     public int id;

@@ -294,6 +294,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1654805535}
     m_Modifications:
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCardID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCard.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8861603841270804772, guid: 3044d55e98d53454da329df6d3754803, type: 3}
       propertyPath: m_FlexibleWidth
       value: 0
@@ -420,6 +428,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1654805535}
     m_Modifications:
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCardID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCard.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8861603841270804772, guid: 3044d55e98d53454da329df6d3754803, type: 3}
       propertyPath: m_FlexibleWidth
       value: 0
@@ -1182,6 +1198,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1654805535}
     m_Modifications:
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCardID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCard.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8861603841270804772, guid: 3044d55e98d53454da329df6d3754803, type: 3}
       propertyPath: m_FlexibleWidth
       value: 0
@@ -1293,6 +1317,18 @@ PrefabInstance:
     - target: {fileID: 8877048797497585611, guid: 3044d55e98d53454da329df6d3754803, type: 3}
       propertyPath: m_Name
       value: Card2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877048798443463785, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877048798443463785, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877048798443463785, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3044d55e98d53454da329df6d3754803, type: 3}
@@ -1618,6 +1654,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1654805535}
     m_Modifications:
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCardID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCard.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8861603841270804772, guid: 3044d55e98d53454da329df6d3754803, type: 3}
       propertyPath: m_FlexibleWidth
       value: 0
@@ -1730,6 +1774,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card1
       objectReference: {fileID: 0}
+    - target: {fileID: 8877048798443463785, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877048798443463785, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877048798443463785, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3044d55e98d53454da329df6d3754803, type: 3}
 --- !u!224 &1347868330 stripped
@@ -1823,6 +1879,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1654805535}
     m_Modifications:
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCardID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCard.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8861603841270804772, guid: 3044d55e98d53454da329df6d3754803, type: 3}
       propertyPath: m_FlexibleWidth
       value: 0
@@ -2061,7 +2125,6 @@ GameObject:
   - component: {fileID: 1654805538}
   - component: {fileID: 1654805537}
   - component: {fileID: 1654805536}
-  - component: {fileID: 1654805540}
   m_Layer: 5
   m_Name: HandArea
   m_TagString: Untagged
@@ -2170,28 +2233,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654805534}
   m_CullTransparentMesh: 1
---- !u!114 &1654805540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654805534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b2f8f8bb91fbd45aaa4a2830e4ca1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisCard:
-  - {fileID: 0}
-  thisCardID: 2
-  id: 0
-  card_name: 
-  card_description: 
-  card_image: {fileID: 0}
-  cost: 0
-  type: 0
-  construction: 0
 --- !u!1 &1732369028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,6 +2793,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1654805535}
     m_Modifications:
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCardID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396427117650037233, guid: 3044d55e98d53454da329df6d3754803, type: 3}
+      propertyPath: thisCard.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8861603841270804772, guid: 3044d55e98d53454da329df6d3754803, type: 3}
       propertyPath: m_FlexibleWidth
       value: 0
@@ -2900,10 +2949,135 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd20762c3836a8a46b1ed86f88cfcb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deck: []
-  container: []
-  deskSize: 100
+  deck:
+  - id: 0
+    card_name: 
+    card_description: 
+    card_sprite: {fileID: 0}
+    cost: 0
+    type: 0
+    construction: 0
+    environment_index: 0
+    life_expectancy_index: 0
+    social_stability_index: 0
+    economics_index: 0
+  - id: 0
+    card_name: 
+    card_description: 
+    card_sprite: {fileID: 0}
+    cost: 0
+    type: 0
+    construction: 0
+    environment_index: 0
+    life_expectancy_index: 0
+    social_stability_index: 0
+    economics_index: 0
+  - id: 0
+    card_name: 
+    card_description: 
+    card_sprite: {fileID: 0}
+    cost: 0
+    type: 0
+    construction: 0
+    environment_index: 0
+    life_expectancy_index: 0
+    social_stability_index: 0
+    economics_index: 0
+  - id: 0
+    card_name: 
+    card_description: 
+    card_sprite: {fileID: 0}
+    cost: 0
+    type: 0
+    construction: 0
+    environment_index: 0
+    life_expectancy_index: 0
+    social_stability_index: 0
+    economics_index: 0
+  - id: 0
+    card_name: 
+    card_description: 
+    card_sprite: {fileID: 0}
+    cost: 0
+    type: 0
+    construction: 0
+    environment_index: 0
+    life_expectancy_index: 0
+    social_stability_index: 0
+    economics_index: 0
+  - id: 0
+    card_name: 
+    card_description: 
+    card_sprite: {fileID: 0}
+    cost: 0
+    type: 0
+    construction: 0
+    environment_index: 0
+    life_expectancy_index: 0
+    social_stability_index: 0
+    economics_index: 0
+  - id: 0
+    card_name: 
+    card_description: 
+    card_sprite: {fileID: 0}
+    cost: 0
+    type: 0
+    construction: 0
+    environment_index: 0
+    life_expectancy_index: 0
+    social_stability_index: 0
+    economics_index: 0
+  - id: 0
+    card_name: 
+    card_description: 
+    card_sprite: {fileID: 0}
+    cost: 0
+    type: 0
+    construction: 0
+    environment_index: 0
+    life_expectancy_index: 0
+    social_stability_index: 0
+    economics_index: 0
+  - id: 0
+    card_name: 
+    card_description: 
+    card_sprite: {fileID: 0}
+    cost: 0
+    type: 0
+    construction: 0
+    environment_index: 0
+    life_expectancy_index: 0
+    social_stability_index: 0
+    economics_index: 0
+  - id: 0
+    card_name: 
+    card_description: 
+    card_sprite: {fileID: 0}
+    cost: 0
+    type: 0
+    construction: 0
+    environment_index: 0
+    life_expectancy_index: 0
+    social_stability_index: 0
+    economics_index: 0
+  container:
+  - id: 0
+    card_name: 
+    card_description: 
+    card_sprite: {fileID: 0}
+    cost: 0
+    type: 0
+    construction: 0
+    environment_index: 0
+    life_expectancy_index: 0
+    social_stability_index: 0
+    economics_index: 0
+  deskSize: 10
   x: 0
+  cardRandom1: {fileID: 0}
+  cardRandom2: {fileID: 0}
+  cardRandom3: {fileID: 0}
+  cardRandom4: {fileID: 0}
 --- !u!4 &2098863303
 Transform:
   m_ObjectHideFlags: 0

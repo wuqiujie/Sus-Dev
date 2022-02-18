@@ -1,5 +1,6 @@
 sceneSetups:
-- path: Assets/Scenes/SampleScene.unity
+- path: C:/Users/qiujiew/Desktop/To-the-edge-of-the-world/Unity_File/Assets/Scenes/Scene
+    2.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

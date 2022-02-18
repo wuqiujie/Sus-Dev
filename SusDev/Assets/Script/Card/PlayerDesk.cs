@@ -8,7 +8,11 @@ public class PlayerDesk : MonoBehaviour
     public List<Card> container = new List<Card>();
     public int deskSize = 10;
     public int x;
-    
+
+    public GameObject cardRandom1;
+    public GameObject cardRandom2;
+    public GameObject cardRandom3;
+    public GameObject cardRandom4;
 
     void Start()
     {
