@@ -60,6 +60,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler,IDragHandler, IEndDragH
         this.transform.SetSiblingIndex( cardPlaceholder.transform.GetSiblingIndex());
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         Destroy(cardPlaceholder);
+       
     }
     
 }

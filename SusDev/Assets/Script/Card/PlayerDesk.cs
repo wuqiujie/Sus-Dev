@@ -5,36 +5,72 @@ using UnityEngine;
 public class PlayerDesk : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
-    public List<Card> container = new List<Card>();
-    public int deskSize = 10;
-    public int x;
+    public Card container = new Card();
+    public static List<Card> staticDeck = new List<Card>();
+    public List<GameObject> currentDeck = new List<GameObject>();
 
-    public GameObject cardRandom1;
-    public GameObject cardRandom2;
-    public GameObject cardRandom3;
-    public GameObject cardRandom4;
 
+    public static int deskSize =8;
+
+    public GameObject HandArea;
+    public GameObject CardToHand;
+    public GameObject CardToTable;
     void Start()
-    {
-        x = 0;
+    { 
+
         for (int i = 0; i < deskSize; i++)
         {
-            x = Random.Range(0, 4);
-            deck[i] = CardDataBase.cardList[x];
+            deck[i] = CardDataBase.cardList[Random.Range(0, 5)];
         }
+       
     }
 
-
-    public void Shuffle()
+    public void startTurn()
     {
-        for(int i =0 ; i<deskSize; i++)
-        {
-            container[0] = deck[i];
-            int randomIndex = Random.Range(1, deskSize);
-            deck[i] = deck[randomIndex];
-            deck[randomIndex] = container[0];
-        }
-
+        StartCoroutine(StartGame());
     }
+
+    public void randomCardTurn()
+    {
+         StartCoroutine(RandomCard());
+        
+    }
+    IEnumerator StartGame()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            yield return new WaitForSeconds(1);
+            Instantiate(CardToHand, transform.position, transform.rotation);
+
+        }
+       
+    }
+    IEnumerator RandomCard()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            yield return new WaitForSeconds(1);
+            Instantiate(CardToTable, transform.position, transform.rotation);
+
+        }
+    }
+
+    void Update()
+    {
+        staticDeck = deck;
+       
+    }
+
+    public void Update_currentDesk()
+    {
+        HandArea = GameObject.Find("HandArea");
+        for (int i = 0; i < 6; i++)
+        {
+           
+            currentDeck.Add(HandArea.transform.GetChild(i).gameObject);
+        }
+        
+    }
+
 
 }

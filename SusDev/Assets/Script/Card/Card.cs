@@ -22,7 +22,10 @@ public class Card
     public float social_stability_index;
     public float economics_index;
 
+    public Card()
+    {
 
+    }
     public Card(int Id, string Card_name, string Card_description, 
         int Cost, int Type, int Construction,
          Sprite Card_sprite)

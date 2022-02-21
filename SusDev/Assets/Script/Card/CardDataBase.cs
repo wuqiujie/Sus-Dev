@@ -15,5 +15,9 @@ public class CardDataBase : MonoBehaviour
         cardList.Add(new Card(4, "4", "4", -1, -1, -1, Resources.Load<Sprite>("4")));
         cardList.Add(new Card(5, "5", "5", -1, -1, -1, Resources.Load<Sprite>("5")));
     }
+    public Card getCard(int i)
+    {
+        return cardList[i];
+    }
 
 }

@@ -6,8 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ThisCard : MonoBehaviour
 {
-    public List<Card> thisCard = new List<Card>();
-
+    public Card thisCard = new Card();
     public int thisCardID;
 
     /***Card Info***/
@@ -20,21 +19,37 @@ public class ThisCard : MonoBehaviour
     public int type;
     public int construction;
 
+    public int numOfCandsInDesk;
+
+
     void Start()
     {
-        thisCard[0] = CardDataBase.cardList[thisCardID];
+        thisCard = CardDataBase.cardList[thisCardID];
+        numOfCandsInDesk = PlayerDesk.deskSize;
+
     }
 
     void Update()
     {
-        id = thisCard[0].getID();
-        card_name = thisCard[0].getCardName();
-        card_description = thisCard[0].getCardDescription();
-        cost = thisCard[0].getCost();
-        type = thisCard[0].getType();
-        construction = thisCard[0].getConstruction();
-        card_sprite = thisCard[0].getCardSprite();
-        card_image.sprite = card_sprite;      
-    }
+       
+        /***Card Info ***/
+        id = thisCard.getID();
+        card_name = thisCard.getCardName();
+        card_description = thisCard.getCardDescription();
+        cost = thisCard.getCost();
+        type = thisCard.getType();
+        construction = thisCard.getConstruction();
+        card_sprite = thisCard.getCardSprite();
+        card_image.sprite = card_sprite;
+        
+     
+        if(this.tag == "Clone")
+        {
+            thisCard = PlayerDesk.staticDeck[numOfCandsInDesk - 1];
+            numOfCandsInDesk -= 1;
+            PlayerDesk.deskSize -= 1;
+            this.tag = "Untagged";
+        }
+    }   
 
 }
