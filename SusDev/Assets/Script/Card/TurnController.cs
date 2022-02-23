@@ -9,7 +9,8 @@ public class TurnController : MonoBehaviour
     public GameObject HandArea;
 
     public PlayerDesk playerDesk;
-    
+
+
 
     void Start()
     {
@@ -33,9 +34,9 @@ public class TurnController : MonoBehaviour
         playerDesk.randomCardTurn();
     }
 
-    void Update()
-    {
 
+    public void EndTurn()
+    {
 
     }
 

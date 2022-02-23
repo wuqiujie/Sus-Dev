@@ -5,14 +5,18 @@ using UnityEngine;
 public class PlayerDesk : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
-    public Card container = new Card();
     public static List<Card> staticDeck = new List<Card>();
-    public List<GameObject> currentDeck = new List<GameObject>();
+    public GameObject[] currentDeck;
+
+    public GameObject[] currentZone;
 
 
     public static int deskSize =8;
 
     public GameObject HandArea;
+    public GameObject TableArea;
+    public GameObject ZoneArea;
+
     public GameObject CardToHand;
     public GameObject CardToTable;
     void Start()
@@ -33,15 +37,18 @@ public class PlayerDesk : MonoBehaviour
     public void randomCardTurn()
     {
          StartCoroutine(RandomCard());
-        
     }
     IEnumerator StartGame()
     {
         for (int i = 0; i < 4; i++)
         {
             yield return new WaitForSeconds(1);
-            Instantiate(CardToHand, transform.position, transform.rotation);
-
+           // Instantiate(CardToHand, transform.position, transform.rotation);
+          var myCard = Instantiate(CardToHand, transform.position, transform.rotation);
+           HandArea = GameObject.Find("HandArea");
+            myCard.transform.SetParent(HandArea.transform);
+         
+                
         }
        
     }
@@ -50,27 +57,43 @@ public class PlayerDesk : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             yield return new WaitForSeconds(1);
-            Instantiate(CardToTable, transform.position, transform.rotation);
-
+           //  Instantiate(CardToTable, transform.position, transform.rotation);
+            var myCard = Instantiate(CardToHand, transform.position, transform.rotation);
+            TableArea = GameObject.Find("TableArea");
+            myCard.transform.SetParent(TableArea.transform);
         }
     }
 
     void Update()
     {
         staticDeck = deck;
+
+        HandArea = GameObject.Find("HandArea");
+        currentDeck = new GameObject[HandArea.transform.childCount];
+        for (int i = 0; i < currentDeck.Length; i++)
+        {
+            currentDeck[i] = HandArea.transform.GetChild(i).gameObject;
+        }
+
+        if (HandArea.transform.childCount == 7)
+        {
+            TableArea.SetActive(false);
+        }
+
+
+
+        ZoneArea = GameObject.Find("ZoneArea");
+        currentZone = new GameObject[ZoneArea.transform.childCount];
+        for (int i = 0; i < currentZone.Length; i++)
+        {
+            currentZone[i] = ZoneArea.transform.GetChild(i).gameObject;
+        }
+
        
+
     }
 
-    public void Update_currentDesk()
-    {
-        HandArea = GameObject.Find("HandArea");
-        for (int i = 0; i < 6; i++)
-        {
-           
-            currentDeck.Add(HandArea.transform.GetChild(i).gameObject);
-        }
-        
-    }
+
 
 
 }

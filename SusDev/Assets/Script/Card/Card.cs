@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 [System.Serializable]
 
-public class Card
+public class Card 
 {
     /***Card***/
     public int id;
@@ -22,6 +22,7 @@ public class Card
     public float social_stability_index;
     public float economics_index;
 
+    
     public Card()
     {
 
