@@ -9,6 +9,7 @@ public class TurnController : MonoBehaviour
     public GameObject HandArea;
 
     public PlayerDesk playerDesk;
+    public GridTesting grid;
 
 
 
@@ -37,6 +38,12 @@ public class TurnController : MonoBehaviour
 
     public void EndTurn()
     {
+        for (int i = 0; i < playerDesk.currentZone.Length; i++)
+        {
+           
+             
+        }
+        grid.InstantiateHouse();
 
     }
 

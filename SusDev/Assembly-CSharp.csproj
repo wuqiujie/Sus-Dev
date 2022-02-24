@@ -66,6 +66,9 @@
     <Compile Include="Assets\Script\Card\CardToTable.cs" />
     <Compile Include="Assets\Script\Card\TurnController.cs" />
     <Compile Include="Assets\Script\Card\Gameobject.cs" />
+    <Compile Include="Assets\Script\Environment\Grid.cs" />
+    <Compile Include="Assets\Script\Environment\GridTesting.cs" />
+    <Compile Include="Assets\Script\Environment\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
