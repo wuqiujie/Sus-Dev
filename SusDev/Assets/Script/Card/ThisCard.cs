@@ -19,6 +19,12 @@ public class ThisCard : MonoBehaviour
     public int type;
     public int construction;
 
+    /*** Affect***/
+    public int environment_index;
+    public int life_expectancy_index;
+    public int social_stability_index;
+    public int economics_index;
+
     public int numOfCandsInDesk;
 
 
@@ -41,9 +47,13 @@ public class ThisCard : MonoBehaviour
         construction = thisCard.getConstruction();
         card_sprite = thisCard.getCardSprite();
         card_image.sprite = card_sprite;
-        
-     
-        if(this.tag == "Clone")
+
+        environment_index = thisCard.getEnvironment();
+        life_expectancy_index = thisCard.getLife_expectancy();
+        social_stability_index = thisCard.getSocial_stability();
+        economics_index = thisCard.getEconomics();
+
+        if (this.tag == "Clone")
         {
             thisCard = PlayerDesk.staticDeck[numOfCandsInDesk - 1];
             numOfCandsInDesk -= 1;

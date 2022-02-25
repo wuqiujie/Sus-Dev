@@ -69,6 +69,8 @@
     <Compile Include="Assets\Script\Environment\Grid.cs" />
     <Compile Include="Assets\Script\Environment\GridTesting.cs" />
     <Compile Include="Assets\Script\Environment\CameraController.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
+    <Compile Include="Assets\Script\UI\Bar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

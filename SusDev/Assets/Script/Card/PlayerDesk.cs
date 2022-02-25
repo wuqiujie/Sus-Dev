@@ -10,6 +10,7 @@ public class PlayerDesk : MonoBehaviour
 
     public GameObject[] currentZone;
 
+    public Card[] cards;
 
     public static int deskSize =8;
 
@@ -19,6 +20,7 @@ public class PlayerDesk : MonoBehaviour
 
     public GameObject CardToHand;
     public GameObject CardToTable;
+
     void Start()
     { 
 
@@ -78,18 +80,26 @@ public class PlayerDesk : MonoBehaviour
         if (HandArea.transform.childCount == 7)
         {
             TableArea.SetActive(false);
+           
         }
 
 
 
         ZoneArea = GameObject.Find("ZoneArea");
         currentZone = new GameObject[ZoneArea.transform.childCount];
+
+        
         for (int i = 0; i < currentZone.Length; i++)
         {
-            currentZone[i] = ZoneArea.transform.GetChild(i).gameObject;
+             currentZone[i] = ZoneArea.transform.GetChild(i).gameObject;
+           
         }
 
-       
+      
+
+        
+
+
 
     }
 

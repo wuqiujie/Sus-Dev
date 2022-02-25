@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 [System.Serializable]
 
-public class Card 
+public class Card
 {
+    public MonoBehaviour monoBehaviour;
     /***Card***/
     public int id;
     public string card_name;
@@ -17,19 +18,28 @@ public class Card
 
 
     /*** Affect***/
-    public float environment_index;
-    public float life_expectancy_index;
-    public float social_stability_index;
-    public float economics_index;
-
-    
+    public int environment_index;
+    public int life_expectancy_index;
+    public int social_stability_index;
+    public int economics_index;
     public Card()
     {
-
+       
     }
+
+    public Card(GameObject gameObject)
+    {
+        
+    }
+    public Card GetInstance(GameObject card)
+    {
+        return new Card(card);
+    }
+
     public Card(int Id, string Card_name, string Card_description, 
-        int Cost, int Type, int Construction,
-         Sprite Card_sprite)
+        int Cost, int Type, int Construction,Sprite Card_sprite,
+       int Environment, int Life_expectancy,
+       int Social_stability, int Economics)
     {
         id = Id;
         card_name = Card_name;
@@ -38,7 +48,10 @@ public class Card
         type = Type;
         construction = Construction;
         card_sprite = Card_sprite;
-
+        environment_index = Environment;
+        life_expectancy_index = Life_expectancy;
+        social_stability_index = Social_stability;
+        economics_index = Economics;
     }
 
     public int getID()
@@ -72,5 +85,23 @@ public class Card
     public Sprite getCardSprite()
     {
         return card_sprite;
+    }
+
+    public int getEnvironment()
+    {
+        return environment_index;
+    }
+
+    public int getLife_expectancy()
+    {
+        return life_expectancy_index;
+    }
+    public int getSocial_stability()
+    {
+        return social_stability_index;
+    }
+    public int getEconomics()
+    {
+        return economics_index;
     }
 }
