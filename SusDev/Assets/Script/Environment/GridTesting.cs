@@ -14,11 +14,12 @@ public class GridTesting : MonoBehaviour
 
     [SerializeField]
     public GameObject smoke;
+    public GameObject holder;
 
     // Start is called before the first frame update
     void Start()
     {
-        roadLength = 3f;
+        roadLength = 0f;
         blockSize = 4;
         numOfBlocks = 4;
         gridCellSize = 2;
@@ -31,7 +32,7 @@ public class GridTesting : MonoBehaviour
             }
         }
         /*grid = new Grid(new Vector3(0,0.5f,0), 3, 3, 2f);*/
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             InstantiateHouse();
         }
@@ -62,6 +63,7 @@ public class GridTesting : MonoBehaviour
                     Vector3 pos = new Vector3(blockSize * gridCellSize * i + roadLength * i + x * grid[i, j]._cellSize, 2.5f, blockSize * gridCellSize * j + roadLength * j + z * grid[i, j]._cellSize);
                     Vector3 cellPos = new Vector3(x * grid[i, j]._cellSize, 0.5f, z * grid[i, j]._cellSize);
                     GameObject building = Instantiate(house[index], pos + new Vector3(grid[i, j]._cellSize / 2, 0, grid[i, j]._cellSize / 2), Quaternion.identity);
+                    building.transform.SetParent(holder.transform);
                     StartCoroutine(InstatiateBuildings(building.transform, building.transform.position, 1f));
                     grid[i, j].SetValue(cellPos, 1);
                 }
