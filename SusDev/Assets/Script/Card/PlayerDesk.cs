@@ -31,35 +31,33 @@ public class PlayerDesk : MonoBehaviour
        
     }
 
-    public void startTurn()
+    public void StartTurn()
     {
-        StartCoroutine(StartGame());
+       
+        StartCoroutine(StartTurnByTime());
     }
 
-    public void randomCardTurn()
+    public void RrandomCard()
     {
-         StartCoroutine(RandomCard());
+         StartCoroutine(RandomCardByTime());
     }
-    IEnumerator StartGame()
+
+
+    IEnumerator StartTurnByTime()
     {
         for (int i = 0; i < 4; i++)
         {
-            yield return new WaitForSeconds(1);
-           // Instantiate(CardToHand, transform.position, transform.rotation);
+            yield return new WaitForSeconds(0.5f);
           var myCard = Instantiate(CardToHand, transform.position, transform.rotation);
            HandArea = GameObject.Find("HandArea");
-            myCard.transform.SetParent(HandArea.transform);
-         
-                
+            myCard.transform.SetParent(HandArea.transform);   
         }
-       
     }
-    IEnumerator RandomCard()
+    IEnumerator RandomCardByTime()
     {
         for (int i = 0; i < 4; i++)
         {
-            yield return new WaitForSeconds(1);
-           //  Instantiate(CardToTable, transform.position, transform.rotation);
+            yield return new WaitForSeconds(0.5f);
             var myCard = Instantiate(CardToHand, transform.position, transform.rotation);
             TableArea = GameObject.Find("TableArea");
             myCard.transform.SetParent(TableArea.transform);
@@ -70,6 +68,7 @@ public class PlayerDesk : MonoBehaviour
     {
         staticDeck = deck;
 
+        /** Draw Cards **/
         HandArea = GameObject.Find("HandArea");
         currentDeck = new GameObject[HandArea.transform.childCount];
         for (int i = 0; i < currentDeck.Length; i++)
@@ -77,22 +76,21 @@ public class PlayerDesk : MonoBehaviour
             currentDeck[i] = HandArea.transform.GetChild(i).gameObject;
         }
 
+        /** Finish Choosing Cards **/
         if (HandArea.transform.childCount == 7)
         {
             TableArea.SetActive(false);
            
         }
 
-
-
+        /** Play Card **/ 
         ZoneArea = GameObject.Find("ZoneArea");
         currentZone = new GameObject[ZoneArea.transform.childCount];
 
         
         for (int i = 0; i < currentZone.Length; i++)
         {
-             currentZone[i] = ZoneArea.transform.GetChild(i).gameObject;
-           
+             currentZone[i] = ZoneArea.transform.GetChild(i).gameObject; 
         }
 
       

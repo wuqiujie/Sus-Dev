@@ -28,6 +28,10 @@ public class ThisCard : MonoBehaviour
     public int numOfCandsInDesk;
 
 
+    public bool canBeDestroyed;
+    public GameObject Collection;
+    public bool beInCollection;
+
     void Start()
     {
         thisCard = CardDataBase.cardList[thisCardID];

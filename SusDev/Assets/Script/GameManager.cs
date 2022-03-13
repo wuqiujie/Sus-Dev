@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,19 +22,81 @@ public class GameManager : MonoBehaviour
     public int total_social_stability;
     public int total_economics;
 
+    public GameState state;
 
+    public GameObject gameStartButton;
+    public GameObject playCardButton;
     public enum GameState
     {
         GameStart,
+        TurnStart,
+        PlayCard,
+        CollectCard,
+        accident,
+        interview,
+        TurnEnd,
         GameEnd
-       
-        
     }
 
     public TurnController turnController;
 
+     void Start()
+    {
+        state = GameState.GameStart;
+        gameStartButton.SetActive(false);
+    }
 
-    void Start()
+    void Update()
+    {
+        Debug.Log("State: " + state);
+
+        if(state == GameState.GameStart)
+        {
+            Game_Start();
+            gameStartButton.SetActive(true);
+        }
+        if (state == GameState.TurnStart)
+        {
+            Start_Turn();
+        }
+        
+        if (state == GameState.PlayCard)
+        {
+            Play_Card();
+            playCardButton.SetActive(true);
+        }
+
+        if (state == GameState.CollectCard)
+        {
+            Collect_Card();
+        }
+        if (state == GameState.accident)
+        {
+           
+           
+        }
+
+        if (state == GameState.interview)
+        {
+
+           
+        }
+
+        if (state == GameState.TurnEnd)
+        {
+            
+
+        }
+
+        if (state == GameState.GameEnd)
+        {
+           
+        }
+
+
+
+    }
+    public void Game_Start()
     {
         total_environment = 1;
         total_life = 1;
@@ -45,14 +108,41 @@ public class GameManager : MonoBehaviour
         StableBar.GetComponent<Bar>().env.envAmount = total_social_stability;
         EconomyBar.GetComponent<Bar>().env.envAmount = total_economics;
 
+        turnController.StartGame();
+
     }
-    void Update()
+    public void Game_Start_Button()
     {
-
-        UI_Update();
-        Data_Update();
-
+        state = GameState.TurnStart;
+        gameStartButton.SetActive(false);
+      
     }
+
+    public void Start_Turn()
+    {
+        turnController.StartTurn(); 
+        state = GameState.PlayCard;
+    }
+    public void Play_Card()
+    {
+       
+    }
+    public void Play_Card_Button()
+    {
+        turnController.CalculateCard();
+        state = GameState.CollectCard;
+    }
+
+    public void Collect_Card()
+    {
+        playCardButton.SetActive(false);
+        turnController.CollectCard();
+        state = GameState.accident;
+    }
+
+
+
+
 
 
     public void UI_Update()
@@ -64,6 +154,11 @@ public class GameManager : MonoBehaviour
     }
     public void Data_Update()
     {
-
+        total_economics = turnController.environment_change;
+        total_environment = turnController.economics_change;
+        total_life = turnController.life_change;
+        total_social_stability = turnController.social_change;
     }
+
+
 }
