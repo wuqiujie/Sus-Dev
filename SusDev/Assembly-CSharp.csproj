@@ -70,6 +70,7 @@
     <Compile Include="Assets\Script\Card\ThisCard.cs" />
     <Compile Include="Assets\Script\Card\Card.cs" />
     <Compile Include="Assets\Script\Card\TurnController.cs" />
+    <Compile Include="Assets\Script\UI\CollectionItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

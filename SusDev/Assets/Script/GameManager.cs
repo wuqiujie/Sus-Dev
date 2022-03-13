@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameStartButton;
     public GameObject playCardButton;
+
+    /**Turn Info**/
+    public int turnNum=0;
+    public Text turnText;
+
+
     public enum GameState
     {
         GameStart,
@@ -48,9 +55,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("State: " + state);
+        Debug.Log("state: " + state);
 
-        if(state == GameState.GameStart)
+        turnText.text = "Turn: " + turnNum;
+
+        if (state == GameState.GameStart)
         {
             Game_Start();
             gameStartButton.SetActive(true);
@@ -72,25 +81,22 @@ public class GameManager : MonoBehaviour
         }
         if (state == GameState.accident)
         {
-           
-           
+            Accident();      
         }
 
         if (state == GameState.interview)
         {
-
-           
+            Interview();
         }
 
         if (state == GameState.TurnEnd)
         {
-            
-
+            Turn_End();
         }
 
         if (state == GameState.GameEnd)
         {
-           
+            Game_End();
         }
 
 
@@ -108,7 +114,8 @@ public class GameManager : MonoBehaviour
         StableBar.GetComponent<Bar>().env.envAmount = total_social_stability;
         EconomyBar.GetComponent<Bar>().env.envAmount = total_economics;
 
-        turnController.StartGame();
+        // turnController.StartGame();
+        turnText.text = "New Game";
 
     }
     public void Game_Start_Button()
@@ -120,6 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void Start_Turn()
     {
+        turnNum++;
         turnController.StartTurn(); 
         state = GameState.PlayCard;
     }
@@ -136,8 +144,43 @@ public class GameManager : MonoBehaviour
     public void Collect_Card()
     {
         playCardButton.SetActive(false);
-        turnController.CollectCard();
-        state = GameState.accident;
+       if(turnController.CollectCard())
+        {
+            turnController.DestroyCard();
+            UI_Update();
+            Data_Update();
+
+            //todo
+            //   state = GameState.accident;
+
+            state = GameState.TurnEnd;
+          
+        }
+      
+       
+    }
+
+    public void Accident()
+    {
+     
+    }
+
+    public void Interview()
+    {
+
+    }
+
+    public void Turn_End()
+    {
+   
+       
+        state = GameState.TurnStart;
+
+    }
+
+    public void Game_End()
+    {
+
     }
 
 

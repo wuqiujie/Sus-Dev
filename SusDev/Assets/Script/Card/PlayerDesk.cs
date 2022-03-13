@@ -6,8 +6,8 @@ public class PlayerDesk : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
     public static List<Card> staticDeck = new List<Card>();
-    public GameObject[] currentDeck;
 
+    public GameObject[] currentDeck;
     public GameObject[] currentZone;
 
     public Card[] cards;
@@ -21,19 +21,23 @@ public class PlayerDesk : MonoBehaviour
     public GameObject CardToHand;
     public GameObject CardToTable;
 
-    void Start()
-    { 
+    public int count;
+
+
+
+    public void StartTurn()
+    {
+        deskSize = 8;
+        count = 0;
+      //  deck = new List<Card>();
+        //staticDeck = new List<Card>();
 
         for (int i = 0; i < deskSize; i++)
         {
             deck[i] = CardDataBase.cardList[Random.Range(0, 5)];
         }
-       
-    }
-
-    public void StartTurn()
-    {
-       
+        
+        
         StartCoroutine(StartTurnByTime());
     }
 
@@ -77,11 +81,26 @@ public class PlayerDesk : MonoBehaviour
         }
 
         /** Finish Choosing Cards **/
+       
         if (HandArea.transform.childCount == 7)
         {
-            TableArea.SetActive(false);
-           
+            TableArea = GameObject.Find("TableArea");
+          
+
+            for (int i = 0; i < TableArea.transform.childCount; i++)
+            {
+                count++;
+                Destroy(TableArea.transform.GetChild(i).gameObject);
+        
+            }
+
+            if (count == TableArea.transform.childCount)
+            {
+                
+                TableArea.SetActive(false);
+            }
         }
+        
 
         /** Play Card **/ 
         ZoneArea = GameObject.Find("ZoneArea");
@@ -92,11 +111,6 @@ public class PlayerDesk : MonoBehaviour
         {
              currentZone[i] = ZoneArea.transform.GetChild(i).gameObject; 
         }
-
-      
-
-        
-
 
 
     }
