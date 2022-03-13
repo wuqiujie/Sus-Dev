@@ -18,10 +18,11 @@ public class GameManager : MonoBehaviour
      * Index
      */
     [SerializeField]
+
     public int total_environment;
     public int total_life;
-    public int total_social_stability;
     public int total_economics;
+    public int total_social_stability;
 
     public GameState state;
 
@@ -31,6 +32,11 @@ public class GameManager : MonoBehaviour
     /**Turn Info**/
     public int turnNum=0;
     public Text turnText;
+    public IncidentManager incidentManager;
+    public InterviewManager interviewManager;
+
+    public bool interview_called;
+    public bool incident_called;
 
 
     public enum GameState
@@ -39,8 +45,8 @@ public class GameManager : MonoBehaviour
         TurnStart,
         PlayCard,
         CollectCard,
-        accident,
         interview,
+        incident,
         TurnEnd,
         GameEnd
     }
@@ -51,6 +57,10 @@ public class GameManager : MonoBehaviour
     {
         state = GameState.GameStart;
         gameStartButton.SetActive(false);
+        total_environment = 1;
+        total_life = 1;
+        total_economics = 1;
+        total_social_stability = 2;
     }
 
     void Update()
@@ -79,15 +89,22 @@ public class GameManager : MonoBehaviour
         {
             Collect_Card();
         }
-        if (state == GameState.accident)
-        {
-            Accident();      
-        }
+        
 
-        if (state == GameState.interview)
+       
+     
+
+        if (state == GameState.interview && !interview_called)
         {
             Interview();
+            interview_called = true;
         }
+
+        if (state == GameState.incident)
+        {
+            Incident();
+        }
+
 
         if (state == GameState.TurnEnd)
         {
@@ -102,31 +119,36 @@ public class GameManager : MonoBehaviour
 
 
     }
+
+    
     public void Game_Start()
     {
-        total_environment = 1;
-        total_life = 1;
-        total_social_stability = 2;
-        total_economics = 1;
+        
 
         EnvBar.GetComponent<Bar>().env.envAmount = total_environment;
         LifeBar.GetComponent<Bar>().env.envAmount = total_life;
-        StableBar.GetComponent<Bar>().env.envAmount = total_social_stability;
         EconomyBar.GetComponent<Bar>().env.envAmount = total_economics;
-
-        // turnController.StartGame();
+        StableBar.GetComponent<Bar>().env.envAmount = total_social_stability;
+    
         turnText.text = "New Game";
+
 
     }
     public void Game_Start_Button()
     {
         state = GameState.TurnStart;
         gameStartButton.SetActive(false);
-      
+        turnController.ZoneArea.SetActive(true);
+        turnController.HandArea.SetActive(true);
+        turnController.TableArea.SetActive(true);
+
+
     }
 
     public void Start_Turn()
     {
+        interview_called = false;
+        incident_called = false;
         turnNum++;
         turnController.StartTurn(); 
         state = GameState.PlayCard;
@@ -150,24 +172,31 @@ public class GameManager : MonoBehaviour
             UI_Update();
             Data_Update();
 
-            //todo
-            //   state = GameState.accident;
+            state = GameState.interview;
 
-            state = GameState.TurnEnd;
-          
         }
       
        
     }
 
-    public void Accident()
-    {
-     
-    }
+    
 
     public void Interview()
     {
-
+        interviewManager.InitiateInterview();
+        state = GameState.incident;
+/*        if (interviewManager.called)
+        {
+            state = GameState.incident;
+        }*/
+    }
+    public void Incident()
+    {
+/*        incidentManager.InitiateIncident();*/
+        if (incidentManager.called)
+        {
+            state = GameState.TurnEnd;
+        }
     }
 
     public void Turn_End()
@@ -197,10 +226,10 @@ public class GameManager : MonoBehaviour
     }
     public void Data_Update()
     {
-        total_economics = turnController.environment_change;
-        total_environment = turnController.economics_change;
-        total_life = turnController.life_change;
-        total_social_stability = turnController.social_change;
+        total_economics += turnController.economics_change;
+        total_environment += turnController.environment_change;
+        total_life += turnController.life_change;
+        total_social_stability += turnController.social_change;
     }
 
 

@@ -29,19 +29,26 @@ public class PlayerDesk : MonoBehaviour
     {
         deskSize = 8;
         count = 0;
-      //  deck = new List<Card>();
-        //staticDeck = new List<Card>();
 
-        for (int i = 0; i < deskSize; i++)
-        {
-            deck[i] = CardDataBase.cardList[Random.Range(0, 5)];
-        }
-        
-        
+
+        // for (int i = 0; i < deskSize; i++)
+        //  {
+        //    deck[i] = CardDataBase.cardList[Random.Range(0, 5)];
+        // }
+
+       
+        //todo
+    for (int i = 0; i < deskSize; i++) {
+            int cardSize = CardDataBase.cardList.Count;
+            int cardIndex = Random.Range(0, cardSize);
+            int cardType = CardDataBase.cardList[cardIndex].type;
+            deck[i] = CardDataBase.cardList[cardIndex];
+    }
+
         StartCoroutine(StartTurnByTime());
     }
 
-    public void RrandomCard()
+    public void RandomCard()
     {
          StartCoroutine(RandomCardByTime());
     }
