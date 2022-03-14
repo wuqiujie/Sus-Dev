@@ -61,7 +61,7 @@ public class TurnController : MonoBehaviour
             environment_change = playerDesk.currentZone[i].GetComponent<ThisCard>().environment_index;
             life_change = playerDesk.currentZone[i].GetComponent<ThisCard>().life_expectancy_index;
             social_change = playerDesk.currentZone[i].GetComponent<ThisCard>().social_stability_index;
-            economics_change = playerDesk.currentZone[i].GetComponent<ThisCard>().social_stability_index;
+            economics_change = playerDesk.currentZone[i].GetComponent<ThisCard>().economics_index;
 
             budget_change = playerDesk.currentZone[i].GetComponent<ThisCard>().cost;
 
@@ -69,18 +69,22 @@ public class TurnController : MonoBehaviour
             
         }
 
-        /** City Change **/
+    }
+
+    public void CityChange()
+    {
         grid.InstantiateHouse();
+    }
 
 
+    public void DestoryHandCard()
+    {
         /**Destory**/
         foreach (Transform child in HandArea.transform)
         {
             GameObject.Destroy(child.gameObject);
         }
-
     }
-
 
     public bool CollectCard()
     {

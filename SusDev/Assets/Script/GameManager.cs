@@ -164,6 +164,8 @@ public class GameManager : MonoBehaviour
     public void Play_Card_Button()
     {
         turnController.CalculateCard();
+        turnController.CityChange();
+        turnController.DestoryHandCard();
         state = GameState.CollectCard;
     }
 
