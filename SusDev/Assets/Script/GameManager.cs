@@ -163,6 +163,7 @@ public class GameManager : MonoBehaviour
     public void Collect_Card()
     {
         playCardButton.SetActive(false);
+
        if(turnController.CollectCard())
         {
             turnController.DestroyCard();

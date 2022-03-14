@@ -55,12 +55,18 @@ public class InterviewManager : MonoBehaviour
     public void InitiateInterview()
     {
         called = false;
+        StartCoroutine(InterviewBegin());
+    }
+
+    IEnumerator InterviewBegin()
+    {
+        yield return new WaitForSeconds(1);  
         interviewCanvas.SetActive(true);
         DisplayTextOnCanvas();
         StartCoroutine(EndInterview());
     }
 
-    IEnumerator EndInterview()
+        IEnumerator EndInterview()
     {
         yield return new WaitForSeconds(5);
         
