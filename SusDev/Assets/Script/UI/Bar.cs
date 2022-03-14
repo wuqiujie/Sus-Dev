@@ -8,7 +8,7 @@ public class Bar : MonoBehaviour
     public Env env;
     private Image barImage;
 
-   public Bar()
+    public Bar()
     {
 
     }
@@ -41,7 +41,7 @@ public class Env
 
     public void ChangeEnv(int amount)
     {
-            envAmount += amount;
+        envAmount += amount;
     }
 
 

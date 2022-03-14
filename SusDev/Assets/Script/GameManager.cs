@@ -90,10 +90,6 @@ public class GameManager : MonoBehaviour
             Collect_Card();
         }
         
-
-       
-     
-
         if (state == GameState.interview && !interview_called)
         {
             Interview();
@@ -105,6 +101,7 @@ public class GameManager : MonoBehaviour
             Incident();
         }
 
+  
 
         if (state == GameState.TurnEnd)
         {
@@ -115,8 +112,6 @@ public class GameManager : MonoBehaviour
         {
             Game_End();
         }
-
-
 
     }
 
@@ -142,16 +137,18 @@ public class GameManager : MonoBehaviour
         turnController.HandArea.SetActive(true);
         turnController.TableArea.SetActive(true);
 
-
     }
 
     public void Start_Turn()
     {
+     
+        turnNum++;
         interview_called = false;
         incident_called = false;
-        turnNum++;
         turnController.StartTurn(); 
         state = GameState.PlayCard;
+        incidentManager.called = false;
+      
     }
     public void Play_Card()
     {
@@ -183,12 +180,14 @@ public class GameManager : MonoBehaviour
 
     public void Interview()
     {
+       
         interviewManager.InitiateInterview();
-        state = GameState.incident;
-/*        if (interviewManager.called)
-        {
-            state = GameState.incident;
-        }*/
+         state = GameState.incident;
+        /*        if (interviewManager.called)
+                {
+                    state = GameState.incident;
+                }*/
+
     }
     public void Incident()
     {
@@ -197,6 +196,7 @@ public class GameManager : MonoBehaviour
         {
             state = GameState.TurnEnd;
         }
+     
     }
 
     public void Turn_End()

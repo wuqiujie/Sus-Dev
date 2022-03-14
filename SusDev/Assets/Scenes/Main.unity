@@ -2497,7 +2497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &753526121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4935,7 +4935,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 5.9814, y: 0}
+  m_AnchoredPosition: {x: 5.9814453, y: 0}
   m_SizeDelta: {x: -11.963, y: 294}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1654805536
@@ -6227,103 +6227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd20762c3836a8a46b1ed86f88cfcb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deck:
-  - monoBehaviour: {fileID: 0}
-    id: 0
-    card_name: 
-    card_description: 
-    card_sprite: {fileID: 0}
-    cost: 0
-    type: 0
-    construction: 0
-    environment_index: 0
-    life_expectancy_index: 0
-    social_stability_index: 0
-    economics_index: 0
-  - monoBehaviour: {fileID: 0}
-    id: 0
-    card_name: 
-    card_description: 
-    card_sprite: {fileID: 0}
-    cost: 0
-    type: 0
-    construction: 0
-    environment_index: 0
-    life_expectancy_index: 0
-    social_stability_index: 0
-    economics_index: 0
-  - monoBehaviour: {fileID: 0}
-    id: 0
-    card_name: 
-    card_description: 
-    card_sprite: {fileID: 0}
-    cost: 0
-    type: 0
-    construction: 0
-    environment_index: 0
-    life_expectancy_index: 0
-    social_stability_index: 0
-    economics_index: 0
-  - monoBehaviour: {fileID: 0}
-    id: 0
-    card_name: 
-    card_description: 
-    card_sprite: {fileID: 0}
-    cost: 0
-    type: 0
-    construction: 0
-    environment_index: 0
-    life_expectancy_index: 0
-    social_stability_index: 0
-    economics_index: 0
-  - monoBehaviour: {fileID: 0}
-    id: 0
-    card_name: 
-    card_description: 
-    card_sprite: {fileID: 0}
-    cost: 0
-    type: 0
-    construction: 0
-    environment_index: 0
-    life_expectancy_index: 0
-    social_stability_index: 0
-    economics_index: 0
-  - monoBehaviour: {fileID: 0}
-    id: 0
-    card_name: 
-    card_description: 
-    card_sprite: {fileID: 0}
-    cost: 0
-    type: 0
-    construction: 0
-    environment_index: 0
-    life_expectancy_index: 0
-    social_stability_index: 0
-    economics_index: 0
-  - monoBehaviour: {fileID: 0}
-    id: 0
-    card_name: 
-    card_description: 
-    card_sprite: {fileID: 0}
-    cost: 0
-    type: 0
-    construction: 0
-    environment_index: 0
-    life_expectancy_index: 0
-    social_stability_index: 0
-    economics_index: 0
-  - monoBehaviour: {fileID: 0}
-    id: 0
-    card_name: 
-    card_description: 
-    card_sprite: {fileID: 0}
-    cost: 0
-    type: 0
-    construction: 0
-    environment_index: 0
-    life_expectancy_index: 0
-    social_stability_index: 0
-    economics_index: 0
+  deck: []
   currentDeck: []
   currentZone: []
   cards: []

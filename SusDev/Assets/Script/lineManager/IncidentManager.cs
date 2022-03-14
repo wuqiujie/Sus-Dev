@@ -58,7 +58,7 @@ public class IncidentManager : MonoBehaviour
         int i = Random.Range(1, 10);
         if(i >= 10 - min)
         {
-            called = true;
+           // called = true;
             return;
         }
         else
@@ -159,7 +159,7 @@ public class IncidentManager : MonoBehaviour
     }
     IEnumerator EndIncident()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         called = true;
         incidentCanvas.SetActive(false);
       

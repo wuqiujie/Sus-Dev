@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardDataBase : MonoBehaviour
 {
     public static List<Card> cardList = new List<Card>();
-   // int Id, string Card_name, string Card_description, int Cost, int Type, int Construction, Sprite Card_sprite, int Environment, int Life_expectancy,  int Social_stability, int Economics
+    // int Id, string Card_name, string Card_description, int Cost, int Type, int Construction, Sprite Card_sprite, int Environment, int Life_expectancy,  int Social_stability, int Economics
     //0:environment 1:life 2:social 3:economics
     private void Awake()
     {
