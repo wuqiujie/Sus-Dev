@@ -55,18 +55,21 @@ public class InterviewManager : MonoBehaviour
     public void InitiateInterview()
     {
         called = false;
-        StartCoroutine(InterviewBegin());
+        InterviewBegin();
     }
 
-    IEnumerator InterviewBegin()
-    {
-        yield return new WaitForSeconds(1);  
+    public void InterviewBegin()
+    { 
         interviewCanvas.SetActive(true);
         DisplayTextOnCanvas();
-        StartCoroutine(EndInterview());
+        /*StartCoroutine(EndInterview());*/
     }
-
-        IEnumerator EndInterview()
+    public void EndInterview()
+    {
+        interviewCanvas.SetActive(false);
+        called = true;
+    }
+/*    IEnumerator EndInterview()
     {
         yield return new WaitForSeconds(5);
         
@@ -74,7 +77,7 @@ public class InterviewManager : MonoBehaviour
         interviewCanvas.SetActive(false);
         called = true;
         incidentManager.InitiateIncident();
-    }
+    }*/
     public void DisplayTextOnCanvas()
     {
         if (!called)

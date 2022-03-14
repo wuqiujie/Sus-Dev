@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDesk : MonoBehaviour
 {
-    public List<Card> deck = new List<Card>();
+    public List<Card> deck;
     public static List<Card> staticDeck = new List<Card>();
 
     public GameObject[] currentDeck;
@@ -23,19 +23,18 @@ public class PlayerDesk : MonoBehaviour
 
     public int count;
 
-   
+
     public void StartTurn()
     {
-        deskSize = 8;
+        deskSize = 6;
         count = 0;
-
+        deck = new List<Card>();
+        Shuffle();
         for (int i = 0; i < deskSize; i++)
         {
-            Shuffle();
             int cardSize = CardDataBase.cardList.Count;
-            deck.Add(CardDataBase.cardList[cardSize-1]);
-
-        }  
+            deck.Add(CardDataBase.cardList[cardSize - 1 - i]);
+        }
 
         StartCoroutine(StartTurnByTime());
     }
@@ -52,7 +51,6 @@ public class PlayerDesk : MonoBehaviour
             CardDataBase.cardList[j] = temporary;
         }
     }
-
     public void RandomCard()
     {
          StartCoroutine(RandomCardByTime());
@@ -63,7 +61,7 @@ public class PlayerDesk : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
           var myCard = Instantiate(CardToHand, transform.position, transform.rotation);
            HandArea = GameObject.Find("HandArea");
             myCard.transform.SetParent(HandArea.transform);   
@@ -94,7 +92,7 @@ public class PlayerDesk : MonoBehaviour
         }
 
         /** Finish Choosing Cards **/
-       
+       /*
         if (HandArea.transform.childCount == 7)
         {
             TableArea = GameObject.Find("TableArea");
@@ -104,7 +102,7 @@ public class PlayerDesk : MonoBehaviour
             {
                 count++;
                 Destroy(TableArea.transform.GetChild(i).gameObject);
-        
+  
             }
 
             if (count == TableArea.transform.childCount)
@@ -114,7 +112,7 @@ public class PlayerDesk : MonoBehaviour
             }
         }
         
-
+        */
         /** Play Card **/ 
         ZoneArea = GameObject.Find("ZoneArea");
         currentZone = new GameObject[ZoneArea.transform.childCount];

@@ -50,26 +50,27 @@ public class TurnController : MonoBehaviour
         playerDesk.RandomCard();
     }
 
-
+    
     public void CalculateCard()
     {
-      
-        /** Index Change **/
+     
+        
         for (int i = 0; i < playerDesk.currentZone.Length; i++)
         {
          
-            environment_change = playerDesk.currentZone[i].GetComponent<ThisCard>().environment_index;
-            life_change = playerDesk.currentZone[i].GetComponent<ThisCard>().life_expectancy_index;
-            social_change = playerDesk.currentZone[i].GetComponent<ThisCard>().social_stability_index;
-            economics_change = playerDesk.currentZone[i].GetComponent<ThisCard>().economics_index;
+            environment_change += playerDesk.currentZone[i].GetComponent<ThisCard>().environment_index;
+            life_change += playerDesk.currentZone[i].GetComponent<ThisCard>().life_expectancy_index;
+            social_change += playerDesk.currentZone[i].GetComponent<ThisCard>().social_stability_index;
+            economics_change += playerDesk.currentZone[i].GetComponent<ThisCard>().economics_index;
 
-            budget_change = playerDesk.currentZone[i].GetComponent<ThisCard>().cost;
+            budget_change += playerDesk.currentZone[i].GetComponent<ThisCard>().cost;
 
             CollectionID[i] = playerDesk.currentZone[i].GetComponent<ThisCard>().id;
             
         }
 
     }
+
 
     public void CityChange()
     {

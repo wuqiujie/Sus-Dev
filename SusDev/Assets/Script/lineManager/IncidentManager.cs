@@ -42,12 +42,12 @@ public class IncidentManager : MonoBehaviour
         lifeHQ = new Queue<string>();
         PushLinesIntoQuene(environment, environmentQ, false);
         PushLinesIntoQuene(environment, environmentHQ, true);
-        PushLinesIntoQuene(environment, socialQ, false);
-        PushLinesIntoQuene(environment, socialHQ, true);
-        PushLinesIntoQuene(environment, economicQ, false);
-        PushLinesIntoQuene(environment, economicHQ, true);
-        PushLinesIntoQuene(environment, lifeQ, false);
-        PushLinesIntoQuene(environment, lifeHQ, true);
+        PushLinesIntoQuene(social, socialQ, false);
+        PushLinesIntoQuene(social, socialHQ, true);
+        PushLinesIntoQuene(economic, economicQ, false);
+        PushLinesIntoQuene(economic, economicHQ, true);
+        PushLinesIntoQuene(life, lifeQ, false);
+        PushLinesIntoQuene(life, lifeHQ, true);
     }
     public void InitiateIncident()
     {
@@ -58,7 +58,8 @@ public class IncidentManager : MonoBehaviour
         int i = Random.Range(1, 10);
         if(i >= 10 - min)
         {
-           // called = true;
+            // called = true;
+            gameManager.EndIncidentButton();
             return;
         }
         else
@@ -66,7 +67,7 @@ public class IncidentManager : MonoBehaviour
             incidentCanvas.SetActive(true);
             ChooseRandomIncident();
             DealingEffect();
-            StartCoroutine(EndIncident());
+           /* StartCoroutine(EndIncident());*/
         }
 
     }
@@ -157,13 +158,18 @@ public class IncidentManager : MonoBehaviour
             }
         }
     }
-    IEnumerator EndIncident()
+    public void EndIncident()
+    {
+        called = true;
+        incidentCanvas.SetActive(false);
+    }
+/*    IEnumerator EndIncident()
     {
         yield return new WaitForSeconds(5);
         called = true;
         incidentCanvas.SetActive(false);
       
-    }
+    }*/
     private void PushLinesIntoQuene(TextAsset textAsset, Queue<string> linesQueue, bool isHead)
     {
         StringReader stringreader = new StringReader(textAsset.text);

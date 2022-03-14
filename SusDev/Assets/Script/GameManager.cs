@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("state: " + state);
+/*        Debug.Log("state: " + state);*/
 
         turnText.text = "Turn: " + turnNum;
 
@@ -88,7 +88,12 @@ public class GameManager : MonoBehaviour
             Play_Card();
             playCardButton.SetActive(true);
         }
-
+/*
+        if(state == GameState.PlayCard && turnController.playerDesk.currentZone.Length > 0)
+        {
+            CalculateCard();
+        }
+*/
         if (state == GameState.CollectCard)
         {
             Collect_Card();
@@ -100,9 +105,10 @@ public class GameManager : MonoBehaviour
             interview_called = true;
         }
 
-        if (state == GameState.incident)
+        if (state == GameState.incident && !incident_called)
         {
             Incident();
+            incident_called = true;
         }
 
   
@@ -131,7 +137,7 @@ public class GameManager : MonoBehaviour
         StableBar.GetComponent<Bar>().env.envAmount = total_social_stability;
     
         turnText.text = "New Game";
-        budgetNum = 3;
+        
 
 
     }
@@ -147,7 +153,7 @@ public class GameManager : MonoBehaviour
 
     public void Start_Turn()
     {
-     
+        budgetNum = 3;
         turnNum++;
         TurnBar.GetComponent<Bar>().env.ChangeEnv(turnNum);
         interview_called = false;
@@ -161,12 +167,26 @@ public class GameManager : MonoBehaviour
     {
        
     }
-    public void Play_Card_Button()
+    public void CalculateCard()
     {
         turnController.CalculateCard();
+    }
+    public void Play_Card_Button()
+    {
+        CalculateCard();
         turnController.CityChange();
         turnController.DestoryHandCard();
         state = GameState.CollectCard;
+    }
+    public void EndInterviewButton()
+    {
+        interviewManager.EndInterview();
+        state = GameState.incident;
+    }
+    public void EndIncidentButton()
+    {
+        incidentManager.EndIncident();
+        state = GameState.TurnEnd;
     }
 
     public void Collect_Card()
@@ -192,7 +212,7 @@ public class GameManager : MonoBehaviour
     {
        
         interviewManager.InitiateInterview();
-         state = GameState.incident;
+/*         state = GameState.incident;*/
         /*        if (interviewManager.called)
                 {
                     state = GameState.incident;
@@ -201,12 +221,12 @@ public class GameManager : MonoBehaviour
     }
     public void Incident()
     {
-/*        incidentManager.InitiateIncident();*/
-        if (incidentManager.called)
-        {
-            state = GameState.TurnEnd;
-        }
-     
+        incidentManager.InitiateIncident();
+        /*        if (incidentManager.called)
+                {
+                    state = GameState.TurnEnd;
+                }*/
+
     }
 
     public void Turn_End()
