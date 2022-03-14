@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject StableBar;
     public GameObject EconomyBar;
     public GameObject TurnBar;
+    public GameObject BudgetBar;
 
     /**
      * Index
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     /**Turn Info**/
     public int turnNum=0;
+    public int budgetNum = 0;
     public Text turnText;
     public IncidentManager incidentManager;
     public InterviewManager interviewManager;
@@ -129,6 +131,7 @@ public class GameManager : MonoBehaviour
         StableBar.GetComponent<Bar>().env.envAmount = total_social_stability;
     
         turnText.text = "New Game";
+        budgetNum = 3;
 
 
     }
@@ -238,6 +241,8 @@ public class GameManager : MonoBehaviour
         LifeBar.GetComponent<Bar>().env.envAmount = total_life;
         StableBar.GetComponent<Bar>().env.envAmount = total_social_stability;
         EconomyBar.GetComponent<Bar>().env.envAmount = total_economics;
+
+        BudgetBar.GetComponent<Bar>().env.envAmount = budgetNum;
     }
     public void Data_Update()
     {

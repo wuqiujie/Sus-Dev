@@ -19,6 +19,7 @@ public class TurnController : MonoBehaviour
     public int life_change;
     public int social_change;
     public int economics_change;
+    public int budget_change;
 
   
 
@@ -61,7 +62,9 @@ public class TurnController : MonoBehaviour
             life_change = playerDesk.currentZone[i].GetComponent<ThisCard>().life_expectancy_index;
             social_change = playerDesk.currentZone[i].GetComponent<ThisCard>().social_stability_index;
             economics_change = playerDesk.currentZone[i].GetComponent<ThisCard>().social_stability_index;
- 
+
+            budget_change = playerDesk.currentZone[i].GetComponent<ThisCard>().cost;
+
             CollectionID[i] = playerDesk.currentZone[i].GetComponent<ThisCard>().id;
             
         }
