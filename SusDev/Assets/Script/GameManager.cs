@@ -220,21 +220,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-
-
-
-
-    /*
-        public void UI_Update()
-        {
-            EnvBar.GetComponent<Bar>().env.ChangeEnv(turnController.environment_change);
-            LifeBar.GetComponent<Bar>().env.ChangeEnv(turnController.life_change);
-            StableBar.GetComponent<Bar>().env.ChangeEnv(turnController.social_change);
-            EconomyBar.GetComponent<Bar>().env.ChangeEnv(turnController.economics_change);
-
-        }
-    */
-
     public void UI_Update()
     {
         EnvBar.GetComponent<Bar>().env.envAmount = total_environment;
@@ -250,6 +235,8 @@ public class GameManager : MonoBehaviour
         total_environment += turnController.environment_change;
         total_life += turnController.life_change;
         total_social_stability += turnController.social_change;
+
+        budgetNum -= turnController.budget_change;
     }
 
 

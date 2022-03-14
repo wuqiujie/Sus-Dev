@@ -39,7 +39,7 @@ public class TurnController : MonoBehaviour
         CollectionID = new int[10];
 
         playerDesk.StartTurn();
-        StartCoroutine(RandomTurn());
+       // StartCoroutine(RandomTurn());
         collectionItem.gameObject.GetComponent<CollectionItem>().setcollectionNum(0);
     }
 

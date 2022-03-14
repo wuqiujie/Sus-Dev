@@ -61,7 +61,7 @@ public class PlayerDesk : MonoBehaviour
 
     IEnumerator StartTurnByTime()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
             yield return new WaitForSeconds(0.5f);
           var myCard = Instantiate(CardToHand, transform.position, transform.rotation);
