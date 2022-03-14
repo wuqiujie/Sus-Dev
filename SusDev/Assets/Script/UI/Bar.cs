@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class Bar : MonoBehaviour
 {
     public Env env;
     private Image barImage;
-
-    public Bar()
-    {
-
-    }
     private void Awake()
     {
         barImage = transform.Find("bar").GetComponent<Image>();
@@ -26,6 +22,7 @@ public class Bar : MonoBehaviour
     private void Update()
     {
         barImage.fillAmount = env.GetEnvNormalized();
+        //print(env.GetEnvNormalized());
     }
 }
 
@@ -34,14 +31,11 @@ public class Env
     public const int ENV_MAX = 10;
     public float envAmount;
 
-    public Env()
-    {
-        envAmount = 1;
-    }
+
 
     public void ChangeEnv(int amount)
     {
-        envAmount += amount;
+            envAmount += amount;
     }
 
 

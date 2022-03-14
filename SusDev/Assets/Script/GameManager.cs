@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject LifeBar;
     public GameObject StableBar;
     public GameObject EconomyBar;
+    public GameObject TurnBar;
 
     /**
      * Index
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     public Text turnText;
     public IncidentManager incidentManager;
     public InterviewManager interviewManager;
+    public TurnController turnController;
 
     public bool interview_called;
     public bool incident_called;
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
         GameEnd
     }
 
-    public TurnController turnController;
+    
 
      void Start()
     {
@@ -143,6 +145,7 @@ public class GameManager : MonoBehaviour
     {
      
         turnNum++;
+        TurnBar.GetComponent<Bar>().env.ChangeEnv(turnNum);
         interview_called = false;
         incident_called = false;
         turnController.StartTurn(); 
@@ -224,6 +227,7 @@ public class GameManager : MonoBehaviour
         LifeBar.GetComponent<Bar>().env.ChangeEnv(turnController.life_change);
         StableBar.GetComponent<Bar>().env.ChangeEnv(turnController.social_change);
         EconomyBar.GetComponent<Bar>().env.ChangeEnv(turnController.economics_change);
+
     }
     public void Data_Update()
     {
