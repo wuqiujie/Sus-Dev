@@ -34,7 +34,7 @@ public class ThisCard : MonoBehaviour
 
     void Start()
     {
-        thisCard = CardDataBase.cardList[thisCardID];
+        thisCard = ReadCSV._cardList[thisCardID];
         numOfCandsInDesk = PlayerDesk.deskSize;
 
     }

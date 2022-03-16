@@ -171,24 +171,24 @@ public class GameManager : MonoBehaviour
     {
         turnController.CalculateCard();
     }
+
+    public void CityChange()
+    {
+        turnController.CityChange();
+    }
+
+    public void DestoryHandCard()
+    {
+        turnController.DestoryHandCard();
+    }
     public void Play_Card_Button()
     {
         CalculateCard();
-        turnController.CityChange();
-        turnController.DestoryHandCard();
+        CityChange();
+        DestoryHandCard();
         state = GameState.CollectCard;
     }
-    public void EndInterviewButton()
-    {
-        interviewManager.EndInterview();
-        state = GameState.incident;
-    }
-    public void EndIncidentButton()
-    {
-        incidentManager.EndIncident();
-        state = GameState.TurnEnd;
-    }
-
+   
     public void Collect_Card()
     {
         playCardButton.SetActive(false);
@@ -209,32 +209,28 @@ public class GameManager : MonoBehaviour
     
 
     public void Interview()
-    {
-       
+    {   
         interviewManager.InitiateInterview();
-/*         state = GameState.incident;*/
-        /*        if (interviewManager.called)
-                {
-                    state = GameState.incident;
-                }*/
-
+    }
+    public void EndInterviewButton()
+    {
+        interviewManager.EndInterview();
+        state = GameState.incident;
     }
     public void Incident()
     {
         incidentManager.InitiateIncident();
-        /*        if (incidentManager.called)
-                {
-                    state = GameState.TurnEnd;
-                }*/
-
+    }
+    
+    public void EndIncidentButton()
+    {
+        incidentManager.EndIncident();
+        state = GameState.TurnEnd;
     }
 
     public void Turn_End()
     {
-   
-       
         state = GameState.TurnStart;
-
     }
 
     public void Game_End()

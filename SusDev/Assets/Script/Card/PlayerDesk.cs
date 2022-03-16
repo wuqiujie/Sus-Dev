@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerDesk : MonoBehaviour
 {
     public List<Card> deck;
@@ -23,6 +24,8 @@ public class PlayerDesk : MonoBehaviour
 
     public int count;
 
+    private float rotateAngel;
+
 
     public void StartTurn()
     {
@@ -32,8 +35,8 @@ public class PlayerDesk : MonoBehaviour
         Shuffle();
         for (int i = 0; i < deskSize; i++)
         {
-            int cardSize = CardDataBase.cardList.Count;
-            deck.Add(CardDataBase.cardList[i]);
+            int cardSize = ReadCSV._cardList.Count;
+            deck.Add(ReadCSV._cardList[i]);
         }
 
         StartCoroutine(StartTurnByTime());
@@ -43,34 +46,38 @@ public class PlayerDesk : MonoBehaviour
     {
 
         System.Random random = new System.Random();
-        int cardSize = CardDataBase.cardList.Count;
+        int cardSize = ReadCSV._cardList.Count;
 
         for (int j = 0; j < cardSize-1; j++)
         {
             int rd = random.Next(j, cardSize-1);
-            Card temporary = CardDataBase.cardList[rd];
-            CardDataBase.cardList[rd] = CardDataBase.cardList[j];
-            CardDataBase.cardList[j] = temporary;
+            Card temporary = ReadCSV._cardList[rd];
+            ReadCSV._cardList[rd] = ReadCSV._cardList[j];
+            ReadCSV._cardList[j] = temporary;
         }
     }
-
-    public void RandomCard()
-    {
-         StartCoroutine(RandomCardByTime());
-    }
-
 
     IEnumerator StartTurnByTime()
     {
         for (int i = 0; i < 6; i++)
         {
             yield return new WaitForSeconds(0.1f);
-          var myCard = Instantiate(CardToHand, transform.position, transform.rotation);
-           HandArea = GameObject.Find("HandArea");
-            myCard.transform.SetParent(HandArea.transform);   
+            var myCard = Instantiate(CardToHand, transform.position, transform.rotation);
+            HandArea = GameObject.Find("HandArea");
+            myCard.transform.SetParent(HandArea.transform);
+           
         }
     }
-    IEnumerator RandomCardByTime()
+    
+
+
+
+    
+    public void RandomCard()
+    {
+         StartCoroutine(RandomCardByTime());
+    }
+     IEnumerator RandomCardByTime()
     {
         for (int i = 0; i < 4; i++)
         {
@@ -81,13 +88,18 @@ public class PlayerDesk : MonoBehaviour
         }
     }
 
+
+
+
+
+
     void Update()
     {
       
         staticDeck = deck;
 
         /** Draw Cards **/
-        HandArea = GameObject.Find("HandArea");
+    HandArea = GameObject.Find("HandArea");
         currentDeck = new GameObject[HandArea.transform.childCount];
         for (int i = 0; i < currentDeck.Length; i++)
         {
