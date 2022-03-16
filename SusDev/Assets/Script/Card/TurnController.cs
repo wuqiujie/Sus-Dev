@@ -36,6 +36,12 @@ public class TurnController : MonoBehaviour
         TableArea.SetActive(false);
         HandArea.SetActive(true);
 
+        /***if there are not 0 will be long term**/
+        environment_change = 0;
+        life_change = 0;
+        social_change = 0;
+        economics_change = 0;
+
         CollectionID = new int[10];
 
         playerDesk.StartTurn();

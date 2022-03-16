@@ -129,17 +129,9 @@ public class GameManager : MonoBehaviour
     
     public void Game_Start()
     {
-        
-
-        EnvBar.GetComponent<Bar>().env.envAmount = total_environment;
-        LifeBar.GetComponent<Bar>().env.envAmount = total_life;
-        EconomyBar.GetComponent<Bar>().env.envAmount = total_economics;
-        StableBar.GetComponent<Bar>().env.envAmount = total_social_stability;
-    
+       
         turnText.text = "New Game";
         
-
-
     }
     public void Game_Start_Button()
     {

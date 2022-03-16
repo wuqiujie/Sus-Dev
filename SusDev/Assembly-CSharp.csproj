@@ -77,13 +77,13 @@
     <Compile Include="Assets\Script\Card\ReadCSV.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Resources\Incidents\Economic Growth.txt" />
-    <None Include="Assets\Resources\Incidents\Life expectancy.txt" />
+    <None Include="Assets\Resources\Interviewlines\Incidents\Economic Growth.txt" />
+    <None Include="Assets\Resources\Interviewlines\Incidents\Life expectancy.txt" />
     <None Include="Assets\Resources\Interviewlines\lifeexpectencygood.txt" />
     <None Include="Assets\Resources\Interviewlines\socialstabilitiesGood.txt" />
     <None Include="Assets\Resources\Interviewlines\economicsgood.txt" />
-    <None Include="Assets\Resources\Incidents\Stability.txt" />
-    <None Include="Assets\Resources\Incidents\environment.txt" />
+    <None Include="Assets\Resources\Interviewlines\Incidents\Stability.txt" />
+    <None Include="Assets\Resources\Interviewlines\Incidents\environment.txt" />
     <None Include="Assets\Resources\Interviewlines\environmentgood.txt" />
     <None Include="Assets\Resources\Interviewlines\socialstabilitiesBad.txt" />
     <None Include="Assets\Resources\Interviewlines\economicsbad.txt" />
