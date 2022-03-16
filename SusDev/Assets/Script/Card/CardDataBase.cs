@@ -18,10 +18,10 @@ public class CardDataBase : MonoBehaviour
         cardList.Add(new Card(6, "heart_disease", "6", 1, 1, -1, Resources.Load<Sprite>("heart_disease"), 0, 1, 0, 0));
         cardList.Add(new Card(7, "highway_construction", "7", 2, 3, -1, Resources.Load<Sprite>("highway_construction"), 0, 0, 1, 1));
         cardList.Add(new Card(8, "mental_therapy", "8", 1, 1, -1, Resources.Load<Sprite>("mental_therapy"), 0, 1, 0, 0));
-        cardList.Add(new Card(9, "minimum_wage", "9", 2, 2, -1, Resources.Load<Sprite>("mental_therapy"), 0, 0, 1, 1));
+        cardList.Add(new Card(9, "minimum_wage", "9", 2, 2, -1, Resources.Load<Sprite>("minimum_wage"), 0, 0, 1, 1));
         cardList.Add(new Card(10, "more_university", "10", 2, 3, -1, Resources.Load<Sprite>("more_university"), 0, 0, 0, 2));
         cardList.Add(new Card(11, "paid_maternity", "11", 1, 2, -1, Resources.Load<Sprite>("paid_maternity"), 0, 0, 1, -1));
-        cardList.Add(new Card(12, "public_hospital", "12", 2, 1, -1, Resources.Load<Sprite>("paid_maternity"), 0, 1, 1, 0));
+        cardList.Add(new Card(12, "public_hospital", "12", 2, 1, -1, Resources.Load<Sprite>("public_hospital"), 0, 1, 1, 0));
         cardList.Add(new Card(13, "public_nursing", "13", 1, 1, -1, Resources.Load<Sprite>("public_nursing"), 0, 1, 0, 0));
         cardList.Add(new Card(14, "public_school", "14", 2, 2, -1, Resources.Load<Sprite>("public_school"), 0, 0, 2, 1));
         cardList.Add(new Card(15, "railway_station", "15", 2, 3, -1, Resources.Load<Sprite>("railway_station"), 0, 0, 1, 1));

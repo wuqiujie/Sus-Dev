@@ -33,24 +33,27 @@ public class PlayerDesk : MonoBehaviour
         for (int i = 0; i < deskSize; i++)
         {
             int cardSize = CardDataBase.cardList.Count;
-            deck.Add(CardDataBase.cardList[cardSize - 1 - i]);
+            deck.Add(CardDataBase.cardList[i]);
         }
 
         StartCoroutine(StartTurnByTime());
     }
+
     public static void Shuffle()
     {
+
         System.Random random = new System.Random();
         int cardSize = CardDataBase.cardList.Count;
 
-        for (int i = 0; i < cardSize; i++)
+        for (int j = 0; j < cardSize-1; j++)
         {
-            int j = random.Next(i, cardSize);
-            Card temporary = CardDataBase.cardList[i];
-            CardDataBase.cardList[i] = CardDataBase.cardList[j];
+            int rd = random.Next(j, cardSize-1);
+            Card temporary = CardDataBase.cardList[rd];
+            CardDataBase.cardList[rd] = CardDataBase.cardList[j];
             CardDataBase.cardList[j] = temporary;
         }
     }
+
     public void RandomCard()
     {
          StartCoroutine(RandomCardByTime());

@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
 
     public void Start_Turn()
     {
-        budgetNum = 3;
+        budgetNum += 3;
         turnNum++;
         TurnBar.GetComponent<Bar>().env.ChangeEnv(turnNum);
         interview_called = false;
