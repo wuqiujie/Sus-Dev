@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Clone
+  - Calculated
   layers:
   - Default
   - TransparentFX

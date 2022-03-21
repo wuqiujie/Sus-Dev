@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public GameObject playCardButton;
 
     /**Turn Info**/
-    public int turnNum=0;
+    public int turnNum = 0;
     public int budgetNum = 0;
     public Text turnText;
     public IncidentManager incidentManager;
@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         GameStart,
         TurnStart,
         PlayCard,
+        Calculate,
         CollectCard,
         interview,
         incident,
@@ -55,9 +56,9 @@ public class GameManager : MonoBehaviour
         GameEnd
     }
 
-    
 
-     void Start()
+
+    void Start()
     {
         state = GameState.GameStart;
         gameStartButton.SetActive(false);
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-/*        Debug.Log("state: " + state);*/
+       Debug.Log("state: " + state);
 
         turnText.text = "Turn: " + turnNum;
 
@@ -82,23 +83,23 @@ public class GameManager : MonoBehaviour
         {
             Start_Turn();
         }
-        
+
         if (state == GameState.PlayCard)
         {
             Play_Card();
             playCardButton.SetActive(true);
         }
-/*
-        if(state == GameState.PlayCard && turnController.playerDesk.currentZone.Length > 0)
+        if(state== GameState.Calculate)
         {
             CalculateCard();
         }
-*/
+      
+
         if (state == GameState.CollectCard)
         {
             Collect_Card();
         }
-        
+
         if (state == GameState.interview && !interview_called)
         {
             Interview();
@@ -111,7 +112,7 @@ public class GameManager : MonoBehaviour
             incident_called = true;
         }
 
-  
+
 
         if (state == GameState.TurnEnd)
         {
@@ -123,15 +124,15 @@ public class GameManager : MonoBehaviour
             Game_End();
         }
         UI_Update();
-      
+
     }
 
-    
+
     public void Game_Start()
     {
-       
+
         turnText.text = "New Game";
-        
+
     }
     public void Game_Start_Button()
     {
@@ -150,55 +151,53 @@ public class GameManager : MonoBehaviour
         TurnBar.GetComponent<Bar>().env.ChangeEnv(turnNum);
         interview_called = false;
         incident_called = false;
-        turnController.StartTurn(); 
+        turnController.StartTurn();
         state = GameState.PlayCard;
         incidentManager.called = false;
-      
+
     }
     public void Play_Card()
     {
-       
+        if(turnController.playerDesk.currentZone.Length > 0)
+        {
+            state = GameState.Calculate;
+        }
     }
     public void CalculateCard()
     {
         turnController.CalculateCard();
-    }
-
-    public void CityChange()
-    {
+        UI_Update();
+        Data_Update();
         turnController.CityChange();
+        state = GameState.PlayCard;
     }
-
-    public void DestoryHandCard()
-    {
-        turnController.DestoryHandCard();
-    }
+    
+  
     public void Play_Card_Button()
     {
-        CalculateCard();
-        CityChange();
-        DestoryHandCard();
+       // CalculateCard();
         state = GameState.CollectCard;
     }
-   
+
+    
+    
     public void Collect_Card()
     {
         playCardButton.SetActive(false);
-
+        
        if(turnController.CollectCard())
         {
             turnController.DestroyCard();
-            UI_Update();
-            Data_Update();
+            turnController.DestoryHandCard();
 
             state = GameState.interview;
 
         }
+        
       
-       
     }
+   
 
-    
 
     public void Interview()
     {   

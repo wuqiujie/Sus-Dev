@@ -63,18 +63,19 @@
     <Compile Include="Assets\Script\Card\DragZone.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Card\CardToTable.cs" />
+    <Compile Include="Assets\Script\Card\ReadCSV.cs" />
     <Compile Include="Assets\Script\Card\CardToHand.cs" />
     <Compile Include="Assets\Script\Card\PlayerDesk.cs" />
     <Compile Include="Assets\Script\Card\CardDrag.cs" />
     <Compile Include="Assets\Script\Card\CardDataBase.cs" />
     <Compile Include="Assets\Script\UI\Bar.cs" />
     <Compile Include="Assets\Script\Environment\GridTesting.cs" />
+    <Compile Include="Assets\Script\Card\CardListen.cs" />
     <Compile Include="Assets\Script\Card\ThisCard.cs" />
     <Compile Include="Assets\Script\Card\Card.cs" />
     <Compile Include="Assets\Script\lineManager\IncidentManager.cs" />
     <Compile Include="Assets\Script\Card\TurnController.cs" />
-    <Compile Include="Assets\Script\Card\CardListen.cs" />
-    <Compile Include="Assets\Script\Card\ReadCSV.cs" />
+    <Compile Include="Assets\Script\Card\Hover.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Interviewlines\Incidents\Economic Growth.txt" />

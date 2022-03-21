@@ -21,14 +21,13 @@ public class TurnController : MonoBehaviour
     public int economics_change;
     public int budget_change;
 
-  
+    public bool isMoved = false;
 
 
     /**Collection**/
     public int[] CollectionID;
     public GameObject collectionItem;
-    
-
+    public ThisCard currentPlayCard;
 
     public void StartTurn()
     {
@@ -41,12 +40,15 @@ public class TurnController : MonoBehaviour
         life_change = 0;
         social_change = 0;
         economics_change = 0;
+        budget_change = 0;
 
         CollectionID = new int[10];
 
         playerDesk.StartTurn();
        // StartCoroutine(RandomTurn());
         collectionItem.gameObject.GetComponent<CollectionItem>().setcollectionNum(0);
+
+        isMoved = false;
     }
 
     IEnumerator RandomTurn()
@@ -56,33 +58,39 @@ public class TurnController : MonoBehaviour
         playerDesk.RandomCard();
     }
 
-    
     public void CalculateCard()
     {
-     
-        
-        for (int i = 0; i < playerDesk.currentZone.Length; i++)
+        for(int i=0;i< ZoneArea.transform.childCount; i++)
         {
-         
-            environment_change += playerDesk.currentZone[i].GetComponent<ThisCard>().environment_index;
-            life_change += playerDesk.currentZone[i].GetComponent<ThisCard>().life_expectancy_index;
-            social_change += playerDesk.currentZone[i].GetComponent<ThisCard>().social_stability_index;
-            economics_change += playerDesk.currentZone[i].GetComponent<ThisCard>().economics_index;
-
-            budget_change += playerDesk.currentZone[i].GetComponent<ThisCard>().cost;
-
-            CollectionID[i] = playerDesk.currentZone[i].GetComponent<ThisCard>().id;
-            
+            if (ZoneArea.transform.GetChild(i).tag != "Calculated")
+            {
+                currentPlayCard = ZoneArea.transform.GetChild(i).gameObject.GetComponent<ThisCard>();
+                Destroy(ZoneArea.transform.GetChild(i).gameObject.GetComponent<Animator>());
+                Destroy(ZoneArea.transform.GetChild(i).gameObject.GetComponent<Hover>());
+                break;
+            }
         }
+      
 
+        environment_change = currentPlayCard.GetComponent<ThisCard>().environment_index;
+        life_change = currentPlayCard.GetComponent<ThisCard>().life_expectancy_index;
+        social_change = currentPlayCard.GetComponent<ThisCard>().social_stability_index;
+        economics_change = currentPlayCard.GetComponent<ThisCard>().economics_index;
+
+        budget_change = currentPlayCard.GetComponent<ThisCard>().cost;
+
+        currentPlayCard.tag = "Calculated";
+        Destroy(currentPlayCard);
     }
+   
+  
 
 
     public void CityChange()
     {
         grid.InstantiateHouse();
     }
-
+  
 
     public void DestoryHandCard()
     {
@@ -92,7 +100,9 @@ public class TurnController : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
     }
-
+    
+   
+    
     public bool CollectCard()
     {
         Vector3 collectionPosition = Collection.transform.position;
@@ -105,10 +115,13 @@ public class TurnController : MonoBehaviour
         }
       
         return collectionItem.gameObject.GetComponent<CollectionItem>().collectionNum == playerDesk.currentZone.Length;
-        
-
+       
     }
+    
+    
 
+
+    
     public void DestroyCard()
     {
         for (int i = 0; i < playerDesk.currentZone.Length; i++)
@@ -118,7 +131,7 @@ public class TurnController : MonoBehaviour
 
     }
 
-
+    
 
 
 

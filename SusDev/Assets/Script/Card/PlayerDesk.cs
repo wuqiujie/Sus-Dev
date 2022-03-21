@@ -8,8 +8,9 @@ public class PlayerDesk : MonoBehaviour
     public List<Card> deck;
     public static List<Card> staticDeck = new List<Card>();
 
-    public GameObject[] currentDeck;
+  //  public GameObject[] currentDeck;
     public GameObject[] currentZone;
+  //  public ThisCard currentPlayCard;
 
     public Card[] cards;
 
@@ -89,17 +90,13 @@ public class PlayerDesk : MonoBehaviour
     }
 
 
-
-
-
-
     void Update()
     {
       
         staticDeck = deck;
 
-        /** Draw Cards **/
-    HandArea = GameObject.Find("HandArea");
+      /*
+        HandArea = GameObject.Find("HandArea");
         currentDeck = new GameObject[HandArea.transform.childCount];
         for (int i = 0; i < currentDeck.Length; i++)
         {
@@ -128,7 +125,7 @@ public class PlayerDesk : MonoBehaviour
         }
         
         */
-        /** Play Card **/ 
+      
         ZoneArea = GameObject.Find("ZoneArea");
         currentZone = new GameObject[ZoneArea.transform.childCount];
 
@@ -136,8 +133,11 @@ public class PlayerDesk : MonoBehaviour
         for (int i = 0; i < currentZone.Length; i++)
         {
              currentZone[i] = ZoneArea.transform.GetChild(i).gameObject; 
-        }
 
+        }
+       
+
+        
 
     }
 
