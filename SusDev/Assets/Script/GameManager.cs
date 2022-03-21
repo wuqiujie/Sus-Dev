@@ -16,15 +16,18 @@ public class GameManager : MonoBehaviour
     public GameObject TurnBar;
     public GameObject BudgetBar;
 
+
     /**
      * Index
      */
     [SerializeField]
-
-    public int total_environment;
-    public int total_life;
-    public int total_economics;
-    public int total_social_stability;
+    public static int total_environment;
+    [SerializeField]
+    public static int total_life;
+    [SerializeField]
+    public static int total_economics;
+    [SerializeField]
+    public static int total_social_stability;
 
     public GameState state;
 
@@ -33,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     /**Turn Info**/
     public int turnNum = 0;
-    public int budgetNum = 0;
+    public static int budgetNum = 0;
     public Text turnText;
     public IncidentManager incidentManager;
     public InterviewManager interviewManager;
@@ -134,6 +137,7 @@ public class GameManager : MonoBehaviour
             Game_End();
         }
         UI_Update();
+       
 
     }
 
@@ -156,7 +160,8 @@ public class GameManager : MonoBehaviour
 
     public void Start_Turn()
     {
-        budgetNum += 3;
+        //budgetNum += 3 + LTBudget;
+        LT_Update();
         turnNum++;
         TurnBar.GetComponent<Bar>().env.ChangeEnv(turnNum);
         interview_called = false;
@@ -168,29 +173,43 @@ public class GameManager : MonoBehaviour
     }
     public void Play_Card()
     {
-        if(turnController.playerDesk.currentZone.Length > 0)
+        if (turnController.ZoneCount() > 0)
         {
             state = GameState.JudgeBudget;
+        }
+        else
+        {
+            state = GameState.PlayCard;
         }
     }
 
     public void JudgeBudgetCard()
     {
+       // if (turnController.playerDesk.currentZone.Length > 0)
+        if(turnController.ZoneCount() > 0 && turnController.ZoneArea.transform.GetChild(0).gameObject.tag!="Calculated")
+        {
+            if (budgetNum >= turnController.ZoneArea.transform.GetChild(0).gameObject.GetComponent<ThisCard>().cost)
+            {
+                state = GameState.Calculate;
+            }
+            else
+            {
 
-       if(budgetNum >= turnController.CurrentCard().GetComponent<ThisCard>().cost)
-        {
-            state = GameState.Calculate;
-        }else
-        {
-            HandArea = GameObject.Find("HandArea");
-            turnController.CurrentCard().transform.SetParent(HandArea.transform);
+                Debug.Log("hand");
+                HandArea = GameObject.Find("HandArea");
+                turnController.ZoneArea.transform.GetChild(0).gameObject.transform.SetParent(HandArea.transform);
+                state = GameState.PlayCard;
+            }
+
         }
     }
     public void CalculateCard()
     {
+        
         turnController.CalculateCard();
         UI_Update();
         Data_Update();
+/*        turnController.MoveCard();*/
         turnController.CityChange();
         state = GameState.PlayCard;
     }
@@ -198,7 +217,6 @@ public class GameManager : MonoBehaviour
   
     public void Play_Card_Button()
     {
-       // CalculateCard();
         state = GameState.CollectCard;
     }
 
@@ -208,14 +226,14 @@ public class GameManager : MonoBehaviour
     {
         playCardButton.SetActive(false);
         
-       if(turnController.CollectCard())
-        {
-            turnController.DestroyCard();
+     //  if(turnController.CollectCard())
+     //   {
+          //  turnController.DestroyCard();
             turnController.DestoryHandCard();
 
             state = GameState.interview;
 
-        }
+      //  }
         
       
     }
@@ -269,6 +287,16 @@ public class GameManager : MonoBehaviour
         total_social_stability += turnController.social_change;
 
         budgetNum -= turnController.budget_change;
+    }
+
+    public void LT_Update()
+    {
+        budgetNum += 3 + turnController.LTBudget;
+        total_economics += turnController.LTeconomics;
+        total_environment += turnController.LTEnvironment;
+        total_life += turnController.LTLife;
+        total_social_stability += turnController.LTSocial;
+
     }
 
 

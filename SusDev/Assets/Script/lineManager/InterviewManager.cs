@@ -121,23 +121,23 @@ public class InterviewManager : MonoBehaviour
     }
     public string ChooseBadLineToDisplay()
     {
-        int min = gameManager.total_economics;
-        min = Mathf.Min(min, gameManager.total_social_stability);
-        min = Mathf.Min(min, gameManager.total_life);
-        min = Mathf.Min(min, gameManager.total_environment);
-        if(min == gameManager.total_economics)
+        int min = GameManager.total_economics;
+        min = Mathf.Min(min, GameManager.total_social_stability);
+        min = Mathf.Min(min, GameManager.total_life);
+        min = Mathf.Min(min, GameManager.total_environment);
+        if(min == GameManager.total_economics)
         {
             return epb.Dequeue();
         }
-        if(min == gameManager.total_social_stability)
+        if(min == GameManager.total_social_stability)
         {
             return ssb.Dequeue();
         }
-        if(min == gameManager.total_life)
+        if(min == GameManager.total_life)
         {
             return leb.Dequeue();
         }
-        if(min == gameManager.total_environment)
+        if(min == GameManager.total_environment)
         {
             return eb.Dequeue();
         }

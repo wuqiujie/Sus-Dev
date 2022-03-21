@@ -76,6 +76,7 @@
     <Compile Include="Assets\Script\Card\Card.cs" />
     <Compile Include="Assets\Script\lineManager\IncidentManager.cs" />
     <Compile Include="Assets\Script\Card\TurnController.cs" />
+    <Compile Include="Assets\Script\Card\SpecialCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Interviewlines\Incidents\Economic Growth.txt" />

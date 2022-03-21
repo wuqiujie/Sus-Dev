@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class IncidentManager : MonoBehaviour
 {
-    public GameManager gameManager;
+    public GameManager GameManager;
     private Queue<string> environmentQ;
     private Queue<string> environmentHQ;
     public TextAsset environment;
@@ -59,7 +59,7 @@ public class IncidentManager : MonoBehaviour
         if(i >= 10 - min)
         {
             // called = true;
-            gameManager.EndIncidentButton();
+            GameManager.EndIncidentButton();
             return;
         }
         else
@@ -73,30 +73,30 @@ public class IncidentManager : MonoBehaviour
     }
     private void FindMinIndex()
     {
-        min = gameManager.total_economics;
-        min = Mathf.Min(min, gameManager.total_social_stability);
-        min = Mathf.Min(min, gameManager.total_life);
-        min = Mathf.Min(min, gameManager.total_environment);
+        min = GameManager.total_economics;
+        min = Mathf.Min(min, GameManager.total_social_stability);
+        min = Mathf.Min(min, GameManager.total_life);
+        min = Mathf.Min(min, GameManager.total_environment);
     }
     private void FindMaxIndex()
     {
-        int max = gameManager.total_environment;
-        max = Mathf.Max(max, gameManager.total_economics);
-        max = Mathf.Max(max, gameManager.total_life);
-        max = Mathf.Max(max, gameManager.total_social_stability);
-        if (max == gameManager.total_economics)
+        int max = GameManager.total_environment;
+        max = Mathf.Max(max, GameManager.total_economics);
+        max = Mathf.Max(max, GameManager.total_life);
+        max = Mathf.Max(max, GameManager.total_social_stability);
+        if (max == GameManager.total_economics)
         {
             index = Index.EconomicProsperity;
         }
-        if (max == gameManager.total_environment)
+        if (max == GameManager.total_environment)
         {
             index = Index.Environment;
         }
-        if (max == gameManager.total_social_stability)
+        if (max == GameManager.total_social_stability)
         {
             index = Index.SocialStability;
         }
-        if (max == gameManager.total_life)
+        if (max == GameManager.total_life)
         {
             index = Index.LifeExpectency;
         }
@@ -104,22 +104,22 @@ public class IncidentManager : MonoBehaviour
 
     private void ChooseRandomIncident()
     {
-        if (min == gameManager.total_economics)
+        if (min == GameManager.total_economics)
         {
             header.text = economicHQ.Dequeue();
             body.text = economicQ.Dequeue();
         }
-        if (min == gameManager.total_social_stability)
+        if (min == GameManager.total_social_stability)
         {
             header.text = socialHQ.Dequeue();
             body.text = socialQ.Dequeue();
         }
-        if (min == gameManager.total_life)
+        if (min == GameManager.total_life)
         {
             header.text = lifeHQ.Dequeue();
             body.text = lifeQ.Dequeue();
         }
-        if (min == gameManager.total_environment)
+        if (min == GameManager.total_environment)
         {
             header.text = environmentHQ.Dequeue();
             body.text = environmentQ.Dequeue();
@@ -133,25 +133,25 @@ public class IncidentManager : MonoBehaviour
             {
                 case Index.Environment:
                     body.text += "\n" + "Your environment index -1";
-                    gameManager.total_environment -= 1;
+                    GameManager.total_environment -= 1;
                    // EndIncident();
                     /*called = true;*/
                     break;
                 case Index.LifeExpectency:
                     body.text += "\n" + "Your life expectancy index -1";
-                    gameManager.total_life -= 1;
+                    GameManager.total_life -= 1;
                    // EndIncident();
                     /*called = true;*/
                     break;
                 case Index.EconomicProsperity:
                     body.text += "\n" + "Your economic prosperity index -1";
-                    gameManager.total_economics -= 1;
+                    GameManager.total_economics -= 1;
                     /*called = true;*/
                    // EndIncident();
                     break;
                 case Index.SocialStability:
                     body.text += "\n" + "Your social stability index -1";
-                    gameManager.total_social_stability -= 1;
+                    GameManager.total_social_stability -= 1;
                   //  EndIncident();
                     /*called = true;*/
                     break;

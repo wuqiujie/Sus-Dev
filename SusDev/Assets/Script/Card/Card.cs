@@ -87,20 +87,20 @@ public class Card
         return card_sprite;
     }
 
-    public int getEnvironment()
+    public virtual int getEnvironment()
     {
         return environment_index;
     }
 
-    public int getLife_expectancy()
+    public virtual int getLife_expectancy()
     {
         return life_expectancy_index;
     }
-    public int getSocial_stability()
+    public virtual int getSocial_stability()
     {
         return social_stability_index;
     }
-    public int getEconomics()
+    public virtual int getEconomics()
     {
         return economics_index;
     }

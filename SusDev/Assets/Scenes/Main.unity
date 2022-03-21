@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardDB: {fileID: 0}
+  _scardDB: {fileID: 0}
 --- !u!4 &17926562
 Transform:
   m_ObjectHideFlags: 0
@@ -5117,7 +5118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
+  m_AnchoredPosition: {x: 0, y: 80}
   m_SizeDelta: {x: -0.00024414, y: 294}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1654805536
@@ -5150,7 +5151,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 10
+  m_Spacing: 30
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -5853,15 +5854,10 @@ MonoBehaviour:
   EconomyBar: {fileID: 1039004643}
   TurnBar: {fileID: 154703471}
   BudgetBar: {fileID: 345270649}
-  total_environment: 0
-  total_life: 0
-  total_economics: 0
-  total_social_stability: 0
   state: 0
   gameStartButton: {fileID: 871179655}
   playCardButton: {fileID: 67699872}
   turnNum: 0
-  budgetNum: 0
   turnText: {fileID: 782592084}
   incidentManager: {fileID: 2040602600}
   interviewManager: {fileID: 1798739965}
@@ -6094,6 +6090,11 @@ MonoBehaviour:
   social_change: 0
   economics_change: 0
   budget_change: 0
+  LTEnvironment: 0
+  LTLife: 0
+  LTSocial: 0
+  LTeconomics: 0
+  LTBudget: 0
   isMoved: 0
   CollectionID: 
   collectionItem: {fileID: 1541518934}
@@ -6517,7 +6518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae968ab22cec9944e81d7c41173aca7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1774209311}
+  GameManager: {fileID: 0}
   environment: {fileID: 4900000, guid: 97e4fba791bf20549adde722743018b4, type: 3}
   social: {fileID: 4900000, guid: b61b0df62543ab44fb6bf9d191999052, type: 3}
   economic: {fileID: 4900000, guid: 50f96f8f4926d5a4f874ffabc54b7ae1, type: 3}
