@@ -63,6 +63,7 @@
     <Compile Include="Assets\Script\Card\DragZone.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Card\CardToTable.cs" />
+    <Compile Include="Assets\Script\Card\Hover.cs" />
     <Compile Include="Assets\Script\Card\ReadCSV.cs" />
     <Compile Include="Assets\Script\Card\CardToHand.cs" />
     <Compile Include="Assets\Script\Card\PlayerDesk.cs" />
@@ -75,21 +76,24 @@
     <Compile Include="Assets\Script\Card\Card.cs" />
     <Compile Include="Assets\Script\lineManager\IncidentManager.cs" />
     <Compile Include="Assets\Script\Card\TurnController.cs" />
-    <Compile Include="Assets\Script\Card\Hover.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Interviewlines\Incidents\Economic Growth.txt" />
     <None Include="Assets\Resources\Interviewlines\Incidents\Life expectancy.txt" />
+    <None Include="Assets\Resources\Incidents\Stability.txt" />
     <None Include="Assets\Resources\Interviewlines\lifeexpectencygood.txt" />
     <None Include="Assets\Resources\Interviewlines\socialstabilitiesGood.txt" />
+    <None Include="Assets\Resources\Incidents\Life expectancy.txt" />
     <None Include="Assets\Resources\Interviewlines\economicsgood.txt" />
     <None Include="Assets\Resources\Interviewlines\Incidents\Stability.txt" />
+    <None Include="Assets\Resources\Incidents\Economic Growth.txt" />
     <None Include="Assets\Resources\Interviewlines\Incidents\environment.txt" />
     <None Include="Assets\Resources\Interviewlines\environmentgood.txt" />
     <None Include="Assets\Resources\Interviewlines\socialstabilitiesBad.txt" />
     <None Include="Assets\Resources\Interviewlines\economicsbad.txt" />
     <None Include="Assets\Resources\Interviewlines\environmentbad.txt" />
     <None Include="Assets\Resources\Interviewlines\lifeexpectencybad.txt" />
+    <None Include="Assets\Resources\Incidents\Environment.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
