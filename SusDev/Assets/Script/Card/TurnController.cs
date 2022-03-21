@@ -108,7 +108,7 @@ public class TurnController : MonoBehaviour
 
     IEnumerator DestroyCurrentCard()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.0f);
         Destroy(currentPlayCard);
 /*        Destroy(ZoneArea.transform.GetChild(0).gameObject);*/
     }
