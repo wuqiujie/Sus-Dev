@@ -8,6 +8,7 @@ public class Bar : MonoBehaviour
 {
     public Env env;
     private Image barImage;
+    public int ENV_MAX = 10;
     private void Awake()
     {
         barImage = transform.Find("bar").GetComponent<Image>();
@@ -21,14 +22,14 @@ public class Bar : MonoBehaviour
 
     private void Update()
     {
-        barImage.fillAmount = env.GetEnvNormalized();
+        barImage.fillAmount = env.GetEnvNormalized(ENV_MAX);
         //print(env.GetEnvNormalized());
     }
 }
 
 public class Env
 {
-    public const int ENV_MAX = 10;
+  //  public const int ENV_MAX = 10;
     public float envAmount;
 
 
@@ -40,7 +41,7 @@ public class Env
 
 
 
-    public float GetEnvNormalized()
+    public float GetEnvNormalized(int ENV_MAX)
     {
         return envAmount / ENV_MAX;
     }

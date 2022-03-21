@@ -4717,6 +4717,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9059845500051163957, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
+      propertyPath: ENV_MAX
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059845500520153892, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
+      propertyPath: ENV_MAX
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9059845500614709188, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4728,6 +4736,30 @@ PrefabInstance:
     - target: {fileID: 9059845500754808183, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059845501212470906, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 215.536
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059845501212470906, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48.131
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059845501212470906, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -200.524
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059845501212470906, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -40.727
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059845501212470907, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b7f56a27b9c916f48bb4d0b65b94fb26, type: 3}
+    - target: {fileID: 9059845501212470907, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
