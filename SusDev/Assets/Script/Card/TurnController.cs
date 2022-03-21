@@ -60,17 +60,22 @@ public class TurnController : MonoBehaviour
 
     public void CalculateCard()
     {
-        for(int i=0;i< ZoneArea.transform.childCount; i++)
-        {
-            if (ZoneArea.transform.GetChild(i).tag != "Calculated")
+        /*    for(int i=0;i< ZoneArea.transform.childCount; i++)
             {
-                currentPlayCard = ZoneArea.transform.GetChild(i).gameObject.GetComponent<ThisCard>();
-                Destroy(ZoneArea.transform.GetChild(i).gameObject.GetComponent<Animator>());
-                Destroy(ZoneArea.transform.GetChild(i).gameObject.GetComponent<Hover>());
-                break;
+                if (ZoneArea.transform.GetChild(i).tag != "Calculated")
+                {
+                    currentPlayCard = ZoneArea.transform.GetChild(i).gameObject.GetComponent<ThisCard>();
+
+                    Destroy(ZoneArea.transform.GetChild(i).gameObject.GetComponent<Animator>());
+                    Destroy(ZoneArea.transform.GetChild(i).gameObject.GetComponent<Hover>());
+                    break;
+                }
             }
-        }
-      
+          */
+
+        currentPlayCard = CurrentCard();
+        Destroy(currentPlayCard.gameObject.GetComponent<Animator>());
+        Destroy(currentPlayCard.gameObject.GetComponent<Hover>());
 
         environment_change = currentPlayCard.GetComponent<ThisCard>().environment_index;
         life_change = currentPlayCard.GetComponent<ThisCard>().life_expectancy_index;
@@ -84,7 +89,18 @@ public class TurnController : MonoBehaviour
     }
    
   
+    public ThisCard CurrentCard()
+    {
+        for (int i = 0; i < ZoneArea.transform.childCount; i++)
+        {
+            if (ZoneArea.transform.GetChild(i).tag != "Calculated")
+            {
+                currentPlayCard = ZoneArea.transform.GetChild(i).gameObject.GetComponent<ThisCard>();
 
+            }
+        }
+        return currentPlayCard;
+    }
 
     public void CityChange()
     {

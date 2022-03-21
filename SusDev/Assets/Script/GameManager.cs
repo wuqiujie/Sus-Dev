@@ -42,12 +42,14 @@ public class GameManager : MonoBehaviour
     public bool interview_called;
     public bool incident_called;
 
+    public GameObject HandArea;
 
     public enum GameState
     {
         GameStart,
         TurnStart,
         PlayCard,
+        JudgeBudget,
         Calculate,
         CollectCard,
         interview,
@@ -87,13 +89,21 @@ public class GameManager : MonoBehaviour
         if (state == GameState.PlayCard)
         {
             Play_Card();
-            playCardButton.SetActive(true);
+         
         }
-        if(state== GameState.Calculate)
+
+        if (state == GameState.JudgeBudget)
         {
+            JudgeBudgetCard();
+        }
+        
+        if (state == GameState.Calculate)
+        {
+            playCardButton.SetActive(true);
             CalculateCard();
         }
-      
+        
+     
 
         if (state == GameState.CollectCard)
         {
@@ -160,7 +170,20 @@ public class GameManager : MonoBehaviour
     {
         if(turnController.playerDesk.currentZone.Length > 0)
         {
+            state = GameState.JudgeBudget;
+        }
+    }
+
+    public void JudgeBudgetCard()
+    {
+
+       if(budgetNum >= turnController.CurrentCard().GetComponent<ThisCard>().cost)
+        {
             state = GameState.Calculate;
+        }else
+        {
+            HandArea = GameObject.Find("HandArea");
+            turnController.CurrentCard().transform.SetParent(HandArea.transform);
         }
     }
     public void CalculateCard()
