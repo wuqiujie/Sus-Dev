@@ -67,18 +67,7 @@ public class TurnController : MonoBehaviour
 
     public void CalculateCard()
     {
-        /*    for(int i=0;i< ZoneArea.transform.childCount; i++)
-            {
-                if (ZoneArea.transform.GetChild(i).tag != "Calculated")
-                {
-                    currentPlayCard = ZoneArea.transform.GetChild(i).gameObject.GetComponent<ThisCard>();
-
-                    Destroy(ZoneArea.transform.GetChild(i).gameObject.GetComponent<Animator>());
-                    Destroy(ZoneArea.transform.GetChild(i).gameObject.GetComponent<Hover>());
-                    break;
-                }
-            }
-          */
+       
 
         currentPlayCard = CurrentCard();
         DeckManager.UpdateDeck(currentPlayCard.GetComponent<ThisCard>().id);

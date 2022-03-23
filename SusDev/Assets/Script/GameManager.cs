@@ -47,9 +47,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject HandArea;
 
+    public GameObject TutorialArea;
+    public TutorialController tutorial;
+    public GameObject tutorialButton;
+
+
     public enum GameState
     {
         GameStart,
+        Tutorial,
         TurnStart,
         PlayCard,
         JudgeBudget,
@@ -83,6 +89,10 @@ public class GameManager : MonoBehaviour
         {
             Game_Start();
             gameStartButton.SetActive(true);
+        }
+        if(state == GameState.Tutorial)
+        {
+            Tutorial();
         }
         if (state == GameState.TurnStart)
         {
@@ -150,26 +160,52 @@ public class GameManager : MonoBehaviour
     }
     public void Game_Start_Button()
     {
-        state = GameState.TurnStart;
+       
         gameStartButton.SetActive(false);
+        state = GameState.Tutorial;
+        
+        /*
+        state = GameState.TurnStart;
         turnController.ZoneArea.SetActive(true);
         turnController.HandArea.SetActive(true);
-        turnController.TableArea.SetActive(true);
+        */
+
+    }
+    public void Tutorial()
+    {
+      
+
+        TutorialArea.SetActive(true);
+        tutorialButton.SetActive(false);
+        if (tutorial.index >= 17)
+        {
+            tutorialButton.SetActive(true);
+        }
+    }
+
+    public void Tutorial_Button()
+    {
+        state = GameState.TurnStart;
+        
+        turnController.ZoneArea.SetActive(true);
+        turnController.HandArea.SetActive(true);
 
     }
 
     public void Start_Turn()
     {
-        //budgetNum += 3 + LTBudget;
+        TutorialArea.SetActive(false);
         LT_Update();
+
         turnNum++;
         TurnBar.GetComponent<Bar>().env.ChangeEnv(turnNum);
+       
         interview_called = false;
         incident_called = false;
-        turnController.StartTurn();
-        state = GameState.PlayCard;
         incidentManager.called = false;
 
+        turnController.StartTurn();
+        state = GameState.PlayCard;
     }
     public void Play_Card()
     {
@@ -194,8 +230,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-
-                Debug.Log("hand");
                 HandArea = GameObject.Find("HandArea");
                 turnController.ZoneArea.transform.GetChild(0).gameObject.transform.SetParent(HandArea.transform);
                 state = GameState.PlayCard;
