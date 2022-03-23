@@ -24,16 +24,53 @@ public class PlayerDesk : MonoBehaviour
     void Start()
     { 
 
+<<<<<<< Updated upstream
         for (int i = 0; i < deskSize; i++)
         {
             deck[i] = CardDataBase.cardList[Random.Range(0, 5)];
+=======
+    public void StartTurn()
+    {
+        deskSize = 6;
+        count = 0;
+        deck = new List<Card>();
+        Shuffle();
+        Debug.Log("Decksize is :" + DeckManager._deck.Count);
+        for (int i = 0; i < deskSize; i++)
+        {
+            /*int cardSize = ReadCSV._cardList.Count;
+            deck.Add(ReadCSV._cardList[i]);*/
+            //new
+            int cardSize = DeckManager._deck.Count;
+            deck.Add(DeckManager._deck[i]);
+>>>>>>> Stashed changes
         }
        
     }
 
     public void startTurn()
     {
+<<<<<<< Updated upstream
         StartCoroutine(StartGame());
+=======
+
+        System.Random random = new System.Random();
+        /*int cardSize = ReadCSV._cardList.Count;*/
+        //new
+        int cardSize = DeckManager._deck.Count;
+
+        for (int j = 0; j < cardSize-1; j++)
+        {
+            int rd = random.Next(j, cardSize-1);
+            /*Card temporary = ReadCSV._cardList[rd];
+            ReadCSV._cardList[rd] = ReadCSV._cardList[j];
+            ReadCSV._cardList[j] = temporary;*/
+            //deck
+            Card temporary = DeckManager._deck[rd];
+            DeckManager._deck[rd] = DeckManager._deck[j];
+            DeckManager._deck[j] = temporary;
+        }
+>>>>>>> Stashed changes
     }
 
     public void randomCardTurn()

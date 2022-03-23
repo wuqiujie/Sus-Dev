@@ -32,7 +32,15 @@ public class ThisCard : MonoBehaviour
     {
         thisCard = CardDataBase.cardList[thisCardID];
         numOfCandsInDesk = PlayerDesk.deskSize;
+<<<<<<< Updated upstream
 
+=======
+        LTEnvironment = 0;
+        LTLife = 0;
+        LTSocial = 0;
+        LTeconomics = 0;
+        LTBudget = 0;
+>>>>>>> Stashed changes
     }
 
     void Update()
