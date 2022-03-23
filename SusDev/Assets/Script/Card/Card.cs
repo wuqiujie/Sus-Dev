@@ -22,6 +22,11 @@ public class Card
     public int life_expectancy_index;
     public int social_stability_index;
     public int economics_index;
+
+    //goals and next related cards
+    public int[] _goals;
+    public int[] _nextCards;
+    public int _isRoot;
     public Card()
     {
        
@@ -36,10 +41,10 @@ public class Card
         return new Card(card);
     }
 
-    public Card(int Id, string Card_name, string Card_description, 
-        int Cost, int Type, int Construction,Sprite Card_sprite,
+    public Card(int Id, string Card_name, string Card_description,
+        int Cost, int Type, int Construction, Sprite Card_sprite,
        int Environment, int Life_expectancy,
-       int Social_stability, int Economics)
+       int Social_stability, int Economics, int[] goals, int[] nextCards, int isRoot)
     {
         id = Id;
         card_name = Card_name;
@@ -52,7 +57,12 @@ public class Card
         life_expectancy_index = Life_expectancy;
         social_stability_index = Social_stability;
         economics_index = Economics;
+
+        _goals = goals;
+        _nextCards = nextCards;
+        _isRoot = isRoot;
     }
+
 
     public int getID()
     {

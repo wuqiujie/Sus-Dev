@@ -20,7 +20,7 @@ public class SpecialCard : Card
     public SpecialCard(int Id, string Card_name, string Card_description,
         int Cost, int Type, int Construction, Sprite Card_sprite,
        int Environment, int Life_expectancy,
-       int Social_stability, int Economics, 
+       int Social_stability, int Economics, int[] goals, int[] nextCards, int isRoot,
        int conditionIndex, int conditionThresh, int changeIndex, int conditionTrue, int conditionFalse,
        int LTenvironment, int LTlife, int LTsocial, int LTeconomic, int LTcost)
     {
@@ -35,6 +35,11 @@ public class SpecialCard : Card
         life_expectancy_index = Life_expectancy;
         social_stability_index = Social_stability;
         economics_index = Economics;
+
+        _goals = goals;
+        _nextCards = nextCards;
+        _isRoot = isRoot;
+
         _conditionIndex = conditionIndex;
         _conditionThresh = conditionThresh;
         _changeIndex = changeIndex;

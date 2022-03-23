@@ -34,12 +34,15 @@ public class PlayerDesk : MonoBehaviour
         count = 0;
         deck = new List<Card>();
         Shuffle();
+        Debug.Log("Decksize is :" + DeckManager._deck.Count);
         for (int i = 0; i < deskSize; i++)
         {
-            int cardSize = ReadCSV._cardList.Count;
-            deck.Add(ReadCSV._cardList[i]);
+            /*int cardSize = ReadCSV._cardList.Count;
+            deck.Add(ReadCSV._cardList[i]);*/
+            //new
+            int cardSize = DeckManager._deck.Count;
+            deck.Add(DeckManager._deck[i]);
         }
-
         StartCoroutine(StartTurnByTime());
     }
 
@@ -47,14 +50,14 @@ public class PlayerDesk : MonoBehaviour
     {
 
         System.Random random = new System.Random();
-        int cardSize = ReadCSV._cardList.Count;
+        int cardSize = DeckManager._deck.Count;
 
         for (int j = 0; j < cardSize-1; j++)
         {
             int rd = random.Next(j, cardSize-1);
-            Card temporary = ReadCSV._cardList[rd];
-            ReadCSV._cardList[rd] = ReadCSV._cardList[j];
-            ReadCSV._cardList[j] = temporary;
+            Card temporary = DeckManager._deck[rd];
+            DeckManager._deck[rd] = DeckManager._deck[j];
+            DeckManager._deck[j] = temporary;
         }
     }
 

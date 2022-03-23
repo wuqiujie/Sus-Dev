@@ -22,6 +22,7 @@ public class IncidentManager : MonoBehaviour
     public TextAsset life;
 
     private int min;
+    private int max;
     private Index index;
 
     public Text header;
@@ -80,7 +81,7 @@ public class IncidentManager : MonoBehaviour
     }
     private void FindMaxIndex()
     {
-        int max = GameManager.total_environment;
+        max = GameManager.total_environment;
         max = Mathf.Max(max, GameManager.total_economics);
         max = Mathf.Max(max, GameManager.total_life);
         max = Mathf.Max(max, GameManager.total_social_stability);
@@ -129,30 +130,31 @@ public class IncidentManager : MonoBehaviour
     {
         if(!called)
         {
+            int amount = (int)Mathf.Ceil((float)(max - Mathf.Clamp(min, 0.0f, 10.0f)) / 2);
             switch (index)
             {
                 case Index.Environment:
-                    body.text += "\n" + "Your environment index -1";
-                    GameManager.total_environment -= 1;
-                   // EndIncident();
+                    body.text += "\n" + "Your environment index -" + amount;
+                    GameManager.total_environment -= amount;
+                    // EndIncident();
                     /*called = true;*/
                     break;
                 case Index.LifeExpectency:
-                    body.text += "\n" + "Your life expectancy index -1";
-                    GameManager.total_life -= 1;
-                   // EndIncident();
+                    body.text += "\n" + "Your life expectancy index -" + amount;
+                    GameManager.total_life -= amount;
+                    // EndIncident();
                     /*called = true;*/
                     break;
                 case Index.EconomicProsperity:
-                    body.text += "\n" + "Your economic prosperity index -1";
-                    GameManager.total_economics -= 1;
+                    body.text += "\n" + "Your economic prosperity index -" + amount;
+                    GameManager.total_economics -= amount;
                     /*called = true;*/
-                   // EndIncident();
+                    // EndIncident();
                     break;
                 case Index.SocialStability:
-                    body.text += "\n" + "Your social stability index -1";
-                    GameManager.total_social_stability -= 1;
-                  //  EndIncident();
+                    body.text += "\n" + "Your social stability index -" + amount;
+                    GameManager.total_social_stability -= amount;
+                    //  EndIncident();
                     /*called = true;*/
                     break;
             }

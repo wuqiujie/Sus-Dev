@@ -81,6 +81,7 @@ public class TurnController : MonoBehaviour
           */
 
         currentPlayCard = CurrentCard();
+        DeckManager.UpdateDeck(currentPlayCard.GetComponent<ThisCard>().id);
         Destroy(currentPlayCard.gameObject.GetComponent<Animator>());
         Destroy(currentPlayCard.gameObject.GetComponent<Hover>());
         Destroy(currentPlayCard.gameObject.GetComponent<CardDrag>());
