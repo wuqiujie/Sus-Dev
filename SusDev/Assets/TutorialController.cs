@@ -10,6 +10,7 @@ public class TutorialController : MonoBehaviour
     public Image image;
     public int index = 0;
 
+
     private void Start()
     {
         image = GetComponent<Image>();

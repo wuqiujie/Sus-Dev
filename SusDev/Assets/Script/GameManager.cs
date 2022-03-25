@@ -6,50 +6,47 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    /**
-     * UI Bar
-     */
+    /**UI Bar**/
     public GameObject EnvBar;
     public GameObject LifeBar;
     public GameObject StableBar;
     public GameObject EconomyBar;
     public GameObject TurnBar;
     public GameObject BudgetBar;
-
-
-    /**
-     * Index
-     */
-    [SerializeField]
-    public static int total_environment;
-    [SerializeField]
-    public static int total_life;
-    [SerializeField]
-    public static int total_economics;
-    [SerializeField]
-    public static int total_social_stability;
-
-    public GameState state;
-
+   
+    /**GameArea**/
+    public GameObject HandArea;
+    public GameObject IndexPanel;
+    public GameObject IndicatorPanel;
+    public GameObject CollectionButton;
     public GameObject gameStartButton;
     public GameObject playCardButton;
+
+    /** Index **/
+    [SerializeField]
+    public static int total_environment;
+    public static int total_life;
+    public static int total_economics;
+    public static int total_social_stability;
 
     /**Turn Info**/
     public int turnNum = 0;
     public static int budgetNum = 0;
     public Text turnText;
-    public IncidentManager incidentManager;
-    public InterviewManager interviewManager;
     public TurnController turnController;
 
+    /**incident and interview**/
+    public IncidentManager incidentManager;
+    public InterviewManager interviewManager;
     public bool interview_called;
     public bool incident_called;
 
-    public GameObject HandArea;
-
+    /**Tutorial**/
     public GameObject TutorialArea;
     public TutorialController tutorial;
     public GameObject tutorialButton;
+
+    public GameState state;
 
 
     public enum GameState
@@ -72,6 +69,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         state = GameState.GameStart;
+        HandArea = GameObject.Find("HandArea");
         gameStartButton.SetActive(false);
         total_environment = 1;
         total_life = 1;
@@ -117,7 +115,6 @@ public class GameManager : MonoBehaviour
         }
         
      
-
         if (state == GameState.CollectCard)
         {
             Collect_Card();
@@ -135,8 +132,6 @@ public class GameManager : MonoBehaviour
             incident_called = true;
         }
 
-
-
         if (state == GameState.TurnEnd)
         {
             Turn_End();
@@ -146,6 +141,7 @@ public class GameManager : MonoBehaviour
         {
             Game_End();
         }
+
         UI_Update();
        
 
@@ -170,13 +166,21 @@ public class GameManager : MonoBehaviour
         turnController.HandArea.SetActive(true);
         */
 
-    }
-    public void Tutorial()
+}
+public void Tutorial()
     {
-      
+        turnText.text = "Tutorial Time";
+        IndexPanel.SetActive(false);
+        IndicatorPanel.SetActive(false);
+        CollectionButton.SetActive(false);
+        HandArea.SetActive(false);
 
         TutorialArea.SetActive(true);
         tutorialButton.SetActive(false);
+        if(tutorial.index == 11)
+        {
+           // HandArea.SetActive(true);
+        }
         if (tutorial.index >= 17)
         {
             tutorialButton.SetActive(true);
@@ -194,7 +198,13 @@ public class GameManager : MonoBehaviour
 
     public void Start_Turn()
     {
+        IndexPanel.SetActive(true);
+        IndicatorPanel.SetActive(true);
+        CollectionButton.SetActive(true);
+        HandArea.SetActive(true);
         TutorialArea.SetActive(false);
+
+
         LT_Update();
 
         turnNum++;

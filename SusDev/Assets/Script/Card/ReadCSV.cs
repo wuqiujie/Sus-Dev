@@ -35,7 +35,7 @@ public class ReadCSV : MonoBehaviour
             int[] Goals = null;
             if (data[14 * (i + 1) + 11] != "-1" && data[14 * (i + 1) + 11] != "")
             {
-                Goals = Array.ConvertAll(data[14 * (i + 1) + 11].Split('/'), int.Parse);
+                Goals = Array.ConvertAll(data[14 * (i + 1) + 11].Split('*'), int.Parse);
             }
             int[] NextCards = null;
             if (data[14 * (i + 1) + 12] != "-1" && data[14 * (i + 1) + 12] != "")
@@ -68,7 +68,7 @@ public class ReadCSV : MonoBehaviour
             int[] Goals = null;
             if (data[24 * (i + 1) + 11] != "-1" && data[24 * (i + 1) + 11] != "")
             {
-                Goals = Array.ConvertAll(data[24 * (i + 1) + 11].Split('/'), int.Parse);
+                Goals = Array.ConvertAll(data[24 * (i + 1) + 11].Split('*'), int.Parse);
             }
             int[] NextCards = null;
             if (data[24 * (i + 1) + 12] != "-1" && data[24 * (i + 1) + 12] != "")

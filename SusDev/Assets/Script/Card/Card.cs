@@ -27,6 +27,7 @@ public class Card
     public int[] _goals;
     public int[] _nextCards;
     public int _isRoot;
+
     public Card()
     {
        
