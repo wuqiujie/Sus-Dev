@@ -28,6 +28,9 @@ public class Card
     public int[] _nextCards;
     public int _isRoot;
 
+
+
+
     public Card()
     {
        
@@ -98,6 +101,11 @@ public class Card
         return card_sprite;
     }
 
+    public int[] getGoals()
+    {
+        return _goals;
+    }
+
     public virtual int getEnvironment()
     {
         return environment_index;
@@ -115,4 +123,5 @@ public class Card
     {
         return economics_index;
     }
+
 }

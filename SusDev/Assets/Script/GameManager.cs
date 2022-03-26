@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     /**Turn Info**/
     public int turnNum = 0;
     public static int budgetNum = 0;
-    public Text turnText;
+    //public Text turnText;
     public TurnController turnController;
 
     /**incident and interview**/
@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
     public GameObject tutorialButton;
 
     public GameState state;
+
+
 
 
     public enum GameState
@@ -81,7 +83,7 @@ public class GameManager : MonoBehaviour
     {
        Debug.Log("state: " + state);
 
-        turnText.text = "Turn: " + turnNum;
+       // turnText.text = "Turn: " + turnNum;
 
         if (state == GameState.GameStart)
         {
@@ -110,7 +112,7 @@ public class GameManager : MonoBehaviour
         
         if (state == GameState.Calculate)
         {
-            playCardButton.SetActive(true);
+      
             CalculateCard();
         }
         
@@ -151,7 +153,7 @@ public class GameManager : MonoBehaviour
     public void Game_Start()
     {
 
-        turnText.text = "New Game";
+      //  turnText.text = "New Game";
 
     }
     public void Game_Start_Button()
@@ -169,7 +171,7 @@ public class GameManager : MonoBehaviour
 }
 public void Tutorial()
     {
-        turnText.text = "Tutorial Time";
+       // turnText.text = "Tutorial Time";
         IndexPanel.SetActive(false);
         IndicatorPanel.SetActive(false);
         CollectionButton.SetActive(false);
@@ -219,6 +221,8 @@ public void Tutorial()
     }
     public void Play_Card()
     {
+
+
         if (turnController.ZoneCount() > 0)
         {
             state = GameState.JudgeBudget;
@@ -231,7 +235,8 @@ public void Tutorial()
 
     public void JudgeBudgetCard()
     {
-       // if (turnController.playerDesk.currentZone.Length > 0)
+        // if (turnController.playerDesk.currentZone.Length > 0)
+      
         if(turnController.ZoneCount() > 0 && turnController.ZoneArea.transform.GetChild(0).gameObject.tag!="Calculated")
         {
             if (budgetNum >= turnController.ZoneArea.transform.GetChild(0).gameObject.GetComponent<ThisCard>().cost)
@@ -249,13 +254,15 @@ public void Tutorial()
     }
     public void CalculateCard()
     {
-        
+        playCardButton.SetActive(true);
+
+        turnController.ShowGoal();
         turnController.CalculateCard();
         UI_Update();
         Data_Update();
-/*        turnController.MoveCard();*/
         turnController.CityChange();
         state = GameState.PlayCard;
+      
     }
     
   
@@ -269,17 +276,8 @@ public void Tutorial()
     public void Collect_Card()
     {
         playCardButton.SetActive(false);
-        
-     //  if(turnController.CollectCard())
-     //   {
-          //  turnController.DestroyCard();
-            turnController.DestoryHandCard();
-
-            state = GameState.interview;
-
-      //  }
-        
-      
+        turnController.DestoryHandCard();
+        state = GameState.interview;
     }
    
 

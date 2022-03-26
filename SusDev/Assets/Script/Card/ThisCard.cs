@@ -39,6 +39,11 @@ public class ThisCard : MonoBehaviour
     public GameObject Collection;
     public bool beInCollection;
 
+    public int[] goals;
+    public bool questionMark;
+    public bool LTMark;
+
+
     void Start()
     {
         thisCard = ReadCSV._cardList[thisCardID];
@@ -48,6 +53,7 @@ public class ThisCard : MonoBehaviour
         LTSocial = 0;
         LTeconomics = 0;
         LTBudget = 0;
+        questionMark = false;
 
     }
 
@@ -68,10 +74,20 @@ public class ThisCard : MonoBehaviour
         life_expectancy_index = thisCard.getLife_expectancy();
         social_stability_index = thisCard.getSocial_stability();
         economics_index = thisCard.getEconomics();
+
+        goals = thisCard.getGoals();
         //update long-term effect
         if (thisCard.GetType() == typeof(SpecialCard))
         {
             UpdateLT((SpecialCard)thisCard);
+            if(LTLife == 0 && LTSocial == 0 && LTeconomics == 0 && LTEnvironment == 0)
+            {
+                questionMark = true;
+            }
+            if (LTLife != 0 || LTSocial != 0 || LTeconomics != 0 || LTEnvironment != 0)
+            {
+                LTMark = true;
+            }
         }
 
         if (this.tag == "Clone")

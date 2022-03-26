@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 
 public class TurnController : MonoBehaviour
@@ -29,6 +31,7 @@ public class TurnController : MonoBehaviour
     public int LTBudget;
 
     public bool isMoved = false;
+    public GameObject goalPanel;
 
 
     /**Collection**/
@@ -56,6 +59,12 @@ public class TurnController : MonoBehaviour
         collectionItem.gameObject.GetComponent<CollectionItem>().setcollectionNum(0);
 
         isMoved = false;
+
+        for (int i = 0; i < goalPanel.transform.childCount; i++)
+        {
+            goalPanel.transform.GetChild(i).gameObject.SetActive(false);
+
+        }
     }
 
     IEnumerator RandomTurn()
@@ -65,10 +74,28 @@ public class TurnController : MonoBehaviour
         playerDesk.RandomCard();
     }
 
+    public void ShowGoal()
+    {
+        currentPlayCard = CurrentCard();
+        int[] goals = currentPlayCard.GetComponent<ThisCard>().goals;
+        for(int i = 0; i < goals.Length; i++)
+        {
+            goalPanel.transform.GetChild(goals[i]).gameObject.SetActive(true); ;
+        }
+        
+    }
+    public void DestroyGoal()
+    {
+        for (int i = 0; i < goalPanel.transform.childCount; i++)
+        {
+            goalPanel.transform.GetChild(i).gameObject.SetActive(false);
+
+        }
+    }
+
     public void CalculateCard()
     {
        
-
         currentPlayCard = CurrentCard();
         DeckManager.UpdateDeck(currentPlayCard.GetComponent<ThisCard>().id);
         Destroy(currentPlayCard.gameObject.GetComponent<Animator>());
@@ -89,8 +116,6 @@ public class TurnController : MonoBehaviour
 
         currentPlayCard.tag = "Calculated";
 
-
-        /*        MoveCard();*/
         StartCoroutine(MoveCard());
         StartCoroutine(DestroyCurrentCard());
 
@@ -140,15 +165,9 @@ public class TurnController : MonoBehaviour
             yield return null;
         }
         transform.position = collectionPosition;
+        DestroyGoal();
     }
-/*    public void MoveCard()
-    {
-        Debug.Log("fly");
-        Vector3 collectionPosition = Collection.transform.position;
-        Vector3 startPos = ZoneArea.transform.GetChild(0).gameObject.transform.position;
-        ZoneArea.transform.GetChild(0).gameObject.transform.position = Vector3.Lerp(startPos, collectionPosition, Time.deltaTime * 5f);
-       
-    }*/
+
     public void CityChange()
     {
         grid.InstantiateHouse();

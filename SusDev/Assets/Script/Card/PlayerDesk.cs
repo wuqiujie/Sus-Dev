@@ -34,7 +34,6 @@ public class PlayerDesk : MonoBehaviour
         count = 0;
         deck = new List<Card>();
         Shuffle();
-        Debug.Log("Decksize is :" + DeckManager._deck.Count);
         for (int i = 0; i < deskSize; i++)
         {
             /*int cardSize = ReadCSV._cardList.Count;
