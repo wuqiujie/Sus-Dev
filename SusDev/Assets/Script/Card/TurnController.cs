@@ -77,8 +77,8 @@ public class TurnController : MonoBehaviour
 
         for(int i = 0; i < goals.Length; i++)
         {
-            goalPanel.transform.GetChild(goals[i]).gameObject.SetActive(true);
-            goalCollect[goals[i]] = true;
+            goalPanel.transform.GetChild(goals[i]-1).gameObject.SetActive(true);
+            goalCollect[goals[i]-1] = true;
         }
      
 

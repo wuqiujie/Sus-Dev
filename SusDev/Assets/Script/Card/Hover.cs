@@ -57,7 +57,7 @@ public class Hover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         int[] goals = card.GetComponent<ThisCard>().goals;
         for (int i = 0; i < goals.Length; i++)
         {
-            goal.transform.GetChild(goals[i]).gameObject.SetActive(true); ;
+            goal.transform.GetChild(goals[i]-1).gameObject.SetActive(true); ;
         }
 
     }
