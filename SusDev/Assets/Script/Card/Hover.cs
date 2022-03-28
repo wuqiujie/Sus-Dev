@@ -61,6 +61,9 @@ public class Hover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
 
     }
+
+
+
     public void DestroyGoal()
     {
         for (int i = 0; i < goal.transform.childCount; i++)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class GameManager : MonoBehaviour
     public GameObject CollectionButton;
     public GameObject gameStartButton;
     public GameObject playCardButton;
+    public GameObject endCanvas;
+    public GameObject endGoalPanel;
+    public GameObject endIndexPanel;
 
     /** Index **/
     [SerializeField]
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
 
     public GameState state;
 
+    public bool[] goalCollect;
 
 
 
@@ -139,7 +144,7 @@ public class GameManager : MonoBehaviour
             Turn_End();
         }
 
-        if (state == GameState.GameEnd)
+        if (state == GameState.GameEnd || turnNum==8)
         {
             Game_End();
         }
@@ -153,7 +158,13 @@ public class GameManager : MonoBehaviour
     public void Game_Start()
     {
 
-      //  turnText.text = "New Game";
+        //  turnText.text = "New Game";
+        goalCollect = new bool[17];
+        for (int i = 0; i < 17; i++)
+        {
+            goalCollect[i] = false;
+        }
+
 
     }
     public void Game_Start_Button()
@@ -256,8 +267,19 @@ public void Tutorial()
     {
         playCardButton.SetActive(true);
 
-        turnController.ShowGoal();
+        
         turnController.CalculateCard();
+        turnController.ShowGoal();
+        
+        for(int i =0; i < 17; i++)
+        {
+            if (turnController.goalCollect[i]) {
+                goalCollect[i] = turnController.goalCollect[i];
+            }
+            
+        }
+       
+
         UI_Update();
         Data_Update();
         turnController.CityChange();
@@ -309,6 +331,35 @@ public void Tutorial()
 
     public void Game_End()
     {
+       
+        endCanvas.SetActive(true);
+        endGoalPanel = GameObject.Find("EndGoalPanel");
+       
+
+        for(int i = 0; i < 17; i++)  
+        {
+
+            if (goalCollect[i] == true)
+            {
+                endGoalPanel.transform.GetChild(i).gameObject.SetActive(true);
+            }
+          
+        }
+
+        int[] total_index = new int[4];
+
+        total_index[0] = total_environment;
+        total_index[1] = total_life;
+        total_index[2] = total_economics;
+        total_index[3] = total_social_stability;
+
+
+        int maxValue = total_index.Max();
+        int maxIndex = total_index.ToList().IndexOf(maxValue);
+        Debug.Log("maxIndex:" + maxIndex);
+
+        endIndexPanel = GameObject.Find("EndIndexPanel");
+        endIndexPanel.transform.GetChild(maxIndex).gameObject.SetActive(true);
 
     }
 
@@ -320,6 +371,7 @@ public void Tutorial()
         EconomyBar.GetComponent<Bar>().env.envAmount = total_economics;
 
         BudgetBar.GetComponent<Bar>().env.envAmount = budgetNum;
+        TurnBar.GetComponent<Bar>().env.envAmount = turnNum;
     }
     public void Data_Update()
     {

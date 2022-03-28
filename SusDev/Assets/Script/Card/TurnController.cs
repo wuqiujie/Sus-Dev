@@ -38,6 +38,7 @@ public class TurnController : MonoBehaviour
     public int[] CollectionID;
     public GameObject collectionItem;
     public GameObject currentPlayCard;
+    public bool[] goalCollect;
 
     public void StartTurn()
     {
@@ -53,9 +54,9 @@ public class TurnController : MonoBehaviour
         budget_change = 0;
 
         CollectionID = new int[10];
-
+        goalCollect = new bool[17];
+      
         playerDesk.StartTurn();
-       // StartCoroutine(RandomTurn());
         collectionItem.gameObject.GetComponent<CollectionItem>().setcollectionNum(0);
 
         isMoved = false;
@@ -67,22 +68,20 @@ public class TurnController : MonoBehaviour
         }
     }
 
-    IEnumerator RandomTurn()
-    {
-        yield return new WaitForSeconds(2.5f);
-        TableArea.SetActive(true);
-        playerDesk.RandomCard();
-    }
-
+  
     public void ShowGoal()
     {
-        currentPlayCard = CurrentCard();
+        currentPlayCard = ZoneArea.transform.GetChild(0).gameObject;
+       
         int[] goals = currentPlayCard.GetComponent<ThisCard>().goals;
+
         for(int i = 0; i < goals.Length; i++)
         {
-            goalPanel.transform.GetChild(goals[i]).gameObject.SetActive(true); ;
+            goalPanel.transform.GetChild(goals[i]).gameObject.SetActive(true);
+            goalCollect[goals[i]] = true;
         }
-        
+     
+
     }
     public void DestroyGoal()
     {
@@ -95,60 +94,38 @@ public class TurnController : MonoBehaviour
 
     public void CalculateCard()
     {
-       
-        currentPlayCard = CurrentCard();
-        DeckManager.UpdateDeck(currentPlayCard.GetComponent<ThisCard>().id);
-        Destroy(currentPlayCard.gameObject.GetComponent<Animator>());
-        Destroy(currentPlayCard.gameObject.GetComponent<Hover>());
-        Destroy(currentPlayCard.gameObject.GetComponent<CardDrag>());
+      
+            currentPlayCard = ZoneArea.transform.GetChild(0).gameObject;
+            DeckManager.UpdateDeck(currentPlayCard.GetComponent<ThisCard>().id);
+            Destroy(currentPlayCard.gameObject.GetComponent<Animator>());
+            Destroy(currentPlayCard.gameObject.GetComponent<Hover>());
+            Destroy(currentPlayCard.gameObject.GetComponent<CardDrag>());
 
-        environment_change = currentPlayCard.GetComponent<ThisCard>().environment_index;
-        life_change = currentPlayCard.GetComponent<ThisCard>().life_expectancy_index;
-        social_change = currentPlayCard.GetComponent<ThisCard>().social_stability_index;
-        economics_change = currentPlayCard.GetComponent<ThisCard>().economics_index;
-        budget_change = currentPlayCard.GetComponent<ThisCard>().cost;
+            environment_change = currentPlayCard.GetComponent<ThisCard>().environment_index;
+            life_change = currentPlayCard.GetComponent<ThisCard>().life_expectancy_index;
+            social_change = currentPlayCard.GetComponent<ThisCard>().social_stability_index;
+            economics_change = currentPlayCard.GetComponent<ThisCard>().economics_index;
+            budget_change = currentPlayCard.GetComponent<ThisCard>().cost;
 
-        LTEnvironment += currentPlayCard.GetComponent<ThisCard>().LTEnvironment;
-        LTLife += currentPlayCard.GetComponent<ThisCard>().LTLife;
-        LTSocial += currentPlayCard.GetComponent<ThisCard>().LTSocial;
-        LTeconomics += currentPlayCard.GetComponent<ThisCard>().LTeconomics;
-        LTBudget += currentPlayCard.GetComponent<ThisCard>().LTBudget;
+            LTEnvironment += currentPlayCard.GetComponent<ThisCard>().LTEnvironment;
+            LTLife += currentPlayCard.GetComponent<ThisCard>().LTLife;
+            LTSocial += currentPlayCard.GetComponent<ThisCard>().LTSocial;
+            LTeconomics += currentPlayCard.GetComponent<ThisCard>().LTeconomics;
+            LTBudget += currentPlayCard.GetComponent<ThisCard>().LTBudget;
 
-        currentPlayCard.tag = "Calculated";
+            ZoneArea.transform.GetChild(0).gameObject.tag = "Calculated";
 
-        StartCoroutine(MoveCard());
-        StartCoroutine(DestroyCurrentCard());
-
+            StartCoroutine(MoveCard());
+            StartCoroutine(DestroyCurrentCard(currentPlayCard));
+        
     }
 
-    IEnumerator DestroyCurrentCard()
+    IEnumerator DestroyCurrentCard(GameObject currentPlayCard)
     {
         yield return new WaitForSeconds(1.0f);
         Destroy(currentPlayCard);
-/*        Destroy(ZoneArea.transform.GetChild(0).gameObject);*/
     }
 
-    public GameObject CurrentCard()
-    {
-        /*
-        for (int i = 0; i < ZoneArea.transform.childCount; i++)
-        {
-           if (ZoneArea.transform.GetChild(i).tag != "Calculated")
-            {
-                currentPlayCard = ZoneArea.transform.GetChild(i).gameObject.GetComponent<ThisCard>();
-
-            }
-        }
-        return currentPlayCard;
-        */
-        if (ZoneArea.transform.GetChild(0).tag != "Calculated")
-        {
-            return ZoneArea.transform.GetChild(0).gameObject;
-
-        }
-        return null;
-       
-    }
     public int ZoneCount()
     {
         return ZoneArea.transform.childCount;
@@ -156,11 +133,11 @@ public class TurnController : MonoBehaviour
     IEnumerator MoveCard()
     {
         float time = 0;
-        Vector3 startPosition = ZoneArea.transform.GetChild(0).gameObject.transform.position; ;
+        Vector3 startPosition = ZoneArea.transform.GetChild(0).gameObject.transform.position; 
         Vector3 collectionPosition = Collection.transform.position;
-        while (time < 1.0f)
+        while (time < 1.3f)
         {
-            ZoneArea.transform.GetChild(0).gameObject.transform.position = Vector3.Lerp(startPosition, collectionPosition, time / 1.0f);
+            ZoneArea.transform.GetChild(0).gameObject.transform.position = Vector3.Lerp(startPosition, collectionPosition, time / 1.3f);
             time += Time.deltaTime;
             yield return null;
         }
