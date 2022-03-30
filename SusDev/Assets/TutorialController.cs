@@ -21,9 +21,11 @@ public class TutorialController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-
-            image.sprite = tutorial_sprites[++index];
-            Debug.Log("index: " + index);
+            if (index < tutorial_sprites.Length)
+            {
+                image.sprite = tutorial_sprites[++index];
+                Debug.Log("index: " + index);
+            }
         }
         if(index >= 17)
         {

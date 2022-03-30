@@ -49,10 +49,12 @@ public class GameManager : MonoBehaviour
     public GameObject TutorialArea;
     public TutorialController tutorial;
     public GameObject tutorialButton;
+    public GameObject GoalPanel;
 
     public GameState state;
 
     public bool[] goalCollect;
+    
 
 
 
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        state = GameState.GameStart;
+        state = GameState.Tutorial;
         HandArea = GameObject.Find("HandArea");
         gameStartButton.SetActive(false);
         total_environment = 1;
@@ -150,8 +152,10 @@ public class GameManager : MonoBehaviour
         }
 
         UI_Update();
-       
+  
+         budgetNum = Math.Min(5, budgetNum);
 
+        Debug.Log("total_economics: "+total_economics);
     }
 
 
@@ -183,6 +187,7 @@ public class GameManager : MonoBehaviour
 public void Tutorial()
     {
        // turnText.text = "Tutorial Time";
+       GoalPanel.SetActive(false);
         IndexPanel.SetActive(false);
         IndicatorPanel.SetActive(false);
         CollectionButton.SetActive(false);
@@ -194,7 +199,7 @@ public void Tutorial()
         {
            // HandArea.SetActive(true);
         }
-        if (tutorial.index >= 17)
+        if (tutorial.index >= 20)
         {
             tutorialButton.SetActive(true);
         }
@@ -211,6 +216,7 @@ public void Tutorial()
 
     public void Start_Turn()
     {
+        GoalPanel.SetActive(true);
         IndexPanel.SetActive(true);
         IndicatorPanel.SetActive(true);
         CollectionButton.SetActive(true);
@@ -248,7 +254,7 @@ public void Tutorial()
     {
         // if (turnController.playerDesk.currentZone.Length > 0)
       
-        if(turnController.ZoneCount() > 0 && turnController.ZoneArea.transform.GetChild(0).gameObject.tag!="Calculated")
+        if(turnController.ZoneCount() > 0 )
         {
             if (budgetNum >= turnController.ZoneArea.transform.GetChild(0).gameObject.GetComponent<ThisCard>().cost)
             {
@@ -265,21 +271,24 @@ public void Tutorial()
     }
     public void CalculateCard()
     {
+       
         playCardButton.SetActive(true);
 
-        
-        turnController.CalculateCard();
-        turnController.ShowGoal();
-        
-        for(int i =0; i < 17; i++)
-        {
-            if (turnController.goalCollect[i]) {
-                goalCollect[i] = turnController.goalCollect[i];
-            }
-            
-        }
-       
 
+        if (turnController.ZoneCount() > 0)
+        {
+            for (int i = 0; i < 17; i++)
+            {
+                if (turnController.goalCollect[i])
+                {
+                    goalCollect[i] = turnController.goalCollect[i];
+                }
+
+            }
+            turnController.CalculateCard();
+            turnController.ShowGoal();
+
+        }
         UI_Update();
         Data_Update();
         turnController.CityChange();
@@ -297,6 +306,7 @@ public void Tutorial()
     
     public void Collect_Card()
     {
+   
         playCardButton.SetActive(false);
         turnController.DestoryHandCard();
         state = GameState.interview;
@@ -338,12 +348,10 @@ public void Tutorial()
 
         for(int i = 0; i < 17; i++)  
         {
-
             if (goalCollect[i] == true)
             {
                 endGoalPanel.transform.GetChild(i).gameObject.SetActive(true);
             }
-          
         }
 
         int[] total_index = new int[4];
@@ -356,8 +364,7 @@ public void Tutorial()
 
         int maxValue = total_index.Max();
         int maxIndex = total_index.ToList().IndexOf(maxValue);
-        Debug.Log("maxIndex:" + maxIndex);
-
+      
         endIndexPanel = GameObject.Find("EndIndexPanel");
         endIndexPanel.transform.GetChild(maxIndex).gameObject.SetActive(true);
 

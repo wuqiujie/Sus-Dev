@@ -1,5 +1,5 @@
 ID,Card_name,Card_description,Cost,Type,Construction,Card_sprite,Environment,Life_expectancy,Social_stability,Economics,_goals,_nextCards,_isRoot
-0,tax_coal,,1,0,-1,Cards/tax_coal,1,0,0,-1,3,20/21,1
+0,tax_coal,,-1,0,-1,Cards/tax_coal,1,0,0,-1,3,20/21,1
 1,pension_security,,2,0,-1,Cards/pension_security,0,0,1,0,10,,1
 2,public_hospital,,2,1,-1,Cards/public_hospital,0,1,1,0,3*10,32/36,1
 3,tax_tabocco,,-1,1,-1,Cards/tax_tabocco,0,1,0,0,3,,1
@@ -11,7 +11,7 @@ ID,Card_name,Card_description,Cost,Type,Construction,Card_sprite,Environment,Lif
 9,low_cost_housing,,3,2,-1,Cards/low_cost_housing,0,0,2,0,1*10,,0
 10,households_subsidy,,1,2,-1,Cards/households_subsidy,0,0,1,0,1*10,9,1
 11,bike_network,,1,0,-1,Cards/bike_network,1,0,0,0,13*14*15,37,1
-12,small_business,,1,3,-1,Cards/small_business,0,0,0,3,8*10,26,1
+12,small_business,,1,3,-1,Cards/small_business,0,0,0,1,8*10,26,1
 13,free_vaccine,,1,1,-1,Cards/free_vaccine,0,1,0,0,3*10,,1
 14,unemployment,,1,2,-1,Cards/unemployment,0,0,1,0,10,,1
 15,sewage_treatment,,3,1,-1,Cards/sewage_treatment,1,2,0,0,6*12,39,1

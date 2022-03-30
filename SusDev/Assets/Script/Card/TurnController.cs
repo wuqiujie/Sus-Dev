@@ -94,7 +94,7 @@ public class TurnController : MonoBehaviour
 
     public void CalculateCard()
     {
-      
+        
             currentPlayCard = ZoneArea.transform.GetChild(0).gameObject;
             DeckManager.UpdateDeck(currentPlayCard.GetComponent<ThisCard>().id);
             Destroy(currentPlayCard.gameObject.GetComponent<Animator>());
@@ -107,11 +107,12 @@ public class TurnController : MonoBehaviour
             economics_change = currentPlayCard.GetComponent<ThisCard>().economics_index;
             budget_change = currentPlayCard.GetComponent<ThisCard>().cost;
 
-            LTEnvironment += currentPlayCard.GetComponent<ThisCard>().LTEnvironment;
-            LTLife += currentPlayCard.GetComponent<ThisCard>().LTLife;
-            LTSocial += currentPlayCard.GetComponent<ThisCard>().LTSocial;
-            LTeconomics += currentPlayCard.GetComponent<ThisCard>().LTeconomics;
-            LTBudget += currentPlayCard.GetComponent<ThisCard>().LTBudget;
+       
+            LTEnvironment = currentPlayCard.GetComponent<ThisCard>().LTEnvironment;
+            LTLife = currentPlayCard.GetComponent<ThisCard>().LTLife;
+            LTSocial = currentPlayCard.GetComponent<ThisCard>().LTSocial;
+            LTeconomics = currentPlayCard.GetComponent<ThisCard>().LTeconomics;
+            LTBudget = currentPlayCard.GetComponent<ThisCard>().LTBudget;
 
             ZoneArea.transform.GetChild(0).gameObject.tag = "Calculated";
 
