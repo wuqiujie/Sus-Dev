@@ -57,8 +57,8 @@ public class GameManager : MonoBehaviour
 
     public bool[] goalCollect;
     public List<int> collectID;
-    
 
+    public GameObject collectionPanel;
 
 
     public enum GameState
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         total_life = 1;
         total_economics = 1;
         total_social_stability = 2;
-        turnNum = 0;
+        turnNum = 8;
         collectID = new List<int>();
 
         //   Button btn = CollectPosition.GetComponent<Button>();
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
             Turn_End();
         }
 
-        if (state == GameState.GameEnd || turnNum==8)
+        if (state == GameState.GameEnd || turnNum==0)
         {
             Game_End();
         }
@@ -246,7 +246,7 @@ public void Tutorial()
 
         LT_Update();
 
-        turnNum++;
+        turnNum--;
         TurnBar.GetComponent<Bar>().env.ChangeEnv(turnNum);
        
         interview_called = false;

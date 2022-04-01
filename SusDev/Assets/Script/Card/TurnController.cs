@@ -14,7 +14,7 @@ public class TurnController : MonoBehaviour
     public GameObject Collection;
 
     public PlayerDesk playerDesk;
-    public GridTesting grid;
+    public CityManager grid;
 
     /**index change**/
     public int environment_change;
@@ -160,7 +160,8 @@ public class TurnController : MonoBehaviour
 
     public void CityChange()
     {
-        grid.InstantiateHouse();
+        grid.InstantiateConstruction(1, 1, 1);
+        grid.InstantiateConstruction(0, 0, 3);
     }
   
 

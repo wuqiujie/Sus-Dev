@@ -18,10 +18,10 @@ public class CameraController : MonoBehaviour
     {
         newPos = transform.position;
         newZoom = cameraTransform.localPosition;
-        zoomAmount = new Vector3(0f,1f,-1f);
-        movementSpeed = 0.2f;
+        zoomAmount = new Vector3(0f,2f,-2f);
+        movementSpeed = 0.5f;
         zoomTime = 2f;
-        movementTime = 0.5f;
+        movementTime = 1f;
     }
 
     // Update is called once per frame
