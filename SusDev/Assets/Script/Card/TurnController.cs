@@ -35,9 +35,10 @@ public class TurnController : MonoBehaviour
 
 
     /**Collection**/
-    public int[] CollectionID;
+    public List<int> collectID;
+
     //public GameObject collectionItem;
-    public GameObject currentPlayCard =new GameObject();
+    public GameObject currentPlayCard;
     public bool[] goalCollect;
 
     public void StartTurn()
@@ -53,12 +54,12 @@ public class TurnController : MonoBehaviour
         economics_change = 0;
         budget_change = 0;
 
-        CollectionID = new int[10];
+        collectID = new List<int>();
         goalCollect = new bool[17];
       
         playerDesk.StartTurn();
-       // collectionItem.gameObject.GetComponent<CollectionItem>().setcollectionNum(0);
-
+        // collectionItem.gameObject.GetComponent<CollectionItem>().setcollectionNum(0);
+        currentPlayCard = new GameObject();
         isMoved = false;
 
         for (int i = 0; i < goalPanel.transform.childCount; i++)
@@ -94,7 +95,7 @@ public class TurnController : MonoBehaviour
 
     public void CalculateCard()
     {
-        
+
             currentPlayCard = CurrentCard();
             DeckManager.UpdateDeck(currentPlayCard.GetComponent<ThisCard>().id);
             Destroy(currentPlayCard.gameObject.GetComponent<Animator>());
@@ -116,6 +117,7 @@ public class TurnController : MonoBehaviour
 
             currentPlayCard.tag = "Calculated";
 
+            collectID.Add(currentPlayCard.GetComponent<ThisCard>().id);
             StartCoroutine(MoveCard(currentPlayCard));
             StartCoroutine(DestroyCurrentCard(currentPlayCard));
         
@@ -133,7 +135,7 @@ public class TurnController : MonoBehaviour
     }
     IEnumerator DestroyCurrentCard(GameObject currentPlayCard)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         Destroy(currentPlayCard);
     }
 
@@ -146,9 +148,9 @@ public class TurnController : MonoBehaviour
         float time = 0;
         Vector3 startPosition = cg.transform.position; 
         Vector3 collectionPosition = Collection.transform.position;
-        while (time < 1.5f)
+        while (time < 1f)
         {
-            cg.gameObject.transform.position = Vector3.Lerp(startPosition, collectionPosition, time / 1.5f);
+            cg.gameObject.transform.position = Vector3.Lerp(startPosition, collectionPosition, time / 1f);
             time += Time.deltaTime;
             yield return null;
         }

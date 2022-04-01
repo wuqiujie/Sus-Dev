@@ -19,9 +19,10 @@ public class GameManager : MonoBehaviour
     public GameObject HandArea;
     public GameObject IndexPanel;
     public GameObject IndicatorPanel;
-    public GameObject CollectionButton;
+    public GameObject CollectPosition;
     public GameObject gameStartButton;
     public GameObject playCardButton;
+
     public GameObject endCanvas;
     public GameObject endGoalPanel;
     public GameObject endIndexPanel;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
     public GameState state;
 
     public bool[] goalCollect;
+    public List<int> collectID;
     
 
 
@@ -85,7 +87,19 @@ public class GameManager : MonoBehaviour
         total_economics = 1;
         total_social_stability = 2;
         turnNum = 0;
+        collectID = new List<int>();
+
+        //   Button btn = CollectPosition.GetComponent<Button>();
+        //  btn.onClick.AddListener(CollectOnClick);
+
     }
+
+    /*
+    public void CollectOnClick()
+    {
+
+    }
+    */
 
     void Update()
     {
@@ -152,6 +166,8 @@ public class GameManager : MonoBehaviour
             Game_End();
         }
 
+      
+
         UI_Update();
   
         budgetNum = Math.Min(5, budgetNum);
@@ -160,11 +176,10 @@ public class GameManager : MonoBehaviour
         total_economics = Math.Max(0, total_economics);
         total_social_stability = Math.Max(0, total_social_stability);
 
-        Debug.Log("total_economics"+total_economics);
-        Debug.Log("total_environment" + total_environment);
-        Debug.Log("total_life" + total_life);
-        Debug.Log("total_social_stability" + total_social_stability);
-
+        //Debug.Log("total_economics"+total_economics);
+        //Debug.Log("total_environment" + total_environment);
+        //Debug.Log("total_life" + total_life);
+        //Debug.Log("total_social_stability" + total_social_stability);
 
 
 
@@ -188,21 +203,15 @@ public class GameManager : MonoBehaviour
        
         gameStartButton.SetActive(false);
         state = GameState.Tutorial;
-        
-        /*
-        state = GameState.TurnStart;
-        turnController.ZoneArea.SetActive(true);
-        turnController.HandArea.SetActive(true);
-        */
 
-}
+    }
 public void Tutorial()
     {
        // turnText.text = "Tutorial Time";
         GoalPanel.SetActive(false);
         IndexPanel.SetActive(false);
         IndicatorPanel.SetActive(false);
-        CollectionButton.SetActive(false);
+        CollectPosition.SetActive(false);
         HandArea.SetActive(false);
 
         TutorialArea.SetActive(true);
@@ -227,7 +236,7 @@ public void Tutorial()
         GoalPanel.SetActive(true);
         IndexPanel.SetActive(true);
         IndicatorPanel.SetActive(true);
-        CollectionButton.SetActive(true);
+        CollectPosition.SetActive(true);
         HandArea.SetActive(true);
         TutorialArea.SetActive(false);
 
@@ -260,7 +269,6 @@ public void Tutorial()
 
     public void JudgeBudgetCard()
     {
-        // if (turnController.playerDesk.currentZone.Length > 0)
       
         if(turnController.ZoneCount() > 0 )
         {
@@ -297,9 +305,9 @@ public void Tutorial()
             turnController.ShowGoal();
 
         }
-            UI_Update();
-            Data_Update();
-            turnController.CityChange();
+        UI_Update();
+        Data_Update();
+        turnController.CityChange();
        
         state = GameState.PlayCard;
         

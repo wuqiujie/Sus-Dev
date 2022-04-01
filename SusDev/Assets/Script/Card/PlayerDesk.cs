@@ -126,7 +126,7 @@ public class PlayerDesk : MonoBehaviour
             }
         }
         
-        */
+        
       
         ZoneArea = GameObject.Find("ZoneArea");
         currentZone = new GameObject[ZoneArea.transform.childCount];
@@ -137,7 +137,7 @@ public class PlayerDesk : MonoBehaviour
              currentZone[i] = ZoneArea.transform.GetChild(i).gameObject; 
 
         }
-       
+     */  
 
         
 

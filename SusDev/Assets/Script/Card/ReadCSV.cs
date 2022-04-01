@@ -33,7 +33,8 @@ public class ReadCSV : MonoBehaviour
             int Social_stability = int.Parse(data[14 * (i + 1) + 9]);
             int Economics = int.Parse(data[14 * (i + 1) + 10]);
             int[] Goals = null;
-            if (data[14 * (i + 1) + 11] != "-1" && data[14 * (i + 1) + 11] != "")
+            //if (data[14 * (i + 1) + 11] != "-1" && data[14 * (i + 1) + 11] != "")
+            if (data[14 * (i + 1) + 11] != "")
             {
                 Goals = Array.ConvertAll(data[14 * (i + 1) + 11].Split('*'), int.Parse);
             }
@@ -66,7 +67,8 @@ public class ReadCSV : MonoBehaviour
             int Economics = int.Parse(data[24 * (i + 1) + 10]);
 
             int[] Goals = null;
-            if (data[24 * (i + 1) + 11] != "-1" && data[24 * (i + 1) + 11] != "")
+            // if (data[24 * (i + 1) + 11] != "-1" && data[24 * (i + 1) + 11] != "")
+            if (data[24 * (i + 1) + 11] != "")
             {
                 Goals = Array.ConvertAll(data[24 * (i + 1) + 11].Split('*'), int.Parse);
             }
