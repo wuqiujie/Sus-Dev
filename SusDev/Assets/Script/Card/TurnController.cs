@@ -36,8 +36,8 @@ public class TurnController : MonoBehaviour
 
     /**Collection**/
     public int[] CollectionID;
-    public GameObject collectionItem;
-    public GameObject currentPlayCard;
+    //public GameObject collectionItem;
+    public GameObject currentPlayCard =new GameObject();
     public bool[] goalCollect;
 
     public void StartTurn()
@@ -57,7 +57,7 @@ public class TurnController : MonoBehaviour
         goalCollect = new bool[17];
       
         playerDesk.StartTurn();
-        collectionItem.gameObject.GetComponent<CollectionItem>().setcollectionNum(0);
+       // collectionItem.gameObject.GetComponent<CollectionItem>().setcollectionNum(0);
 
         isMoved = false;
 
@@ -95,7 +95,7 @@ public class TurnController : MonoBehaviour
     public void CalculateCard()
     {
         
-            currentPlayCard = ZoneArea.transform.GetChild(0).gameObject;
+            currentPlayCard = CurrentCard();
             DeckManager.UpdateDeck(currentPlayCard.GetComponent<ThisCard>().id);
             Destroy(currentPlayCard.gameObject.GetComponent<Animator>());
             Destroy(currentPlayCard.gameObject.GetComponent<Hover>());
@@ -114,16 +114,26 @@ public class TurnController : MonoBehaviour
             LTeconomics = currentPlayCard.GetComponent<ThisCard>().LTeconomics;
             LTBudget = currentPlayCard.GetComponent<ThisCard>().LTBudget;
 
-            ZoneArea.transform.GetChild(0).gameObject.tag = "Calculated";
+            currentPlayCard.tag = "Calculated";
 
-            StartCoroutine(MoveCard());
+            StartCoroutine(MoveCard(currentPlayCard));
             StartCoroutine(DestroyCurrentCard(currentPlayCard));
         
     }
+    public GameObject CurrentCard()
+    {
+       
+        if (ZoneArea.transform.GetChild(0).tag != "Calculated")
+        {
+            return ZoneArea.transform.GetChild(0).gameObject;
 
+        }
+        return null;
+
+    }
     IEnumerator DestroyCurrentCard(GameObject currentPlayCard)
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
         Destroy(currentPlayCard);
     }
 
@@ -131,14 +141,14 @@ public class TurnController : MonoBehaviour
     {
         return ZoneArea.transform.childCount;
     }
-    IEnumerator MoveCard()
+    IEnumerator MoveCard(GameObject cg)
     {
         float time = 0;
-        Vector3 startPosition = ZoneArea.transform.GetChild(0).gameObject.transform.position; 
+        Vector3 startPosition = cg.transform.position; 
         Vector3 collectionPosition = Collection.transform.position;
-        while (time < 1.3f)
+        while (time < 1.5f)
         {
-            ZoneArea.transform.GetChild(0).gameObject.transform.position = Vector3.Lerp(startPosition, collectionPosition, time / 1.3f);
+            cg.gameObject.transform.position = Vector3.Lerp(startPosition, collectionPosition, time / 1.5f);
             time += Time.deltaTime;
             yield return null;
         }
@@ -162,7 +172,7 @@ public class TurnController : MonoBehaviour
     }
     
    
-    
+   /* 
     public bool CollectCard()
     {
         Vector3 collectionPosition = Collection.transform.position;
@@ -177,7 +187,7 @@ public class TurnController : MonoBehaviour
         return collectionItem.gameObject.GetComponent<CollectionItem>().collectionNum == playerDesk.currentZone.Length;
        
     }
-    
+    */
     
 
 

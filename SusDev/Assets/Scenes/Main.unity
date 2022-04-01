@@ -8114,11 +8114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9059845500051163956, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 207.43
+      value: 196.13
       objectReference: {fileID: 0}
     - target: {fileID: 9059845500051163956, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 45.282
+      value: 45.3211
       objectReference: {fileID: 0}
     - target: {fileID: 9059845500051163956, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -8130,23 +8130,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9059845500051163957, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
       propertyPath: ENV_MAX
-      value: 6
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059845500310259064, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.4628126
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059845500310259064, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9059845500310259064, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200.0282
+      value: 224.1006
       objectReference: {fileID: 0}
     - target: {fileID: 9059845500310259064, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 51.6616
+      value: 50.9202
       objectReference: {fileID: 0}
     - target: {fileID: 9059845500310259064, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 100.01
+      value: 75.74818
       objectReference: {fileID: 0}
     - target: {fileID: 9059845500310259064, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.831
+      value: -25.46012
       objectReference: {fileID: 0}
     - target: {fileID: 9059845500310259065, guid: 7b997c504dbef1b4081df6da66783c4d, type: 3}
       propertyPath: m_Sprite
@@ -10359,7 +10367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1921723955
 Transform:
   m_ObjectHideFlags: 0

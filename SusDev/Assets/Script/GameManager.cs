@@ -84,12 +84,13 @@ public class GameManager : MonoBehaviour
         total_life = 1;
         total_economics = 1;
         total_social_stability = 2;
+        turnNum = 0;
     }
 
     void Update()
     {
        Debug.Log("state: " + state);
-
+        Debug.Log("Turn:" + turnNum);
        // turnText.text = "Turn: " + turnNum;
 
         if (state == GameState.GameStart)
@@ -153,12 +154,23 @@ public class GameManager : MonoBehaviour
 
         UI_Update();
   
-         budgetNum = Math.Min(5, budgetNum);
+        budgetNum = Math.Min(5, budgetNum);
+        total_environment = Math.Max(0, total_environment);
+        total_life = Math.Max(0, total_life);
+        total_economics = Math.Max(0, total_economics);
+        total_social_stability = Math.Max(0, total_social_stability);
 
-        Debug.Log("total_economics: "+total_economics);
+        Debug.Log("total_economics"+total_economics);
+        Debug.Log("total_environment" + total_environment);
+        Debug.Log("total_life" + total_life);
+        Debug.Log("total_social_stability" + total_social_stability);
+
+
+
+
     }
 
-
+ 
     public void Game_Start()
     {
 
@@ -187,7 +199,7 @@ public class GameManager : MonoBehaviour
 public void Tutorial()
     {
        // turnText.text = "Tutorial Time";
-       GoalPanel.SetActive(false);
+        GoalPanel.SetActive(false);
         IndexPanel.SetActive(false);
         IndicatorPanel.SetActive(false);
         CollectionButton.SetActive(false);
@@ -195,10 +207,6 @@ public void Tutorial()
 
         TutorialArea.SetActive(true);
         tutorialButton.SetActive(false);
-        if(tutorial.index == 11)
-        {
-           // HandArea.SetActive(true);
-        }
         if (tutorial.index >= 20)
         {
             tutorialButton.SetActive(true);
@@ -256,7 +264,7 @@ public void Tutorial()
       
         if(turnController.ZoneCount() > 0 )
         {
-            if (budgetNum >= turnController.ZoneArea.transform.GetChild(0).gameObject.GetComponent<ThisCard>().cost)
+            if (budgetNum >= turnController.CurrentCard().GetComponent<ThisCard>().cost)
             {
                 state = GameState.Calculate;
             }
@@ -289,11 +297,12 @@ public void Tutorial()
             turnController.ShowGoal();
 
         }
-        UI_Update();
-        Data_Update();
-        turnController.CityChange();
+            UI_Update();
+            Data_Update();
+            turnController.CityChange();
+       
         state = GameState.PlayCard;
-      
+        
     }
     
   
