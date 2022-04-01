@@ -1490,6 +1490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCanvas: {fileID: 1732369028}
   CollectionCanvas: {fileID: 1571451688}
+  HoverIndex: {fileID: 410538006}
 --- !u!1 &219907699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,6 +2793,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 773b447b5f21e56438236fcdf3b9b30a, type: 3}
   m_PrefabInstance: {fileID: 159339684}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &410538006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8287940428104035825, guid: ead51771045ad344db97759f5bed42a1, type: 3}
+  m_PrefabInstance: {fileID: 426149463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &417249585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3123,6 +3129,10 @@ PrefabInstance:
     - target: {fileID: 8287940428104035825, guid: ead51771045ad344db97759f5bed42a1, type: 3}
       propertyPath: m_Name
       value: IndexHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 8287940428104035825, guid: ead51771045ad344db97759f5bed42a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead51771045ad344db97759f5bed42a1, type: 3}
@@ -7622,6 +7632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCanvas: {fileID: 1732369028}
   CollectionCanvas: {fileID: 1571451688}
+  HoverIndex: {fileID: 410538006}
 --- !u!1001 &1191684845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11144,6 +11155,7 @@ MonoBehaviour:
   CollectPosition: {fileID: 188201253}
   gameStartButton: {fileID: 871179655}
   playCardButton: {fileID: 67699872}
+  hoverIndexpanel: {fileID: 410538006}
   endCanvas: {fileID: 1692988940}
   endGoalPanel: {fileID: 449558656}
   endIndexPanel: {fileID: 0}

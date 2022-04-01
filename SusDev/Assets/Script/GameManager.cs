@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject CollectPosition;
     public GameObject gameStartButton;
     public GameObject playCardButton;
+    public GameObject hoverIndexpanel;
 
     public GameObject endCanvas;
     public GameObject endGoalPanel;
@@ -213,6 +214,7 @@ public void Tutorial()
         IndicatorPanel.SetActive(false);
         CollectPosition.SetActive(false);
         HandArea.SetActive(false);
+        hoverIndexpanel.SetActive(false);
 
         TutorialArea.SetActive(true);
         tutorialButton.SetActive(false);
@@ -239,6 +241,7 @@ public void Tutorial()
         CollectPosition.SetActive(true);
         HandArea.SetActive(true);
         TutorialArea.SetActive(false);
+        hoverIndexpanel.SetActive(true);
 
 
         LT_Update();
