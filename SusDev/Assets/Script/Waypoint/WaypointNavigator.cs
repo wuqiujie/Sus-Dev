@@ -7,6 +7,8 @@ public class WaypointNavigator : MonoBehaviour
     CharacterNavController _controller;
     public Waypoint _currentWP;
     int direction;
+    bool shouldBranch = false;
+    bool branchCD = false;
     private void Awake()
     {
         _controller = GetComponent<CharacterNavController>();
@@ -21,15 +23,15 @@ public class WaypointNavigator : MonoBehaviour
     {
         if(_controller._reachedDestination)
         {
-            bool shouldBranch = false;
-            if(_currentWP.branches != null && _currentWP.branches.Count > 0)
+            if(_currentWP.branches != null && _currentWP.branches.Count > 0 && !branchCD)
             {
                 shouldBranch = Random.Range(0f, 1f) <= _currentWP.branchRatio ? true : false;
             }
-
-            if(shouldBranch)
+            if(shouldBranch && !branchCD && _currentWP.branches.Count > 0)
             {
                 _currentWP = _currentWP.branches[Random.Range(0, _currentWP.branches.Count - 1)];
+                branchCD = true;
+                StartCoroutine(ToggleFlag());
             }
             else
             {
@@ -60,5 +62,16 @@ public class WaypointNavigator : MonoBehaviour
             }
             _controller.SetDestination(_currentWP.GetPosition());
         }
+    }
+    private IEnumerator ToggleFlag()
+    {
+        float duration = 10f; 
+        float normalizedTime = 0;
+        while (normalizedTime <= 1f)
+        {
+            normalizedTime += Time.deltaTime / duration;
+            yield return null;
+        }
+        branchCD = false;
     }
 }
