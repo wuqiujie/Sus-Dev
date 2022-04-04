@@ -13,7 +13,7 @@ public class IndexHover : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         //Output to console the GameObject's name and the following message
-        Debug.Log("Cursor Entering " + name + " GameObject");
+      
         tooltipImage.gameObject.SetActive(true);
 
     }
@@ -22,7 +22,7 @@ public class IndexHover : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         //Output the following message with the GameObject's name
-        Debug.Log("Cursor Exiting " + name + " GameObject");
+       
         tooltipImage.gameObject.SetActive(false);
     }
     public void Output()
