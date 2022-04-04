@@ -33,7 +33,7 @@ public class TurnController : MonoBehaviour
     public bool isMoved = false;
     public GameObject goalPanel;
 
-
+    public GameObject hangtag_go;
     /**Collection**/
     public List<int> collectID;
 
@@ -67,6 +67,7 @@ public class TurnController : MonoBehaviour
             goalPanel.transform.GetChild(i).gameObject.SetActive(false);
 
         }
+        StartCoroutine(HangtagDown());
     }
 
   
@@ -93,6 +94,32 @@ public class TurnController : MonoBehaviour
         }
     }
 
+    IEnumerator HangtagDown()
+    {
+        float time = 0;
+        Vector3 startPosition = new Vector3(1120, 2680, 0);
+        Vector3 endPosition = new Vector3(1120, 1500, 0);
+        while (time < 2f)
+        {
+            hangtag_go.gameObject.transform.position = Vector3.Lerp(startPosition, endPosition, time / 2f);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        StartCoroutine(HangtagUp());
+    }
+
+    IEnumerator HangtagUp()
+    {
+        float time = 0;
+        Vector3 endPosition = new Vector3(1120, 2680, 0);
+        Vector3 startPosition = new Vector3(1120, 1500, 0);
+        while (time < 2f)
+        {
+            hangtag_go.gameObject.transform.position = Vector3.Lerp(startPosition, endPosition, time / 2f);
+            time += Time.deltaTime;
+            yield return null;
+        }
+    }
     public void CalculateCard()
     {
 

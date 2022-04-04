@@ -89,18 +89,7 @@ public class GameManager : MonoBehaviour
         total_social_stability = 2;
         turnNum = 8;
         collectID = new List<int>();
-
-        //   Button btn = CollectPosition.GetComponent<Button>();
-        //  btn.onClick.AddListener(CollectOnClick);
-
     }
-
-    /*
-    public void CollectOnClick()
-    {
-
-    }
-    */
 
     void Update()
     {
@@ -182,8 +171,6 @@ public class GameManager : MonoBehaviour
         //Debug.Log("total_life" + total_life);
         //Debug.Log("total_social_stability" + total_social_stability);
 
-
-
     }
 
  
@@ -256,6 +243,8 @@ public void Tutorial()
         turnController.StartTurn();
         state = GameState.PlayCard;
     }
+
+    
     public void Play_Card()
     {
 
