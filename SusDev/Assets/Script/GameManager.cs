@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     /**Turn Info**/
     public int turnNum = 0;
     public static int budgetNum = 0;
-    //public Text turnText;
+    public Text turnText;
     public TurnController turnController;
 
     /**incident and interview**/
@@ -87,15 +87,15 @@ public class GameManager : MonoBehaviour
         total_life = 1;
         total_economics = 1;
         total_social_stability = 2;
-        turnNum = 8;
+        turnNum = 0;
         collectID = new List<int>();
     }
 
     void Update()
     {
-       Debug.Log("state: " + state);
-        Debug.Log("Turn:" + turnNum);
-       // turnText.text = "Turn: " + turnNum;
+     //  Debug.Log("state: " + state);
+    //    Debug.Log("Turn:" + turnNum);
+        turnText.text =  turnNum +"/7";
 
         if (state == GameState.GameStart)
         {
@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
             Turn_End();
         }
 
-        if (state == GameState.GameEnd || turnNum==0)
+        if (state == GameState.GameEnd || turnNum==8)
         {
             Game_End();
         }
@@ -233,7 +233,7 @@ public void Tutorial()
 
         LT_Update();
 
-        turnNum--;
+        turnNum++;
         TurnBar.GetComponent<Bar>().env.ChangeEnv(turnNum);
        
         interview_called = false;

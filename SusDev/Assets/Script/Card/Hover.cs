@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Hover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject card;
+    public GameObject description;
+    public Text descriptionText;
     public GameObject questioncard;
     public GameObject ltcard;
     public GameObject goal;
@@ -18,6 +21,7 @@ public class Hover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
      public void OnPointerEnter(PointerEventData eventData)
     {
         card.GetComponent<Animator>().Play("HoverOn");
+        DescriptionCard();
         QuestionCard();
         LTCard();
         ShowGoal();
@@ -28,9 +32,15 @@ public class Hover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         card.GetComponent<Animator>().Play("HoverOff");
         questioncard.SetActive(false);
         ltcard.SetActive(false);
+        description.SetActive(false);
         DestroyGoal();
     }
 
+    public void DescriptionCard()
+    {
+        description.SetActive(true);
+        descriptionText.text = card.GetComponent<ThisCard>().card_description;
+    }
     public void QuestionCard()
     {
         
