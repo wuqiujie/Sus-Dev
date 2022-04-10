@@ -16,6 +16,9 @@ public class TurnController : MonoBehaviour
     public PlayerDesk playerDesk;
     public CityManager grid;
 
+/*    Camera zoom effect*/
+    public CameraController cc;
+
     /**index change**/
     public int environment_change;
     public int life_change;
@@ -43,6 +46,7 @@ public class TurnController : MonoBehaviour
 
     public void StartTurn()
     {
+        cc.LookAtPos();
         ZoneArea.SetActive(true);
         TableArea.SetActive(false);
         HandArea.SetActive(true);
@@ -158,10 +162,6 @@ public class TurnController : MonoBehaviour
             return ZoneArea.transform.GetChild(0).gameObject;
 
         }
-        else
-        {
-            return null;
-        }
         return null;
 
     }
@@ -194,6 +194,7 @@ public class TurnController : MonoBehaviour
     {
         grid.InstantiateConstruction(1, 1, 1);
         grid.InstantiateConstruction(0, 0, 3);
+        cc.LookAtPos();
     }
   
 

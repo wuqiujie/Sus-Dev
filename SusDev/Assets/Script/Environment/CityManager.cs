@@ -36,6 +36,7 @@ public class CityManager : MonoBehaviour
     [SerializeField]
     public GameObject smoke;
 
+    public static Vector3 buildingPos;
     //postions
     private List<TestGrid> _vaccantHouse;
     private List<TestGrid> _vaccantSkyscrapers;
@@ -206,8 +207,9 @@ public class CityManager : MonoBehaviour
                 x * grid[0]._cellSize, 2.5f, blockSize * gridCellSize * grid[0]._y + roadLength * (grid[0]._y + 1) + z * grid[0]._cellSize);
             Vector3 cellPos = new Vector3(x * (grid[0]._cellSize + roadLength) + roadLength, 0.5f, z * (grid[0]._cellSize + roadLength) + roadLength);
             GameObject building = Instantiate(constructions[index], pos + new Vector3(grid[0]._cellSize / 2, 0, grid[0]._cellSize / 2), Quaternion.identity);
+            buildingPos = building.transform.position;
             building.transform.SetParent(buildingsParent.transform);
-            StartCoroutine(InstatiateBuildings(building.transform, building.transform.position, 1f));
+            StartCoroutine(InstatiateBuildings(building.transform, building.transform.position, 2f));
             grid[0].SetValue(cellPos, 1);
         }
     }

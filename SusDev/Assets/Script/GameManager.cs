@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject endGoalPanel;
     public GameObject endIndexPanel;
 
+
     /** Index **/
     [SerializeField]
     public static int total_environment;
