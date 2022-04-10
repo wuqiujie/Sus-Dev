@@ -6,32 +6,57 @@ using UnityEngine.UI;
 public class TutorialController : MonoBehaviour
 {
     public Sprite[] tutorial_sprites;
-   // public GameObject NextButton;
+
+
     public Image image;
     public int index = 0;
-
+    public int people_index = 0;
+    public GameObject button;
+    public GameObject[] people;
+    public GameObject[] character;
+    public GameObject tutorialCanvas;
 
     private void Start()
     {
         image = GetComponent<Image>();
         image.sprite  = tutorial_sprites[0];
+        
     }
 
     void Update()
     {
+        Debug.Log("index: " + index);
         if (Input.GetMouseButtonDown(0))
         {
+            foreach (Transform child in tutorialCanvas.transform)
+            {
+                Debug.Log("1");
+                if (child.tag == "appear")
+                {
+                    child.gameObject.SetActive(false);
+                  
+                }
+                   
+            }
             if (index < tutorial_sprites.Length)
             {
                 image.sprite = tutorial_sprites[++index];
-             
             }
-        }
-        if(index >= 17)
-        {
+            if((index>=0 && index <=13) || (index >= 16 && index<=22)){
+                var ch = Instantiate(people[people_index], character[people_index].transform.position, character[people_index].transform.rotation);
+                ch.transform.parent = tutorialCanvas.transform;
+                ch.tag = "appear";
+                people_index++;
+            }
+           
 
+        }
+        if(index >= 22)
+        {
+            button.SetActive(true);
         }
 
     }
+
 
 }

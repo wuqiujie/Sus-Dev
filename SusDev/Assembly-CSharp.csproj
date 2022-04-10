@@ -83,6 +83,7 @@
     <Compile Include="Assets\Script\UI\Bar.cs" />
     <Compile Include="Assets\Script\Card\CardListen.cs" />
     <Compile Include="Assets\Script\Waypoint\CarWaypointNavigator.cs" />
+    <Compile Include="Assets\Script\UI\HoverGoal.cs" />
     <Compile Include="Assets\Scripts\IndexHover.cs" />
     <Compile Include="Assets\Script\Environment\PedestrianSpawner.cs" />
     <Compile Include="Assets\Script\Card\ThisCard.cs" />
@@ -90,7 +91,7 @@
     <Compile Include="Assets\Script\lineManager\IncidentManager.cs" />
     <Compile Include="Assets\Scripts\Tooltip.cs" />
     <Compile Include="Assets\Script\Card\TurnController.cs" />
-    <Compile Include="Assets\Script\UI\HoverGoal.cs" />
+    <Compile Include="Assets\People.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Interviewlines\Incidents\Economic Growth.txt" />

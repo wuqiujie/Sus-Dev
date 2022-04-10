@@ -25,7 +25,7 @@ public class PlayerDesk : MonoBehaviour
 
     public int count;
 
-    private float rotateAngel;
+
 
 
     public void StartTurn()

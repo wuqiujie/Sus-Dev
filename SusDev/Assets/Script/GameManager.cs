@@ -177,7 +177,6 @@ public class GameManager : MonoBehaviour
     public void Game_Start()
     {
 
-        //  turnText.text = "New Game";
         goalCollect = new bool[17];
         for (int i = 0; i < 17; i++)
         {
@@ -205,7 +204,7 @@ public void Tutorial()
 
         TutorialArea.SetActive(true);
         tutorialButton.SetActive(false);
-        if (tutorial.index >= 20)
+        if (tutorial.index >= 22)
         {
             tutorialButton.SetActive(true);
         }

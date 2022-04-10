@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Clone
   - Calculated
+  - Citizen
+  - Vehicle
+  - appear
   layers:
   - Default
   - TransparentFX
