@@ -26,25 +26,24 @@ public class TutorialController : MonoBehaviour
     void Update()
     {
         Debug.Log("index: " + index);
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && index<22)
         {
             foreach (Transform child in tutorialCanvas.transform)
             {
-                Debug.Log("1");
                 if (child.tag == "appear")
                 {
                     child.gameObject.SetActive(false);
-                  
                 }
-                   
             }
             if (index < tutorial_sprites.Length)
             {
                 image.sprite = tutorial_sprites[++index];
             }
             if((index>=0 && index <=13) || (index >= 16 && index<=22)){
-                var ch = Instantiate(people[people_index], character[people_index].transform.position, character[people_index].transform.rotation);
-                ch.transform.parent = tutorialCanvas.transform;
+                var ch = Instantiate(people[people_index], 
+                    character[people_index].transform.position, 
+                    people[people_index].transform.rotation);
+                ch.transform.SetParent( tutorialCanvas.gameObject.transform);
                 ch.tag = "appear";
                 people_index++;
             }

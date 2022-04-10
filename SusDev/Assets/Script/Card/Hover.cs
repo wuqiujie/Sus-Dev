@@ -12,19 +12,27 @@ public class Hover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public GameObject questioncard;
     public GameObject ltcard;
     public GameObject goal;
+    private float nextTime = 0.0f;
 
     private void Start()
     {
         card.GetComponent<Animator>().Play("idle");
         goal = GameObject.Find("GoalPanel");
     }
-     public void OnPointerEnter(PointerEventData eventData)
+     public void OnPointerEnter(PointerEventData eventData )
     {
-        card.GetComponent<Animator>().Play("HoverOn");
-        DescriptionCard();
-        QuestionCard();
-        LTCard();
-        ShowGoal();
+        if(Time.time > nextTime)
+        {
+            nextTime = Time.time + 0.2f;
+            card.GetComponent<Animator>().Play("HoverOn");
+            DescriptionCard();
+            QuestionCard();
+            LTCard();
+            ShowGoal();
+        }
+       
+       
+      
     }
 
     public void OnPointerExit(PointerEventData eventData)

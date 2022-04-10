@@ -156,7 +156,6 @@ public class GameManager : MonoBehaviour
             Game_End();
         }
 
-      
 
         UI_Update();
   
@@ -256,12 +255,14 @@ public void Tutorial()
         {
             state = GameState.PlayCard;
         }
+   
+       
     }
 
     public void JudgeBudgetCard()
     {
       
-        if(turnController.ZoneCount() > 0 )
+        if(turnController.ZoneCount() > 1 )
         {
             if (budgetNum >= turnController.CurrentCard().GetComponent<ThisCard>().cost)
             {
@@ -274,6 +275,10 @@ public void Tutorial()
                 state = GameState.PlayCard;
             }
 
+        }
+        else
+        {
+            state = GameState.PlayCard;
         }
     }
     public void CalculateCard()

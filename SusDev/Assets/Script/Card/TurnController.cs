@@ -100,9 +100,9 @@ public class TurnController : MonoBehaviour
         
         Vector3 startPosition = new Vector3(1120, 2760, 0);
         Vector3 endPosition = new Vector3(1120, 1570, 0);
-        while (time < 2.5f)
+        while (time < 2f)
         {
-            hangtag_go.gameObject.transform.position = Vector3.Lerp(startPosition, endPosition, time / 2.5f);
+            hangtag_go.gameObject.transform.position = Vector3.Lerp(startPosition, endPosition, time / 2f);
             time += Time.deltaTime;
             yield return null;
         }
@@ -114,9 +114,9 @@ public class TurnController : MonoBehaviour
         float time = 0;
         Vector3 endPosition = new Vector3(1120, 2760, 0);
         Vector3 startPosition = new Vector3(1120, 1570, 0);
-        while (time < 2.5f)
+        while (time < 2f)
         {
-            hangtag_go.gameObject.transform.position = Vector3.Lerp(startPosition, endPosition, time / 2.5f);
+            hangtag_go.gameObject.transform.position = Vector3.Lerp(startPosition, endPosition, time / 2f);
             time += Time.deltaTime;
             yield return null;
         }
@@ -137,11 +137,11 @@ public class TurnController : MonoBehaviour
             budget_change = currentPlayCard.GetComponent<ThisCard>().cost;
 
        
-            LTEnvironment = currentPlayCard.GetComponent<ThisCard>().LTEnvironment;
-            LTLife = currentPlayCard.GetComponent<ThisCard>().LTLife;
-            LTSocial = currentPlayCard.GetComponent<ThisCard>().LTSocial;
-            LTeconomics = currentPlayCard.GetComponent<ThisCard>().LTeconomics;
-            LTBudget = currentPlayCard.GetComponent<ThisCard>().LTBudget;
+            LTEnvironment += currentPlayCard.GetComponent<ThisCard>().LTEnvironment;
+            LTLife += currentPlayCard.GetComponent<ThisCard>().LTLife;
+            LTSocial += currentPlayCard.GetComponent<ThisCard>().LTSocial;
+            LTeconomics += currentPlayCard.GetComponent<ThisCard>().LTeconomics;
+            LTBudget += currentPlayCard.GetComponent<ThisCard>().LTBudget;
 
             currentPlayCard.tag = "Calculated";
 
@@ -157,6 +157,10 @@ public class TurnController : MonoBehaviour
         {
             return ZoneArea.transform.GetChild(0).gameObject;
 
+        }
+        else
+        {
+            return null;
         }
         return null;
 
