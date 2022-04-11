@@ -11,7 +11,7 @@ ID,Card_name,Card_description,Cost,Type,Construction,Card_sprite,Environment,Lif
 9,low_cost_housing,Offer quality living conditions to low-income communities contributing to more equal and sustainable urban planning.,3,2,-1,Cards/low_cost_housing,0,0,2,0,1*10,-1,0
 10,households_subsidy,Help more citizens afford their first household,1,2,-1,Cards/households_subsidy,0,0,1,0,1*10,9,1
 11,bike_network,The development of safe cycling as a mode of transport is an important objective of the transformation towards sustainable mobility in cities.,1,0,-1,Cards/bike_network,1,0,0,0,13*14*15,37,1
-12,small_business,Create more jobs and circulate the local economy,1,3,-1,Cards/small_business,0,0,0,3,8*10,26,1
+12,small_business,Create more jobs and circulate the local economy,1,3,-1,Cards/small_business,0,0,0,2,8*10,26,1
 13,free_vaccine,Immunization directly impacts health (SDG3) and brings a contribution to 14 out of the 17 Sustainable Development Goals (SDGs),1,1,-1,Cards/free_vaccine,0,1,0,0,3*10,-1,1
 14,unemployment,Protect unemployed workers,1,2,-1,Cards/unemployment,0,0,1,0,10,-1,1
 15,sewage_treatment,Water treatment reduces the volume of waste that is released into the ecosystem.,3,1,-1,Cards/sewage_treatment,1,2,0,0,6*12,39,1

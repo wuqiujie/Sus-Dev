@@ -78,16 +78,17 @@ public class TurnController : MonoBehaviour
     public void ShowGoal()
     {
         currentPlayCard = ZoneArea.transform.GetChild(0).gameObject;
-       
-        int[] goals = currentPlayCard.GetComponent<ThisCard>().goals;
-
-        for(int i = 0; i < goals.Length; i++)
+        if (currentPlayCard.GetComponent<ThisCard>().goals[0] != -1)
         {
-            goalPanel.transform.GetChild(goals[i]-1).gameObject.SetActive(true);
-            goalCollect[goals[i]-1] = true;
-        }
-     
+            int[] goals = currentPlayCard.GetComponent<ThisCard>().goals;
 
+            for (int i = 0; i < goals.Length; i++)
+            {
+                goalPanel.transform.GetChild(goals[i] - 1).gameObject.SetActive(true);
+                goalCollect[goals[i] - 1] = true;
+            }
+
+        }
     }
     public void DestroyGoal()
     {
@@ -207,34 +208,10 @@ public class TurnController : MonoBehaviour
         }
     }
     
-   
-   /* 
-    public bool CollectCard()
-    {
-        Vector3 collectionPosition = Collection.transform.position;
-        
-        for (int i = 0; i < playerDesk.currentZone.Length; i++)
-        {
-            Vector3 startPos = playerDesk.currentZone[i].transform.position;
-            playerDesk.currentZone[i].transform.position = Vector3.Lerp(startPos, collectionPosition, Time.deltaTime*2f);
-           
-        }
-      
-        return collectionItem.gameObject.GetComponent<CollectionItem>().collectionNum == playerDesk.currentZone.Length;
-       
-    }
-    */
-    
-
-
-    
+  
     public void DestroyCard()
     {
-        /* for (int i = 0; i < playerDesk.currentZone.Length; i++)
-         {
-             Destroy(playerDesk.currentZone[i]);
-         }
-        */
+      
         Destroy(ZoneArea.transform.GetChild(0));
     }
 

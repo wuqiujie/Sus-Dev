@@ -28,7 +28,10 @@ public class Hover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             DescriptionCard();
             QuestionCard();
             LTCard();
-            ShowGoal();
+            if (card.GetComponent<ThisCard>().goals.Length != 0 && card.GetComponent<ThisCard>().goals[0] != -1)
+            {
+                ShowGoal();
+            }
         }
        
        
@@ -41,7 +44,10 @@ public class Hover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         questioncard.SetActive(false);
         ltcard.SetActive(false);
         description.SetActive(false);
-        DestroyGoal();
+        if (card.GetComponent<ThisCard>().goals[0] != -1)
+        {
+            DestroyGoal();
+        }
     }
 
     public void DescriptionCard()
@@ -71,13 +77,13 @@ public class Hover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void ShowGoal()
     {
-       
-        int[] goals = card.GetComponent<ThisCard>().goals;
-        for (int i = 0; i < goals.Length; i++)
-        {
-            goal.transform.GetChild(goals[i]-1).gameObject.SetActive(true);
-        }
-
+        
+            int[] goals = card.GetComponent<ThisCard>().goals;
+            for (int i = 0; i < goals.Length; i++)
+            {
+                goal.transform.GetChild(goals[i] - 1).gameObject.SetActive(true);
+            }
+        
     }
 
 

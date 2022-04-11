@@ -98,18 +98,34 @@ public class InterviewManager : MonoBehaviour
             max = Mathf.Max(max, gameManager.turnController.life_change);
             if (max == gameManager.turnController.economics_change)
             {
+                if(epg.Count == 0)
+                {
+                    return "hh";
+                }
                 return epg.Dequeue();
             }
             if (max == gameManager.turnController.environment_change)
             {
+                if (eg.Count == 0)
+                {
+                    return "hh";
+                }
                 return eg.Dequeue();
             }
             if (max == gameManager.turnController.social_change)
             {
+                if (ssg.Count == 0)
+                {
+                    return "hh";
+                }
                 return ssg.Dequeue();
             }
             if (max == gameManager.turnController.life_change)
             {
+                if (leg.Count == 0)
+                {
+                    return "hh";
+                }
                 return leg.Dequeue();
             }
             return "";
@@ -127,18 +143,34 @@ public class InterviewManager : MonoBehaviour
         min = Mathf.Min(min, GameManager.total_environment);
         if(min == GameManager.total_economics)
         {
+            if (epb.Count == 0)
+            {
+                return "hh";
+            }
             return epb.Dequeue();
         }
         if(min == GameManager.total_social_stability)
         {
+            if (ssb.Count == 0)
+            {
+                return "hh";
+            }
             return ssb.Dequeue();
         }
         if(min == GameManager.total_life)
         {
+            if (leb.Count == 0)
+            {
+                return "hh";
+            }
             return leb.Dequeue();
         }
         if(min == GameManager.total_environment)
         {
+            if (eb.Count == 0)
+            {
+                return "hh";
+            }
             return eb.Dequeue();
         }
         return "";

@@ -10,6 +10,7 @@ public class CharacterNavController : MonoBehaviour
     public float _rotationSpeed;
     public float _maxSpeed;
     public float _movementSpeed;
+    public float _maxmovementSpeed;
     private float _deacceleration;
     public Vector3 _velocity;
     public Vector3 _lastPosition;
@@ -19,20 +20,29 @@ public class CharacterNavController : MonoBehaviour
     public float sensorLength = 1f;
     public Vector3 offset = new Vector3(0f, 0f, 0f);
     private float heuristic;
+
+    private Animator AC;
+    private float ACtimer;
+    private float timeRemaining;
     // Start is called before the first frame update
     void Start()
     {
         _reachedDestination = false;
-        _movementSpeed = 0.5f;
+        _maxmovementSpeed = 0.5f;
         _rotationSpeed = 360f;
         _stopDistance = 0.2f;
         _deacceleration = 4;
+        AC = GetComponent<Animator>();
+        ACtimer = 3f;
+        timeRemaining = ACtimer;
+        CalculateAnimator();
     }
 
     // Update is called once per frame
     void Update()
     {
-       /* _deacceleration = _maxSpeed * _maxSpeed / (sensorLength * 2);*/
+        /* _deacceleration = _maxSpeed * _maxSpeed / (sensorLength * 2);*/
+        UpdateAnimator();
         Sensors();
         _lastPosition = transform.position;
         if(transform.position != _destination)
@@ -130,7 +140,165 @@ public class CharacterNavController : MonoBehaviour
 
         isbreak = false;
     }
-    public void calculateHeuristic(Vector3 start, Vector3 end)
+    private void UpdateAnimator()
+    {
+        if(timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
+        else
+        {
+            CalculateAnimator();
+            timeRemaining = ACtimer;
+        }
+    }
+    private void CalculateAnimator()
+    {
+        switch (GameManager.total_life)
+        {
+            case 0:
+                DisableStates();
+                AC.SetBool("_isSitSad", true);
+                _maxSpeed = 0f;
+                break;
+            case 1:
+                if(Random.Range(0.0f,1.0f) < 0.5f)
+                {
+                    DisableStates();
+                    AC.SetBool("_isSitSad", true);
+                    _maxSpeed = 0f;
+                }
+                else
+                {
+                    DisableStates();
+                    AC.SetBool("_isWalkSad", true);
+                    _maxSpeed = _maxmovementSpeed / 2;
+                }
+                break;
+            case 2:
+                if (Random.Range(0.0f, 1.0f) < 0.25f)
+                {
+                    DisableStates();
+                    AC.SetBool("_isSitSad", true);
+                    _maxSpeed = 0;
+                }
+                else
+                {
+                    DisableStates();
+                    AC.SetBool("_isWalkSad", true);
+                    _maxSpeed = _maxmovementSpeed / 2;
+                }
+                break;
+            case 3:
+                DisableStates();
+                AC.SetBool("_isWalkSad", true);
+                _maxSpeed = _maxmovementSpeed / 2;
+                break;
+            case 4:
+                if (Random.Range(0.0f, 1.0f) < 0.25f)
+                {
+                    DisableStates();
+                    AC.SetBool("_isWalkNormal", true);
+                    _maxSpeed = _maxmovementSpeed;
+                }
+                else
+                {
+                    DisableStates();
+                    AC.SetBool("_isWalkSad", true);
+                    _maxSpeed = _maxmovementSpeed / 2;
+                }
+                break;
+            case 5:
+                if (Random.Range(0.0f, 1.0f) < 0.5f)
+                {
+                    DisableStates();
+                    AC.SetBool("_isWalkNormal", true);
+                    _maxSpeed = _maxmovementSpeed;
+                }
+                else
+                {
+                    DisableStates();
+                    AC.SetBool("_isWalkSad", true);
+                    _maxSpeed = _maxmovementSpeed / 2;
+                }
+                break;
+            case 6:
+                if (Random.Range(0.0f, 1.0f) < 0.5f)
+                {
+                    DisableStates();
+                    AC.SetBool("_isWalkNormal", true);
+                    _maxSpeed = _maxmovementSpeed;
+                }
+                else
+                {
+                    DisableStates();
+                    AC.SetBool("_isWalkSad", true);
+                    _maxSpeed = _maxmovementSpeed / 2;
+                }
+                break;
+            case 7:
+                DisableStates();
+                AC.SetBool("_isWalkNormal", true);
+                _maxSpeed = _maxmovementSpeed;
+                break;
+            case 8:
+                if (Random.Range(0.0f, 1.0f) < 0.8f)
+                {
+                    DisableStates();
+                    AC.SetBool("_isWalkNormal", true);
+                    _maxSpeed = _maxmovementSpeed;
+                }
+                else
+                {
+                    DisableStates();
+                    AC.SetBool("_isRun", true);
+                    _maxSpeed = _maxmovementSpeed * 1.5f;
+                }
+                break;
+            case 9:
+                if (Random.Range(0.0f, 1.0f) < 0.6f)
+                {
+                    DisableStates();
+                    AC.SetBool("_isWalkNormal", true);
+                    _maxSpeed = _maxmovementSpeed;
+                }
+                else
+                {
+                    DisableStates();
+                    AC.SetBool("_isRun", true);
+                    _maxSpeed = _maxmovementSpeed * 1.5f;
+                }
+                break;
+            case 10:
+                /*if (Random.Range(0.0f, 1.0f) < 0.4f)
+                {
+                    DisableStates();
+                    AC.SetBool("_isWalkNormal", true);
+                    _maxSpeed = _maxmovementSpeed;
+                }
+                else
+                {
+                    DisableStates();
+                    AC.SetBool("_isRun", true);
+                    _maxSpeed = _maxmovementSpeed * 1.5f;
+                }*/
+                DisableStates();
+                AC.SetBool("_isRun", true);
+                _maxSpeed = _maxmovementSpeed * 1.5f;
+                break;
+            default:
+                break;
+        }
+
+    }
+    private void DisableStates()
+    {
+        AC.SetBool("_isSitSad",false);
+        AC.SetBool("_isWalkSad", false);
+        AC.SetBool("_isWalkNormal", false);
+        AC.SetBool("_isRun", false);
+    }
+    private void calculateHeuristic(Vector3 start, Vector3 end)
     {
         Vector3 total = end - start;
         heuristic = 1 - (total.magnitude) / sensorLength;

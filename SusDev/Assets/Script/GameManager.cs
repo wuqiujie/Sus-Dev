@@ -24,9 +24,16 @@ public class GameManager : MonoBehaviour
     public GameObject playCardButton;
     public GameObject hoverIndexpanel;
 
+    /**end **/
     public GameObject endCanvas;
     public GameObject endGoalPanel;
     public GameObject endIndexPanel;
+    public GameObject EndEnvBar;
+    public GameObject EndLifeBar;
+    public GameObject EndStableBar;
+    public GameObject EndEconomyBar;
+   
+    public Text GetGoalNum;
 
 
     /** Index **/
@@ -47,6 +54,8 @@ public class GameManager : MonoBehaviour
     public InterviewManager interviewManager;
     public bool interview_called;
     public bool incident_called;
+    public GameObject LCitizen;
+    public GameObject RCitizen;
 
     /**Tutorial**/
     public GameObject TutorialArea;
@@ -60,7 +69,7 @@ public class GameManager : MonoBehaviour
     public List<int> collectID;
 
     public GameObject collectionPanel;
-
+    private bool endGame=false;
 
     public enum GameState
     {
@@ -94,7 +103,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-     //  Debug.Log("state: " + state);
+       Debug.Log("state: " + state);
     //    Debug.Log("Turn:" + turnNum);
         turnText.text =  turnNum +"/7";
 
@@ -152,11 +161,7 @@ public class GameManager : MonoBehaviour
             Turn_End();
         }
 
-        if (state == GameState.GameEnd || turnNum==8)
-        {
-            Game_End();
-        }
-
+     
 
         UI_Update();
   
@@ -200,7 +205,11 @@ public void Tutorial()
         IndicatorPanel.SetActive(false);
         CollectPosition.SetActive(false);
         HandArea.SetActive(false);
-        hoverIndexpanel.SetActive(false);
+
+        for(int i =4; i < 21; i++)
+        {
+            hoverIndexpanel.transform.GetChild(i).gameObject.SetActive(false);
+        }
 
         TutorialArea.SetActive(true);
         tutorialButton.SetActive(false);
@@ -227,7 +236,10 @@ public void Tutorial()
         CollectPosition.SetActive(true);
         HandArea.SetActive(true);
         TutorialArea.SetActive(false);
-        hoverIndexpanel.SetActive(true);
+        for (int i = 4; i < 21; i++)
+        {
+            hoverIndexpanel.transform.GetChild(i).gameObject.SetActive(true);
+        }
 
 
         LT_Update();
@@ -267,6 +279,7 @@ public void Tutorial()
         {
             if (budgetNum >= turnController.CurrentCard().GetComponent<ThisCard>().cost)
             {
+               
                 state = GameState.Calculate;
             }
             else
@@ -284,24 +297,20 @@ public void Tutorial()
     }
     public void CalculateCard()
     {
-       
+        Debug.Log("Calculate");
         playCardButton.SetActive(true);
 
 
-        if (turnController.ZoneCount() > 0)
+        turnController.ShowGoal();
+        for (int i = 0; i < 17; i++)
         {
-            for (int i = 0; i < 17; i++)
+            if (turnController.goalCollect[i])
             {
-                if (turnController.goalCollect[i])
-                {
-                    goalCollect[i] = turnController.goalCollect[i];
-                }
-
+                goalCollect[i] = turnController.goalCollect[i];
             }
-            turnController.CalculateCard();
-            turnController.ShowGoal();
 
         }
+        turnController.CalculateCard();
         UI_Update();
         Data_Update();
         turnController.CityChange();
@@ -329,13 +338,35 @@ public void Tutorial()
 
 
     public void Interview()
-    {   
+    {
+        LCitizen.gameObject.SetActive(true);
+        RCitizen.gameObject.SetActive(true);
+
+        int Lindex = UnityEngine.Random.Range(0, 3);
+        int Rindex = UnityEngine.Random.Range(0, 3);
+        LCitizen.transform.GetChild(Lindex).gameObject.SetActive(true);
+        RCitizen.transform.GetChild(Rindex).gameObject.SetActive(true);
+       
+      
         interviewManager.InitiateInterview();
     }
     public void EndInterviewButton()
     {
         interviewManager.EndInterview();
-        state = GameState.incident;
+
+        for (int i = 0; i < 4; i++)
+        {
+            LCitizen.transform.GetChild(i).gameObject.SetActive(false);
+            RCitizen.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        if (turnNum == 7)
+        {
+            Game_End();
+        }
+        else
+        {
+            state = GameState.incident;
+        }
     }
     public void Incident()
     {
@@ -350,38 +381,44 @@ public void Tutorial()
 
     public void Turn_End()
     {
-        state = GameState.TurnStart;
+         state = GameState.TurnStart;
     }
 
     public void Game_End()
     {
-       
+        endGame = true;
         endCanvas.SetActive(true);
         endGoalPanel = GameObject.Find("EndGoalPanel");
-       
 
-        for(int i = 0; i < 17; i++)  
+
+        int gNum=0;
+
+        for (int i = 0; i < 17; i++)  
         {
             if (goalCollect[i] == true)
             {
+                gNum++;
                 endGoalPanel.transform.GetChild(i).gameObject.SetActive(true);
             }
         }
 
         int[] total_index = new int[4];
-
         total_index[0] = total_environment;
         total_index[1] = total_life;
         total_index[2] = total_economics;
         total_index[3] = total_social_stability;
-
-
         int maxValue = total_index.Max();
         int maxIndex = total_index.ToList().IndexOf(maxValue);
-      
         endIndexPanel = GameObject.Find("EndIndexPanel");
         endIndexPanel.transform.GetChild(maxIndex).gameObject.SetActive(true);
+       
+        EndEnvBar.GetComponent<Bar>().env.envAmount = total_environment;
+        EndLifeBar.GetComponent<Bar>().env.envAmount = total_life;
+        EndStableBar.GetComponent<Bar>().env.envAmount = total_social_stability;
+        EndEconomyBar.GetComponent<Bar>().env.envAmount = total_economics;
 
+        GetGoalNum.text = gNum+1 + " ";
+        
     }
 
     public void UI_Update()
