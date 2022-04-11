@@ -86,6 +86,8 @@
      <Compile Include="Assets\Script\UI\HoverGoal.cs" />
      <Compile Include="Assets\Script\Environment\PedestrianSpawner.cs" />
      <Compile Include="Assets\Script\UI\InterviewCitizen.cs" />
+     <Compile Include="Assets\Script\EmojiManager.cs" />
+     <Compile Include="Assets\Script\CharacterEmoji.cs" />
      <None Include="Assets\Resources\Interviewlines\Incidents\Economic Growth.txt" />
      <None Include="Assets\Resources\Interviewlines\Incidents\Life expectancy.txt" />
      <None Include="Assets\Resources\Incidents\Stability.txt" />

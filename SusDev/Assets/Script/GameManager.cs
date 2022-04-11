@@ -386,6 +386,11 @@ public void Tutorial()
 
     public void Game_End()
     {
+        for (int i = 0; i < 21; i++)
+        {
+            hoverIndexpanel.transform.GetChild(i).gameObject.SetActive(false);
+        }
+
         endGame = true;
         endCanvas.SetActive(true);
         endGoalPanel = GameObject.Find("EndGoalPanel");

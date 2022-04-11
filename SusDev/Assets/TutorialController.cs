@@ -15,6 +15,7 @@ public class TutorialController : MonoBehaviour
     public GameObject[] people;
     public GameObject[] character;
     public GameObject tutorialCanvas;
+    public GameObject SampleCard;
 
     private void Start()
     {
@@ -49,6 +50,14 @@ public class TutorialController : MonoBehaviour
             }
            
 
+        }
+        if(index == 11)
+        {
+            SampleCard.SetActive(true);
+        }
+        if(index > 11)
+        {
+            SampleCard.SetActive(false);
         }
         if(index >= 22)
         {
